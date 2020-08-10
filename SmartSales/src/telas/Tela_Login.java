@@ -105,6 +105,7 @@ public class Tela_Login extends javax.swing.JFrame {
         Tela_CadastroFuncionario cd = new Tela_CadastroFuncionario();
         cd.setVisible(true);
         cd.setLocationRelativeTo(null);
+        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -139,6 +140,7 @@ public class Tela_Login extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Tela_Login().setVisible(true);
+                
             }
         });
     }
