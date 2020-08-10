@@ -47,17 +47,16 @@ Contributor(s):
         <property name="hibernate.connection.username">postgres</property>
         <property name="hibernate.connection.password">Henrique@1410</property>
     
-        <mapping class="entidade.Funcionario"/>
-        <mapping class="entidade.Cidade"/>
-        <mapping class="entidade.Cliente"/>
-        <mapping class="entidade.Pedido"/>
-        <mapping class="entidade.Produto"/>
-        <mapping class="entidade.Produtos_Pedido"/>
-        <mapping class="entidade.Tipo_Pagamento"/>
+        <mapping class="entidades.Funcionario"/>
+        <mapping class="entidades.Cidade"/>
+        <mapping class="entidades.Cliente"/>
+        <mapping class="entidades.Pedido"/>
+        <mapping class="entidades.Produto"/>
+        <mapping class="entidades.Produtos_Pedido"/>
+        <mapping class="entidades.Tipo_Pagamento"/>
     
-        <mapping class="Telas.Cadastro_Funcionario"/>
+        <mapping class="telas.Tela_CadastroFuncionario"/>
     
         <mapping class="smartsales.SmartSales"/>
-    
     </session-factory>
 </hibernate-configuration>

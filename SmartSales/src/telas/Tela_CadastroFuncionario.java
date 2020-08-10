@@ -1,16 +1,18 @@
-package Telas;
+package telas;
 
 import apoio.*;
+import apoio.Criptografia;
+import apoio.HibernateUtil;
 import entidades.Funcionario;
 import javax.swing.JOptionPane;
 import org.hibernate.*;
 
-public class Cadastro_Funcionario extends javax.swing.JFrame {
+public class Tela_CadastroFuncionario extends javax.swing.JFrame {
 
     Funcionario funcionario;
     Criptografia criptografia;
 
-    public Cadastro_Funcionario() {
+    public Tela_CadastroFuncionario() {
         initComponents();
     }
 
@@ -184,7 +186,7 @@ public class Cadastro_Funcionario extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Campo(s) obrigatorios em branco(s)!", "Aviso!", JOptionPane.WARNING_MESSAGE);
             } else {
                 funcionario = new Funcionario();
-                funcionario.setNome(campoNome.getName());
+                funcionario.setNome(campoNome.getText());
                 funcionario.setCpf(campoCpf.getText());
                 funcionario.setEmail(campoEmail.getText());
                 funcionario.setLogin(campoLogin.getText());
@@ -220,17 +222,18 @@ public class Cadastro_Funcionario extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Cadastro_Funcionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Tela_CadastroFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Cadastro_Funcionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Tela_CadastroFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Cadastro_Funcionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Tela_CadastroFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Cadastro_Funcionario().setVisible(true);
+                new Tela_CadastroFuncionario().setVisible(true);
             }
         });
     }
