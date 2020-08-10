@@ -19,7 +19,7 @@ public class Funcionario implements Serializable {
     private int id;
     
     @Column(name = "cpf")
-    private int cpf;
+    private String cpf;
     
     @Column(name = "nome")
     private String nome;
@@ -93,6 +93,14 @@ public class Funcionario implements Serializable {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
 }
