@@ -1,4 +1,4 @@
-package telas;
+package tela.Cadatros;
 
 import apoio.*;
 import apoio.Criptografia;
@@ -15,6 +15,7 @@ public class Tela_CadastroFuncionario extends javax.swing.JFrame {
     public Tela_CadastroFuncionario() {
         initComponents();
         Mascaras.formatarCPF(campoCpf);
+        this.setLocationRelativeTo(null);
     }
 
     @SuppressWarnings("unchecked")

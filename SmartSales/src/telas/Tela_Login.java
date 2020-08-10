@@ -5,6 +5,7 @@
  */
 package telas;
 
+
 /**
  *
  * @author yNot
@@ -16,6 +17,7 @@ public class Tela_Login extends javax.swing.JFrame {
      */
     public Tela_Login() {
         initComponents();
+         this.setLocationRelativeTo(null);
     }
 
     /**
@@ -102,9 +104,9 @@ public class Tela_Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Tela_CadastroFuncionario cd = new Tela_CadastroFuncionario();
-        cd.setVisible(true);
-        cd.setLocationRelativeTo(null);
+       
+        Tela_Principal tp = new Tela_Principal();
+        tp.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
