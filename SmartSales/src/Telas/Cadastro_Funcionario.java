@@ -39,27 +39,27 @@ public class Cadastro_Funcionario extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Nome:");
+        jLabel1.setText("*Nome:");
         jLabel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("CPF:");
+        jLabel2.setText("*CPF:");
         jLabel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
         jLabel4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("Email:");
+        jLabel4.setText("*Email:");
         jLabel4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
         jLabel5.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Login:");
+        jLabel5.setText("*Login:");
         jLabel5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
         jLabel6.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("Senha:");
+        jLabel6.setText("*Senha:");
         jLabel6.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
         Cancelar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -91,7 +91,7 @@ public class Cadastro_Funcionario extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Cargo");
+        jLabel3.setText("*Cargo");
         jLabel3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
         comboCargo.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -178,25 +178,26 @@ public class Cadastro_Funcionario extends javax.swing.JFrame {
     private void SalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalvarActionPerformed
         Session sessao = null;
         try {
-            sessao = NewHibernateUtil.getSessionFactory().openSession();
+            sessao = HibernateUtil.getSessionFactory().openSession();
             Transaction transacao = sessao.beginTransaction();
-
-            funcionario = new Funcionario();
-
-            funcionario.setNome(campoNome.getName());
-            funcionario.setCpf(campoCpf.getText());
-            funcionario.setEmail(campoEmail.getText());
-            funcionario.setLogin(campoLogin.getText());
-            funcionario.setSenha(Criptografia.encriptografar(campoSenha.getText()));
-            if (comboCargo.getSelectedIndex() == 0) {
-                JOptionPane.showMessageDialog(null, "Selecione um cargo valido!", "Aviso!", JOptionPane.WARNING_MESSAGE);
+            if (campoCpf.getText().replaceAll("\\D", "").isEmpty() || campoEmail.getText().isEmpty() || campoLogin.getText().isEmpty() || campoNome.getText().isEmpty() || campoSenha.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Campo(s) obrigatorios em branco(s)!", "Aviso!", JOptionPane.WARNING_MESSAGE);
             } else {
-                funcionario.setFuncao(String.valueOf(comboCargo.getSelectedItem()));
+                funcionario = new Funcionario();
+                funcionario.setNome(campoNome.getName());
+                funcionario.setCpf(campoCpf.getText());
+                funcionario.setEmail(campoEmail.getText());
+                funcionario.setLogin(campoLogin.getText());
+                funcionario.setSenha(Criptografia.encriptografar(campoSenha.getText()));
+                if (comboCargo.getSelectedIndex() == 0) {
+                    JOptionPane.showMessageDialog(null, "Selecione um cargo valido!", "Aviso!", JOptionPane.WARNING_MESSAGE);
+                } else {
+                    funcionario.setFuncao(String.valueOf(comboCargo.getSelectedItem()));
+                    sessao.save(funcionario);
+                    transacao.commit();
+                    JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!");
+                }
             }
-
-            sessao.save(funcionario);
-            transacao.commit();
-            JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!");
         } catch (HibernateException Hibex) {
             Hibex.printStackTrace();
         } finally {

@@ -1,13 +1,12 @@
 package apoio;
 
-
 import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.SessionFactory;
 
-public class NewHibernateUtil {
+public class HibernateUtil {
 
     private static final SessionFactory sessionFactory;
-
+    
     static {
         try {
             sessionFactory = new AnnotationConfiguration().configure().buildSessionFactory();
@@ -16,7 +15,7 @@ public class NewHibernateUtil {
             throw new ExceptionInInitializerError(ex);
         }
     }
-
+    
     public static SessionFactory getSessionFactory() {
         return sessionFactory;
     }
