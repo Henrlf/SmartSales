@@ -54,6 +54,7 @@ Contributor(s):
         <mapping class="entidade.Produto"/>
         <mapping class="entidade.Produtos_Pedido"/>
         <mapping class="entidade.Tipo_Pagamento"/>
+        
         <mapping class="smartsales.SmartSales"/>
     
     </session-factory>

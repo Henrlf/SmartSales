@@ -1,28 +1,24 @@
 package entidades;
 
 import java.io.Serializable;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "protudos_pedido")
 
 public class Produtos_Pedido implements Serializable {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
 
-    @ManyToMany
+    @ManyToOne
+    @JoinColumn(name = "produto_id")
     private Produto produto;
 
-    @ManyToMany
+    @ManyToOne
+    @JoinColumn(name = "pedido_id")
     private Pedido pedido;
 
     @Column(name = "quantidade")

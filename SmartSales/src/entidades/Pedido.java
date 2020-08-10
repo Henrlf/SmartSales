@@ -1,13 +1,9 @@
 package entidades;
 
 import java.io.Serializable;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import java.util.HashSet;
+import java.util.Set;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "pedido")
@@ -39,6 +35,9 @@ public class Pedido implements Serializable {
     
     @Column(name = "status")
     private String staus;
+    
+    @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
+    private Set<Produtos_Pedido> produtos_pedido = new HashSet<>();
 
     public int getId() {
         return id;
