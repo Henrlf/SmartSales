@@ -1,15 +1,14 @@
 package Telas;
 
-import apoio.NewHibernateUtil;
+import apoio.*;
 import entidades.Funcionario;
 import javax.swing.JOptionPane;
 import org.hibernate.*;
 
-/**
- *
- * @author yNot
- */
 public class Cadastro_Funcionario extends javax.swing.JFrame {
+
+    Funcionario funcionario;
+    Criptografia criptografia;
 
     public Cadastro_Funcionario() {
         initComponents();
@@ -27,15 +26,16 @@ public class Cadastro_Funcionario extends javax.swing.JFrame {
         Cancelar = new javax.swing.JButton();
         Salvar = new javax.swing.JButton();
         campoNome = new javax.swing.JTextField();
-        campoCPF = new javax.swing.JTextField();
         campoEmail = new javax.swing.JTextField();
         campoLogin = new javax.swing.JTextField();
-        campoSenha = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         comboCargo = new javax.swing.JComboBox<>();
+        campoCpf = new javax.swing.JFormattedTextField();
+        campoSenha = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Cadastro de Usuário");
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -80,13 +80,9 @@ public class Cadastro_Funcionario extends javax.swing.JFrame {
 
         campoNome.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
 
-        campoCPF.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-
         campoEmail.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
 
         campoLogin.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-
-        campoSenha.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
 
         jLabel7.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -116,14 +112,14 @@ public class Cadastro_Funcionario extends javax.swing.JFrame {
                                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(campoCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(campoEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(campoEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+                                    .addComponent(campoCpf)))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(campoNome, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
@@ -131,8 +127,8 @@ public class Cadastro_Funcionario extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(campoLogin)
-                            .addComponent(campoSenha)
-                            .addComponent(comboCargo, 0, 250, Short.MAX_VALUE)))
+                            .addComponent(comboCargo, 0, 250, Short.MAX_VALUE)
+                            .addComponent(campoSenha)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(Salvar, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -156,9 +152,8 @@ public class Cadastro_Funcionario extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(campoCPF)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campoCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(campoSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -182,30 +177,35 @@ public class Cadastro_Funcionario extends javax.swing.JFrame {
 
     private void SalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalvarActionPerformed
         Session sessao = null;
-        try{
+        try {
             sessao = NewHibernateUtil.getSessionFactory().openSession();
             Transaction transacao = sessao.beginTransaction();
-            Funcionario f = new Funcionario();
-            
-            f.setNome(campoNome.getName());
-            f.setCpf(campoCPF.getText()); 
-            f.setEmail(campoEmail.getText());
-            f.setLogin(campoLogin.getText());
-            f.setSenha(campoSenha.getText());
-            
-            sessao.save(f);
+
+            funcionario = new Funcionario();
+
+            funcionario.setNome(campoNome.getName());
+            funcionario.setCpf(campoCpf.getText());
+            funcionario.setEmail(campoEmail.getText());
+            funcionario.setLogin(campoLogin.getText());
+            funcionario.setSenha(Criptografia.encriptografar(campoSenha.getText()));
+            if (comboCargo.getSelectedIndex() == 0) {
+                JOptionPane.showMessageDialog(null, "Selecione um cargo valido!", "Aviso!", JOptionPane.WARNING_MESSAGE);
+            } else {
+                funcionario.setFuncao(String.valueOf(comboCargo.getSelectedItem()));
+            }
+
+            sessao.save(funcionario);
             transacao.commit();
-            JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!"); 
-            
-        }catch (HibernateException Hibex){
-              Hibex.printStackTrace();
-        }finally{
+            JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!");
+        } catch (HibernateException Hibex) {
+            Hibex.printStackTrace();
+        } finally {
             sessao.close();
         }
     }//GEN-LAST:event_SalvarActionPerformed
 
     public static void main(String args[]) throws java.lang.InstantiationException {
-        
+
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
@@ -236,11 +236,11 @@ public class Cadastro_Funcionario extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Cancelar;
     private javax.swing.JButton Salvar;
-    private javax.swing.JTextField campoCPF;
+    private javax.swing.JFormattedTextField campoCpf;
     private javax.swing.JTextField campoEmail;
     private javax.swing.JTextField campoLogin;
     private javax.swing.JTextField campoNome;
-    private javax.swing.JTextField campoSenha;
+    private javax.swing.JPasswordField campoSenha;
     private javax.swing.JComboBox<String> comboCargo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
