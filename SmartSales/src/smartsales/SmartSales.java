@@ -1,7 +1,6 @@
 package smartsales;
 
 import telas.Tela_CadastroFuncionario;
-import apoio.HibernateUtil;
 
 public class SmartSales {
 
