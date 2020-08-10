@@ -24,8 +24,8 @@ public class Funcionario implements Serializable {
     @Column(name = "nome")
     private String nome;
     
-    @Column(name = "funcao")
-    private String funcao;
+    @Column(name = "cargo")
+    private String cargo;
     
     @Column(name = "login")
     private String login;
@@ -56,11 +56,11 @@ public class Funcionario implements Serializable {
     }
 
     public String getFuncao() {
-        return funcao;
+        return cargo;
     }
 
     public void setFuncao(String funcao) {
-        this.funcao = funcao;
+        this.cargo = funcao;
     }
 
     public String getLogin() {

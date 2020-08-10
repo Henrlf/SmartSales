@@ -189,6 +189,7 @@ public class Cadastro_Funcionario extends javax.swing.JFrame {
                 funcionario.setEmail(campoEmail.getText());
                 funcionario.setLogin(campoLogin.getText());
                 funcionario.setSenha(Criptografia.encriptografar(campoSenha.getText()));
+                funcionario.setStatus("A");
                 if (comboCargo.getSelectedIndex() == 0) {
                     JOptionPane.showMessageDialog(null, "Selecione um cargo valido!", "Aviso!", JOptionPane.WARNING_MESSAGE);
                 } else {
