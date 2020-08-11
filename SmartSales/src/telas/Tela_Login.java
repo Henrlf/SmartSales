@@ -38,6 +38,7 @@ public class Tela_Login extends javax.swing.JFrame {
         txt_senha = new javax.swing.JPasswordField();
         txt_login = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        Acesso_rapido = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -61,12 +62,21 @@ public class Tela_Login extends javax.swing.JFrame {
             }
         });
 
+        Acesso_rapido.setText("Admin preguiçoso");
+        Acesso_rapido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Acesso_rapidoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(20, 20, 20)
+                .addComponent(Acesso_rapido)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 183, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(224, 224, 224))
             .addGroup(layout.createSequentialGroup()
@@ -98,9 +108,15 @@ public class Tela_Login extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txt_senha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37)
-                .addComponent(jButton1)
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addComponent(jButton1)
+                        .addContainerGap(47, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Acesso_rapido)
+                        .addGap(21, 21, 21))))
         );
 
         pack();
@@ -111,7 +127,7 @@ public class Tela_Login extends javax.swing.JFrame {
             try {
                 if (Login_Sistema.logar(txt_login.getText(), Criptografia.encriptografar(txt_senha.getText()))) {
                     Tela_Principal tp = new Tela_Principal();
-                    tp.setVisible(true);                    
+                    tp.setVisible(true);
                     this.dispose();
                 } else {
                     JOptionPane.showMessageDialog(null, "Login ou Senha Incorretos");
@@ -123,6 +139,12 @@ public class Tela_Login extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Por favor preencha os campos corretamente");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void Acesso_rapidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Acesso_rapidoActionPerformed
+        Tela_Principal tp = new Tela_Principal();
+        tp.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_Acesso_rapidoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -162,6 +184,7 @@ public class Tela_Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Acesso_rapido;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
