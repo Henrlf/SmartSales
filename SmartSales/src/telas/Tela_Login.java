@@ -126,7 +126,7 @@ public class Tela_Login extends javax.swing.JFrame {
         if (!txt_login.getText().equals("") && !txt_senha.getText().equals("")) {
             try {
                 if (Login_Sistema.logar(txt_login.getText(), Criptografia.encriptografar(txt_senha.getText()))) {
-                    Tela_Principal tp = new Tela_Principal();
+                    Tela_Principal_Admin tp = new Tela_Principal_Admin();
                     tp.setVisible(true);
                     this.dispose();
                 } else {
@@ -141,7 +141,7 @@ public class Tela_Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void Acesso_rapidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Acesso_rapidoActionPerformed
-        Tela_Principal tp = new Tela_Principal();
+        Tela_Principal_Admin tp = new Tela_Principal_Admin();
         tp.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_Acesso_rapidoActionPerformed
