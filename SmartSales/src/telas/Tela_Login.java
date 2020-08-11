@@ -107,16 +107,12 @@ public class Tela_Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
         if (!txt_login.getText().equals("") && !txt_senha.getText().equals("")) {
-
             try {
-
                 if (Login_Sistema.logar(txt_login.getText(), Criptografia.encriptografar(txt_senha.getText()))) {
                     Tela_Principal tp = new Tela_Principal();
-                    tp.setVisible(true);
+                    tp.setVisible(true);                    
                     this.dispose();
-
                 } else {
                     JOptionPane.showMessageDialog(null, "Login ou Senha Incorretos");
                 }

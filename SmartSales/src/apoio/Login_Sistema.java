@@ -1,29 +1,31 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package apoio;
 
+import entidades.*;
+import java.util.*;
 import javax.swing.JOptionPane;
+import org.hibernate.*;
 
-/**
- *
- * @author yNot
- */
 public class Login_Sistema {
 
     public static boolean logar(String login, String senha) {
+        boolean pas = false;
 
-        var NewLogin = "";
-        var NewSenha = "";
-
-        if (NewLogin.equals(login) && NewSenha.equals(senha)) {
-            return true;
-        } else {
-            System.out.println("erro função logar");
-            return false;
+        List<Funcionario> resultado = new ArrayList();
+        String sql = "FROM Funcionario";        
+        try {
+            Session sessao = HibernateUtil.getSessionFactory().openSession();
+            org.hibernate.Query query = sessao.createQuery(sql);
+            resultado = query.list();
+            for (int i = 0; i < resultado.size(); i++) {
+                Funcionario funcionario = resultado.get(i);
+                if (funcionario.getLogin().equals(login) && funcionario.getSenha().equals(senha)) {
+                    pas = true;
+                }
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro imprevisto!\n" + e, "Erro!", JOptionPane.ERROR_MESSAGE);
         }
+        return pas;
     }
 
 }

@@ -1,4 +1,4 @@
-package tela.Cadatros;
+package telas;
 
 import apoio.*;
 import apoio.Criptografia;

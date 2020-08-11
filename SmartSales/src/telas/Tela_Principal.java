@@ -5,8 +5,6 @@
  */
 package telas;
 
-import tela.Cadatros.Tela_CadastroFuncionario;
-
 /**
  *
  * @author yNot
