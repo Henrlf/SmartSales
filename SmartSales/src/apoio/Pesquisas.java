@@ -39,7 +39,7 @@ public class Pesquisas {
                 modelo.addRow(new Object[]{funcionario.getId(), funcionario.getNome(), funcionario.getCpf(), funcionario.getEmail(), funcionario.getLogin(), funcionario.getCargo(), funcionario.getStatus()});
             }
         } catch (HibernateException e) {
-            System.out.println(e);
+            
         } finally {
             sessao.close();
         }
