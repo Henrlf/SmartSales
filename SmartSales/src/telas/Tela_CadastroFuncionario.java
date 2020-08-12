@@ -40,7 +40,7 @@ public class Tela_CadastroFuncionario extends javax.swing.JFrame {
         btEditar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
-        btn_salvar = new javax.swing.JButton();
+        btSalvar = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -122,6 +122,11 @@ public class Tela_CadastroFuncionario extends javax.swing.JFrame {
 
         btIntivar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btIntivar.setText("Inativar");
+        btIntivar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btIntivarActionPerformed(evt);
+            }
+        });
 
         btEditar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btEditar.setText("Editar");
@@ -168,11 +173,11 @@ public class Tela_CadastroFuncionario extends javax.swing.JFrame {
         jLabel8.setText("Obrigatório \" * \"");
         jLabel8.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
-        btn_salvar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btn_salvar.setText("Salvar");
-        btn_salvar.addActionListener(new java.awt.event.ActionListener() {
+        btSalvar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btSalvar.setText("Salvar");
+        btSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_salvarActionPerformed(evt);
+                btSalvarActionPerformed(evt);
             }
         });
 
@@ -213,16 +218,15 @@ public class Tela_CadastroFuncionario extends javax.swing.JFrame {
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(campoCpf, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(campoNome, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(0, 0, Short.MAX_VALUE))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(campoEmail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(campoNome, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(campoEmail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -321,7 +325,7 @@ public class Tela_CadastroFuncionario extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btn_salvar, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -333,7 +337,7 @@ public class Tela_CadastroFuncionario extends javax.swing.JFrame {
                     .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 112, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btn_salvar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btSalvar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
@@ -378,7 +382,7 @@ public class Tela_CadastroFuncionario extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btSairActionPerformed
 
-    private void btn_salvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salvarActionPerformed
+    private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
         Session sessao = null;
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
@@ -413,7 +417,7 @@ public class Tela_CadastroFuncionario extends javax.swing.JFrame {
         } finally {
             sessao.close();
         }
-    }//GEN-LAST:event_btn_salvarActionPerformed
+    }//GEN-LAST:event_btSalvarActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
 
@@ -422,6 +426,29 @@ public class Tela_CadastroFuncionario extends javax.swing.JFrame {
     private void campoPesquisaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoPesquisaKeyReleased
         Pesquisas.PesquisaFuncionario(tabelaFuncionario, campoPesquisa.getText().toUpperCase());
     }//GEN-LAST:event_campoPesquisaKeyReleased
+
+    private void btIntivarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btIntivarActionPerformed
+        List resultado = null;
+        Session sessao = HibernateUtil.getSessionFactory().openSession();
+        Transaction transacao = sessao.beginTransaction();
+        if (tabelaFuncionario.getSelectedRowCount() == 0) {
+            JOptionPane.showMessageDialog(null, "Nenhum usuário selecionado para inativar!", "Aviso!", JOptionPane.WARNING_MESSAGE);
+        } else {
+            String idString = String.valueOf(tabelaFuncionario.getValueAt(tabelaFuncionario.getSelectedRow(), 0));
+            int id = Integer.parseInt(idString);
+            try {
+                funcionario = (Funcionario) sessao.get(Funcionario.class, id);
+                funcionario.setStatus("I");
+                sessao.update(funcionario);
+                transacao.commit();
+                JOptionPane.showMessageDialog(null, "Usuário inativado com sucesso!");
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Erro imprevisto!\n" + e, "Erro!", JOptionPane.ERROR_MESSAGE);
+            } finally {
+                sessao.close();
+            }
+        }
+    }//GEN-LAST:event_btIntivarActionPerformed
 
     public static void main(String args[]) throws java.lang.InstantiationException {
 
@@ -461,8 +488,8 @@ public class Tela_CadastroFuncionario extends javax.swing.JFrame {
     private javax.swing.JButton btEditar;
     private javax.swing.JButton btIntivar;
     private javax.swing.JButton btSair;
+    private javax.swing.JButton btSalvar;
     private javax.swing.JButton btnExcluir;
-    private javax.swing.JButton btn_salvar;
     private javax.swing.JFormattedTextField campoCpf;
     private javax.swing.JTextField campoEmail;
     private javax.swing.JTextField campoLogin;

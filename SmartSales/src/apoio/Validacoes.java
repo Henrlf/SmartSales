@@ -7,8 +7,8 @@ import javax.swing.JOptionPane;
 import org.hibernate.Session;
 
 public class Validacoes {
-    
-        public static boolean logar(String login, String senha) {
+
+    public static boolean logar(String login, String senha) {
         boolean pas = false;
         Session sessao = HibernateUtil.getSessionFactory().openSession();
         List<Funcionario> resultado = new ArrayList();
@@ -19,7 +19,11 @@ public class Validacoes {
             for (int i = 0; i < resultado.size(); i++) {
                 Funcionario funcionario = resultado.get(i);
                 if (funcionario.getLogin().equals(login) && funcionario.getSenha().equals(senha)) {
-                    pas = true;
+                    if (funcionario.getStatus().equals("A")) {
+                        pas = true;
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Usuário inativado!", "Aviso!", JOptionPane.WARNING_MESSAGE);
+                    }
                 }
             }
         } catch (Exception e) {
@@ -29,5 +33,5 @@ public class Validacoes {
         }
         return pas;
     }
-    
+
 }
