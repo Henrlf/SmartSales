@@ -58,6 +58,8 @@ Contributor(s):
         <mapping class="telas.Tela_CadastroFuncionario"/>
         <mapping class="telas.Tela_Login"/>
         <mapping class="telas.Tela_Principal"/>
+        <mapping class="telas.Tela_CadastroCliente"/>
+        <mapping class="telas.Tela_CadastroProdutos"/>
     
         
     </session-factory>

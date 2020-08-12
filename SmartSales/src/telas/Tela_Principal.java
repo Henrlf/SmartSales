@@ -33,11 +33,14 @@ public class Tela_Principal extends javax.swing.JFrame {
         Cadastro_clientes = new javax.swing.JMenuItem();
         Cadastro_funcionario = new javax.swing.JMenuItem();
         Cadastro_Produtos = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         Criacao_metas = new javax.swing.JMenu();
         Gerenciamento_metas = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
+        Venda_produtos = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        Compra_Produtos = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
@@ -66,6 +69,10 @@ public class Tela_Principal extends javax.swing.JFrame {
         Cadastro_Produtos.setText("Produtos");
         Cadatro.add(Cadastro_Produtos);
 
+        jMenuItem1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jMenuItem1.setText("Cidade");
+        Cadatro.add(jMenuItem1);
+
         jMenuBar1.add(Cadatro);
 
         Criacao_metas.setText("Metas");
@@ -84,10 +91,18 @@ public class Tela_Principal extends javax.swing.JFrame {
         jMenu1.setText("Venda");
         jMenu1.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
 
-        jMenuItem4.setText("Erro 404");
-        jMenu1.add(jMenuItem4);
+        Venda_produtos.setText("Venda");
+        jMenu1.add(Venda_produtos);
 
         jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Compra");
+        jMenu2.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+
+        Compra_Produtos.setText("Compra");
+        jMenu2.add(Compra_Produtos);
+
+        jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Relatório");
         jMenu3.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
@@ -171,15 +186,18 @@ public class Tela_Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem Cadastro_clientes;
     private javax.swing.JMenuItem Cadastro_funcionario;
     private javax.swing.JMenu Cadatro;
+    private javax.swing.JMenuItem Compra_Produtos;
     private javax.swing.JMenu Criacao_metas;
     private javax.swing.JMenuItem Gerenciamento_metas;
+    private javax.swing.JMenuItem Venda_produtos;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     // End of variables declaration//GEN-END:variables
 }
