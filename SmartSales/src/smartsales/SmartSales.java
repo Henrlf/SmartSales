@@ -3,17 +3,16 @@ package smartsales;
 import javax.swing.UIManager;
 import telas.Tela_Login;
 
-
 public class SmartSales {
 
     public static void main(String[] args) {
-
-        try{
+        try {
             UIManager.setLookAndFeel("com.jtattoo.plaf.graphite.GraphiteLookAndFeel");
-        }catch (Exception e){ 
+        } catch (Exception e) {
+            
         }
-            Tela_Login log = new Tela_Login();
-            log.setVisible(true);
-            log.setLocationRelativeTo(null);
+        Tela_Login log = new Tela_Login();
+        log.setVisible(true);
+        log.setLocationRelativeTo(null);
     }
 }

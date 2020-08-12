@@ -387,7 +387,7 @@ public class Tela_CadastroFuncionario extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Campo(s) obrigatorios em branco(s)!", "Aviso!", JOptionPane.WARNING_MESSAGE);
             } else {
                 funcionario = new Funcionario();
-                funcionario.setNome(campoNome.getText());
+                funcionario.setNome(campoNome.getText().toUpperCase());
                 funcionario.setCpf(campoCpf.getText());
                 funcionario.setEmail(campoEmail.getText());
                 funcionario.setLogin(campoLogin.getText());
@@ -420,7 +420,7 @@ public class Tela_CadastroFuncionario extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void campoPesquisaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoPesquisaKeyReleased
-        Pesquisas.PesquisaFuncionario(tabelaFuncionario, campoPesquisa.getText());
+        Pesquisas.PesquisaFuncionario(tabelaFuncionario, campoPesquisa.getText().toUpperCase());
     }//GEN-LAST:event_campoPesquisaKeyReleased
 
     public static void main(String args[]) throws java.lang.InstantiationException {

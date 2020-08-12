@@ -1,7 +1,6 @@
 package telas;
 
-import apoio.Criptografia;
-import apoio.Login_Sistema;
+import apoio.*;
 import javax.swing.JOptionPane;
 
 public class Tela_Login extends javax.swing.JFrame {
@@ -122,7 +121,7 @@ public class Tela_Login extends javax.swing.JFrame {
     private void btLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLoginActionPerformed
         if (!campoLogin.getText().equals("") && !campoSenha.getText().equals("")) {
             try {
-                if (Login_Sistema.logar(campoLogin.getText(), Criptografia.encriptografar(campoSenha.getText()))) {
+                if (Validacoes.logar(campoLogin.getText(), Criptografia.encriptografar(campoSenha.getText()))) {
                     Tela_Principal tp = new Tela_Principal();
                     tp.setVisible(true);
                     this.dispose();
