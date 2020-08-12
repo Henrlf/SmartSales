@@ -4,21 +4,24 @@ import apoio.*;
 import apoio.Criptografia;
 import apoio.HibernateUtil;
 import entidades.Funcionario;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import org.hibernate.*;
 
 public class Tela_CadastroFuncionario extends javax.swing.JFrame {
-    
+
     Funcionario funcionario;
     Criptografia criptografia;
-    
+
     public Tela_CadastroFuncionario() {
         initComponents();
         Mascaras.formatarCPF(campoCpf);
         this.setLocationRelativeTo(null);
-        this.setTitle("Cadastro de Funcionários"); 
+        this.setTitle("Cadastro de Funcionários");
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -215,6 +218,11 @@ public class Tela_CadastroFuncionario extends javax.swing.JFrame {
 
         btn_pesquisar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btn_pesquisar.setText("Pesquisar");
+        btn_pesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_pesquisarActionPerformed(evt);
+            }
+        });
 
         btn_sair2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         btn_sair2.setText("Sair");
@@ -353,7 +361,34 @@ public class Tela_CadastroFuncionario extends javax.swing.JFrame {
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
 
     }//GEN-LAST:event_btnExcluirActionPerformed
-    
+
+    private void btn_pesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_pesquisarActionPerformed
+        List<Funcionario> resultado = new ArrayList();
+        String sql = "FROM Funcionario "
+                + "Where nome LIKE '%" + txfPesquisar.getText() + "%' "
+                + "ORDER BY id";
+
+        tbl_funcionario.getColumnModel().getColumn(0).setPreferredWidth(50);
+        tbl_funcionario.getColumnModel().getColumn(1).setPreferredWidth(100);
+        tbl_funcionario.getColumnModel().getColumn(2).setPreferredWidth(100);
+        tbl_funcionario.getColumnModel().getColumn(3).setPreferredWidth(100);
+        tbl_funcionario.getColumnModel().getColumn(4).setPreferredWidth(100);
+
+        DefaultTableModel modelo = (DefaultTableModel) tbl_funcionario.getModel();
+        modelo.setNumRows(0);
+        try {
+            Session sessao = HibernateUtil.getSessionFactory().openSession();
+            org.hibernate.Query query = sessao.createQuery(sql);
+            resultado = query.list();
+            for (int i = 0; i < resultado.size(); i++) {
+                Funcionario funcionario = resultado.get(i);
+                modelo.addRow(new Object[] {funcionario.getNome(), funcionario.getCpf(), funcionario.getFuncao(),funcionario.getEmail(), funcionario.getLogin()});
+            }
+        }catch (HibernateException e){
+                    JOptionPane.showMessageDialog(null, "Erro imprevisto!\n" + e, "Erro!", JOptionPane.ERROR_MESSAGE);
+                }
+    }//GEN-LAST:event_btn_pesquisarActionPerformed
+
     public static void main(String args[]) throws java.lang.InstantiationException {
 
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

@@ -28,7 +28,6 @@ public class Tela_Principal_Admin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        painel = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         Cadatro = new javax.swing.JMenu();
         Cadastro_clientes = new javax.swing.JMenuItem();
@@ -45,17 +44,6 @@ public class Tela_Principal_Admin extends javax.swing.JFrame {
         jMenuItem2 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        javax.swing.GroupLayout painelLayout = new javax.swing.GroupLayout(painel);
-        painel.setLayout(painelLayout);
-        painelLayout.setHorizontalGroup(
-            painelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 896, Short.MAX_VALUE)
-        );
-        painelLayout.setVerticalGroup(
-            painelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 422, Short.MAX_VALUE)
-        );
 
         Cadatro.setText("Cadastros");
         Cadatro.setFocusable(false);
@@ -81,18 +69,20 @@ public class Tela_Principal_Admin extends javax.swing.JFrame {
         jMenuBar1.add(Cadatro);
 
         Criacao_metas.setText("Metas");
-        Criacao_metas.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        Criacao_metas.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
 
+        Gerenciamento_metas.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         Gerenciamento_metas.setText("Gereciamento de Metas");
         Criacao_metas.add(Gerenciamento_metas);
 
+        jMenuItem5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jMenuItem5.setText("Criaçao de metas");
         Criacao_metas.add(jMenuItem5);
 
         jMenuBar1.add(Criacao_metas);
 
         jMenu1.setText("Venda");
-        jMenu1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jMenu1.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
 
         jMenuItem4.setText("Erro 404");
         jMenu1.add(jMenuItem4);
@@ -100,7 +90,7 @@ public class Tela_Principal_Admin extends javax.swing.JFrame {
         jMenuBar1.add(jMenu1);
 
         jMenu3.setText("Relatório");
-        jMenu3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jMenu3.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
 
         jMenuItem3.setText("Erro 404");
         jMenu3.add(jMenuItem3);
@@ -108,7 +98,7 @@ public class Tela_Principal_Admin extends javax.swing.JFrame {
         jMenuBar1.add(jMenu3);
 
         jMenu4.setText("Pesquisar");
-        jMenu4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jMenu4.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
 
         jMenuItem2.setText("Erro 404");
         jMenu4.add(jMenuItem2);
@@ -121,13 +111,11 @@ public class Tela_Principal_Admin extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(painel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGap(0, 896, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(painel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGap(0, 428, Short.MAX_VALUE)
         );
 
         pack();
@@ -191,6 +179,5 @@ public class Tela_Principal_Admin extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JPanel painel;
     // End of variables declaration//GEN-END:variables
 }
