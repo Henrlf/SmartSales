@@ -125,8 +125,6 @@ public class Tela_Login extends javax.swing.JFrame {
                     Tela_Principal tp = new Tela_Principal();
                     tp.setVisible(true);
                     this.dispose();
-                } else {
-                    JOptionPane.showMessageDialog(null, "Login ou Senha Incorretos");
                 }
             } catch (Exception e) {
                 System.out.println("erro" + e);

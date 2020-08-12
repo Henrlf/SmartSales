@@ -22,7 +22,7 @@ public class Validacoes {
                     if (funcionario.getStatus().equals("A")) {
                         pas = true;
                     } else {
-                        JOptionPane.showMessageDialog(null, "Usuário inativado!", "Aviso!", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Login/Senha incorretos ou usuário inativado!", "Aviso!", JOptionPane.WARNING_MESSAGE);
                     }
                 }
             }

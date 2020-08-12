@@ -4,12 +4,8 @@ import apoio.*;
 import apoio.Criptografia;
 import apoio.HibernateUtil;
 import entidades.Funcionario;
-import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
-import javax.swing.SwingConstants;
-import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.DefaultTableModel;
 import org.hibernate.*;
 
 public class Tela_CadastroFuncionario extends javax.swing.JFrame {
