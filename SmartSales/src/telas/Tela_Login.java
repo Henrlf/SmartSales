@@ -65,6 +65,11 @@ public class Tela_Login extends javax.swing.JFrame {
 
         btSair.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         btSair.setText("Sair");
+        btSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSairActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -125,6 +130,9 @@ public class Tela_Login extends javax.swing.JFrame {
                     Tela_Principal tp = new Tela_Principal();
                     tp.setVisible(true);
                     this.dispose();
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "Login/Senha incorretos ou usuário inativado!", "Aviso!", JOptionPane.WARNING_MESSAGE);
                 }
             } catch (Exception e) {
                 System.out.println("erro" + e);
@@ -139,6 +147,10 @@ public class Tela_Login extends javax.swing.JFrame {
         tp.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_Acesso_rapidoActionPerformed
+
+    private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btSairActionPerformed
 
     public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

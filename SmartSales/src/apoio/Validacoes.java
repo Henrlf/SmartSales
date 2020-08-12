@@ -21,8 +21,6 @@ public class Validacoes {
                 if (funcionario.getLogin().equals(login) && funcionario.getSenha().equals(senha)) {
                     if (funcionario.getStatus().equals("A")) {
                         pas = true;
-                    } else {
-                        JOptionPane.showMessageDialog(null, "Login/Senha incorretos ou usuário inativado!", "Aviso!", JOptionPane.WARNING_MESSAGE);
                     }
                 }
             }
