@@ -103,12 +103,12 @@ public class Tela_CadastroFuncionario extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tabelaFuncionario);
         if (tabelaFuncionario.getColumnModel().getColumnCount() > 0) {
-            tabelaFuncionario.getColumnModel().getColumn(0).setMinWidth(50);
-            tabelaFuncionario.getColumnModel().getColumn(0).setPreferredWidth(50);
-            tabelaFuncionario.getColumnModel().getColumn(0).setMaxWidth(50);
-            tabelaFuncionario.getColumnModel().getColumn(2).setMinWidth(150);
-            tabelaFuncionario.getColumnModel().getColumn(2).setPreferredWidth(150);
-            tabelaFuncionario.getColumnModel().getColumn(2).setMaxWidth(150);
+            tabelaFuncionario.getColumnModel().getColumn(0).setMinWidth(40);
+            tabelaFuncionario.getColumnModel().getColumn(0).setPreferredWidth(40);
+            tabelaFuncionario.getColumnModel().getColumn(0).setMaxWidth(40);
+            tabelaFuncionario.getColumnModel().getColumn(2).setMinWidth(140);
+            tabelaFuncionario.getColumnModel().getColumn(2).setPreferredWidth(140);
+            tabelaFuncionario.getColumnModel().getColumn(2).setMaxWidth(140);
             tabelaFuncionario.getColumnModel().getColumn(4).setMinWidth(150);
             tabelaFuncionario.getColumnModel().getColumn(4).setPreferredWidth(150);
             tabelaFuncionario.getColumnModel().getColumn(4).setMaxWidth(150);
