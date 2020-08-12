@@ -16,5 +16,4 @@ public class SmartSales {
             log.setVisible(true);
             log.setLocationRelativeTo(null);
     }
-
 }

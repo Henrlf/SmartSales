@@ -55,11 +55,11 @@ public class Funcionario implements Serializable {
         this.nome = nome;
     }
 
-    public String getFuncao() {
+    public String getCargo() {
         return cargo;
     }
 
-    public void setFuncao(String funcao) {
+    public void setCargo(String funcao) {
         this.cargo = funcao;
     }
 

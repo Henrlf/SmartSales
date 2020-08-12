@@ -9,11 +9,10 @@ public class Login_Sistema {
 
     public static boolean logar(String login, String senha) {
         boolean pas = false;
-
+        Session sessao = HibernateUtil.getSessionFactory().openSession();
         List<Funcionario> resultado = new ArrayList();
-        String sql = "FROM Funcionario";        
+        String sql = "FROM Funcionario";
         try {
-            Session sessao = HibernateUtil.getSessionFactory().openSession();
             org.hibernate.Query query = sessao.createQuery(sql);
             resultado = query.list();
             for (int i = 0; i < resultado.size(); i++) {
@@ -24,6 +23,8 @@ public class Login_Sistema {
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erro imprevisto!\n" + e, "Erro!", JOptionPane.ERROR_MESSAGE);
+        } finally {
+            sessao.close();
         }
         return pas;
     }
