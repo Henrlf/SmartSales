@@ -17,10 +17,10 @@ public class Cidade implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
-    
+
     @Column(name = "nome")
     private String nome;
-    
+
     @Column(name = "status")
     private String status;
 
@@ -48,5 +48,4 @@ public class Cidade implements Serializable {
         this.status = status;
     }
 
-    
 }

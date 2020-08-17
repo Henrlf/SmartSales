@@ -18,6 +18,7 @@ public class Tela_CadastroFuncionario extends javax.swing.JFrame {
         Mascaras.formatarCPF(campoCpf);
         this.setLocationRelativeTo(null);
         this.setTitle("Cadastro de Funcionários");
+        Pesquisas.PesquisaFuncionario(tabelaFuncionario, campoPesquisa.getText().toUpperCase());
     }
 
     @SuppressWarnings("unchecked")
@@ -75,6 +76,11 @@ public class Tela_CadastroFuncionario extends javax.swing.JFrame {
         jLabel5.setText("Pesquisar :");
         jLabel5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
+        campoPesquisa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campoPesquisaActionPerformed(evt);
+            }
+        });
         campoPesquisa.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 campoPesquisaKeyReleased(evt);
@@ -355,10 +361,11 @@ public class Tela_CadastroFuncionario extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTabbedPane1)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btSair, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jTabbedPane1))
+                        .addComponent(btSair, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -366,9 +373,9 @@ public class Tela_CadastroFuncionario extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 425, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                 .addComponent(btSair, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -445,6 +452,10 @@ public class Tela_CadastroFuncionario extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btIntivarActionPerformed
+
+    private void campoPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoPesquisaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campoPesquisaActionPerformed
 
     public static void main(String args[]) throws java.lang.InstantiationException {
 
