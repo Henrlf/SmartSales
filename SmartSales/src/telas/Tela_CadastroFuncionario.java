@@ -420,6 +420,7 @@ public class Tela_CadastroFuncionario extends javax.swing.JFrame {
         } finally {
             sessao.close();
         }
+        Pesquisas.PesquisaFuncionario(tabelaFuncionario, campoPesquisa.getText().toUpperCase());
     }//GEN-LAST:event_btSalvarActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
