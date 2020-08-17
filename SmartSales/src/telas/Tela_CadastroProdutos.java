@@ -5,6 +5,15 @@
  */
 package telas;
 
+import apoio.HibernateUtil;
+import apoio.Pesquisas;
+import entidades.Produto;
+import java.util.List;
+import javax.swing.JOptionPane;
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+
 /**
  *
  * @author yNot
@@ -16,6 +25,9 @@ public class Tela_CadastroProdutos extends javax.swing.JFrame {
      */
     public Tela_CadastroProdutos() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        this.setTitle("Cadastro de Produtos");
+        Pesquisas.PesquisaProduto(tabelaProduto, campoPesquisa.getText().toUpperCase());
     }
 
     /**
@@ -32,7 +44,7 @@ public class Tela_CadastroProdutos extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         campoPesquisa = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tabelaFuncionario = new javax.swing.JTable();
+        tabelaProduto = new javax.swing.JTable();
         btIntivar = new javax.swing.JButton();
         btEditar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
@@ -43,8 +55,8 @@ public class Tela_CadastroProdutos extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         campoNome = new javax.swing.JTextField();
-        campoCpf = new javax.swing.JFormattedTextField();
-        campoEmail = new javax.swing.JTextField();
+        campoPreco = new javax.swing.JFormattedTextField();
+        campoDescricao = new javax.swing.JTextField();
         btSair = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -68,7 +80,7 @@ public class Tela_CadastroProdutos extends javax.swing.JFrame {
             }
         });
 
-        tabelaFuncionario.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaProduto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null}
             },
@@ -84,7 +96,7 @@ public class Tela_CadastroProdutos extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tabelaFuncionario);
+        jScrollPane1.setViewportView(tabelaProduto);
 
         btIntivar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btIntivar.setText("Inativar");
@@ -168,11 +180,11 @@ public class Tela_CadastroProdutos extends javax.swing.JFrame {
         campoNome.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         campoNome.setPreferredSize(new java.awt.Dimension(15, 24));
 
-        campoCpf.setMinimumSize(new java.awt.Dimension(15, 22));
-        campoCpf.setPreferredSize(new java.awt.Dimension(15, 24));
+        campoPreco.setMinimumSize(new java.awt.Dimension(15, 22));
+        campoPreco.setPreferredSize(new java.awt.Dimension(15, 24));
 
-        campoEmail.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        campoEmail.setPreferredSize(new java.awt.Dimension(15, 24));
+        campoDescricao.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        campoDescricao.setPreferredSize(new java.awt.Dimension(15, 24));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -186,9 +198,9 @@ public class Tela_CadastroProdutos extends javax.swing.JFrame {
                     .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(campoCpf, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 359, Short.MAX_VALUE)
+                    .addComponent(campoPreco, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 359, Short.MAX_VALUE)
                     .addComponent(campoNome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(campoEmail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(campoDescricao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -201,11 +213,11 @@ public class Tela_CadastroProdutos extends javax.swing.JFrame {
                 .addGap(31, 31, 31)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(campoCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(campoPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(campoEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(campoDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(19, 19, 19))
         );
 
@@ -275,28 +287,29 @@ public class Tela_CadastroProdutos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void campoPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoPesquisaActionPerformed
-        // TODO add your handling code here:
+     // TODO add your handling code here:
     }//GEN-LAST:event_campoPesquisaActionPerformed
 
     private void campoPesquisaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoPesquisaKeyReleased
-        Pesquisas.PesquisaFuncionario(tabelaFuncionario, campoPesquisa.getText().toUpperCase());
+        Pesquisas.PesquisaFuncionario(tabelaProduto, campoPesquisa.getText().toUpperCase());
     }//GEN-LAST:event_campoPesquisaKeyReleased
 
     private void btIntivarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btIntivarActionPerformed
+        Produto p = new Produto();
         List resultado = null;
         Session sessao = HibernateUtil.getSessionFactory().openSession();
         Transaction transacao = sessao.beginTransaction();
-        if (tabelaFuncionario.getSelectedRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Nenhum usuário selecionado para inativar!", "Aviso!", JOptionPane.WARNING_MESSAGE);
+        if (tabelaProduto.getSelectedRowCount() == 0) {
+            JOptionPane.showMessageDialog(null, "Nenhum produto selecionado para inativar!", "Aviso!", JOptionPane.WARNING_MESSAGE);
         } else {
-            String idString = String.valueOf(tabelaFuncionario.getValueAt(tabelaFuncionario.getSelectedRow(), 0));
+            String idString = String.valueOf(tabelaProduto.getValueAt(tabelaProduto.getSelectedRow(), 0));
             int id = Integer.parseInt(idString);
             try {
-                funcionario = (Funcionario) sessao.get(Funcionario.class, id);
-                funcionario.setStatus("I");
-                sessao.update(funcionario);
+                p = (Produto) sessao.get(Produto.class, id);
+                p.setStatus("I");
+                sessao.update(p);
                 transacao.commit();
-                JOptionPane.showMessageDialog(null, "Usuário inativado com sucesso!");
+                JOptionPane.showMessageDialog(null, "Produtovado com sucesso!");
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Erro imprevisto!\n" + e, "Erro!", JOptionPane.ERROR_MESSAGE);
             } finally {
@@ -310,36 +323,28 @@ public class Tela_CadastroProdutos extends javax.swing.JFrame {
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
             Transaction transacao = sessao.beginTransaction();
-            if (campoCpf.getText().replaceAll("\\D", "").isEmpty() || campoEmail.getText().isEmpty() || campoLogin.getText().isEmpty() || campoNome.getText().isEmpty() || campoSenha.getText().isEmpty()) {
+            if (campoPreco.getText().isEmpty() || campoDescricao.getText().isEmpty() || campoNome.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Campo(s) obrigatorios em branco(s)!", "Aviso!", JOptionPane.WARNING_MESSAGE);
             } else {
-                funcionario = new Funcionario();
-                funcionario.setNome(campoNome.getText().toUpperCase());
-                funcionario.setCpf(campoCpf.getText());
-                funcionario.setEmail(campoEmail.getText());
-                funcionario.setLogin(campoLogin.getText());
-                funcionario.setSenha(Criptografia.encriptografar(campoSenha.getText()));
-                funcionario.setStatus("A");
-                if (comboCargo.getSelectedIndex() == 0) {
-                    JOptionPane.showMessageDialog(null, "Selecione um cargo valido!", "Aviso!", JOptionPane.WARNING_MESSAGE);
-                } else {
-                    funcionario.setCargo(String.valueOf(comboCargo.getSelectedItem()));
-                    sessao.save(funcionario);
-                    transacao.commit();
-                    JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!");
-                    campoCpf.setText("");
-                    campoEmail.setText("");
-                    campoLogin.setText("");
-                    campoNome.setText("");
-                    campoSenha.setText("");
-                    comboCargo.setSelectedIndex(0);
-                }
+                Produto p = new Produto();
+                p.setNome(campoNome.getText().toUpperCase());
+                p.setPreco(Double.parseDouble(campoPreco.getText()));
+                p.setDescricao(campoDescricao.getText());
+                p.setStatus("A");
+                sessao.save(p);
+                transacao.commit();
+                JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!");
+                campoPreco.setText("");
+                campoDescricao.setText("");
+                campoNome.setText("");
             }
+
         } catch (HibernateException Hibex) {
             Hibex.printStackTrace();
         } finally {
             sessao.close();
         }
+        Pesquisas.PesquisaProduto(tabelaProduto, campoPesquisa.getText().toUpperCase());
     }//GEN-LAST:event_btSalvarActionPerformed
 
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
@@ -386,10 +391,10 @@ public class Tela_CadastroProdutos extends javax.swing.JFrame {
     private javax.swing.JButton btIntivar;
     private javax.swing.JButton btSair;
     private javax.swing.JButton btSalvar;
-    private javax.swing.JFormattedTextField campoCpf;
-    private javax.swing.JTextField campoEmail;
+    private javax.swing.JTextField campoDescricao;
     private javax.swing.JTextField campoNome;
     private javax.swing.JTextField campoPesquisa;
+    private javax.swing.JFormattedTextField campoPreco;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -400,6 +405,6 @@ public class Tela_CadastroProdutos extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable tabelaFuncionario;
+    private javax.swing.JTable tabelaProduto;
     // End of variables declaration//GEN-END:variables
 }

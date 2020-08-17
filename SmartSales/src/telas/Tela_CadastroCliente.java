@@ -5,6 +5,13 @@
  */
 package telas;
 
+import apoio.HibernateUtil;
+import apoio.Pesquisas;
+import java.util.List;
+import javax.swing.JOptionPane;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+
 /**
  *
  * @author yNot

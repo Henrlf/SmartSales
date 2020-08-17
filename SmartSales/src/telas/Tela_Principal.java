@@ -67,6 +67,11 @@ public class Tela_Principal extends javax.swing.JFrame {
 
         Cadastro_Produtos.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         Cadastro_Produtos.setText("Produtos");
+        Cadastro_Produtos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Cadastro_ProdutosActionPerformed(evt);
+            }
+        });
         Cadatro.add(Cadastro_Produtos);
 
         jMenuItem1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -140,8 +145,13 @@ public class Tela_Principal extends javax.swing.JFrame {
 
         Tela_CadastroFuncionario cf = new Tela_CadastroFuncionario();
         cf.setVisible(true);
-        
+
     }//GEN-LAST:event_Cadastro_funcionarioActionPerformed
+
+    private void Cadastro_ProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cadastro_ProdutosActionPerformed
+        Tela_CadastroProdutos cp = new Tela_CadastroProdutos();
+        cp.setVisible(true);
+    }//GEN-LAST:event_Cadastro_ProdutosActionPerformed
 
     /**
      * @param args the command line arguments
