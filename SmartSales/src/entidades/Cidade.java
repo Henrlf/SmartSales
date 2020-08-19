@@ -20,10 +20,13 @@ public class Cidade implements Serializable {
 
     @Column(name = "nome")
     private String nome;
+    
+    @Column(name = "uf")
+    private String uf;
 
     @Column(name = "status")
-    private String status;
-
+    private String status;  
+    
     public int getId() {
         return id;
     }
@@ -46,6 +49,14 @@ public class Cidade implements Serializable {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getUf() {
+        return uf;
+    }
+
+    public void setUf(String uf) {
+        this.uf = uf;
     }
 
 }

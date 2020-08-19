@@ -18,7 +18,7 @@ public class Tela_CadastroFuncionario extends javax.swing.JFrame {
         Mascaras.formatarCPF(campoCpf);
         this.setLocationRelativeTo(null);
         this.setTitle("Cadastro de Funcionários");
-        Pesquisas.PesquisaFuncionario(tabelaFuncionario, campoPesquisa.getText().toUpperCase());
+        Pesquisas.pesquisaFuncionario(tabelaFuncionario, campoPesquisa.getText().toUpperCase());
     }
 
     @SuppressWarnings("unchecked")
@@ -76,11 +76,6 @@ public class Tela_CadastroFuncionario extends javax.swing.JFrame {
         jLabel5.setText("Pesquisar :");
         jLabel5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
-        campoPesquisa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campoPesquisaActionPerformed(evt);
-            }
-        });
         campoPesquisa.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 campoPesquisaKeyReleased(evt);
@@ -421,7 +416,7 @@ public class Tela_CadastroFuncionario extends javax.swing.JFrame {
         } finally {
             sessao.close();
         }
-        Pesquisas.PesquisaFuncionario(tabelaFuncionario, campoPesquisa.getText().toUpperCase());
+        Pesquisas.pesquisaFuncionario(tabelaFuncionario, campoPesquisa.getText().toUpperCase());
     }//GEN-LAST:event_btSalvarActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
@@ -429,7 +424,7 @@ public class Tela_CadastroFuncionario extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void campoPesquisaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoPesquisaKeyReleased
-        Pesquisas.PesquisaFuncionario(tabelaFuncionario, campoPesquisa.getText().toUpperCase());
+        Pesquisas.pesquisaFuncionario(tabelaFuncionario, campoPesquisa.getText().toUpperCase());
     }//GEN-LAST:event_campoPesquisaKeyReleased
 
     private void btIntivarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btIntivarActionPerformed
@@ -453,12 +448,8 @@ public class Tela_CadastroFuncionario extends javax.swing.JFrame {
                 sessao.close();
             }
         }
-        Pesquisas.PesquisaFuncionario(tabelaFuncionario, campoPesquisa.getText().toUpperCase());
+        Pesquisas.pesquisaFuncionario(tabelaFuncionario, campoPesquisa.getText().toUpperCase());
     }//GEN-LAST:event_btIntivarActionPerformed
-
-    private void campoPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoPesquisaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campoPesquisaActionPerformed
 
     public static void main(String args[]) throws java.lang.InstantiationException {
 
