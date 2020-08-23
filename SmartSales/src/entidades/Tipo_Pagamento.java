@@ -18,8 +18,11 @@ public class Tipo_Pagamento implements Serializable {
     @Column(name = "id")
     private int id;
     
-    @Column(name = "descricao")
-    private String descricao;
+    @Column(name = "nome")
+    private String nome;
+    
+    @Column(name = "status")
+    private String status;
 
     public int getId() {
         return id;
@@ -30,11 +33,21 @@ public class Tipo_Pagamento implements Serializable {
     }
 
     public String getDescricao() {
-        return descricao;
+        return nome;
     }
 
     public void setDescricao(String descricao) {
-        this.descricao = descricao;
+        this.nome = descricao;
     }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+    
+    
 
 }
