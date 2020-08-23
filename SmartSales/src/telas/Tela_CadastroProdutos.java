@@ -449,6 +449,7 @@ public class Tela_CadastroProdutos extends javax.swing.JFrame {
             } finally {
                 sessao.close();
             }
+            Pesquisas.pesquisaProduto(tabelaProduto, campoPesquisa.getText().toUpperCase());
         }
     }//GEN-LAST:event_btIntivarActionPerformed
 

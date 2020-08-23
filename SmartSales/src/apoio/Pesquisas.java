@@ -12,7 +12,7 @@ public class Pesquisas {
         Session sessao = HibernateUtil.getSessionFactory().openSession();
         List<Funcionario> resultado = new ArrayList();
         String sql = "FROM Funcionario "
-                + "WHERE Nome LIKE '%" + nome + "%' "
+                + "WHERE Nome LIKE '%" + nome + "%' AND Status = 'A'"
                 + "ORDER BY Nome";
         DefaultTableCellRenderer centralizado = new DefaultTableCellRenderer();
         centralizado.setHorizontalAlignment(SwingConstants.CENTER);
@@ -45,7 +45,7 @@ public class Pesquisas {
         Session sessao = HibernateUtil.getSessionFactory().openSession();
         List<Produto> resultado = new ArrayList();
         String sql = "FROM Produto "
-                + "WHERE Nome LIKE '%" + nome + "%' "
+                + "WHERE Nome LIKE '%" + nome + "%' AND Status = 'A'"
                 + "ORDER BY Nome";
         DefaultTableCellRenderer centralizado = new DefaultTableCellRenderer();
         centralizado.setHorizontalAlignment(SwingConstants.CENTER);
