@@ -32,10 +32,10 @@ public class Cliente implements Serializable {
     private String cpf;
     
     @Column(name = "telefone")
-    private int telefone;
+    private String telefone;
     
     @Column(name = "rg")
-    private int rg;
+    private String rg;
     
     @Column(name = "email")
     private String email;
@@ -83,19 +83,19 @@ public class Cliente implements Serializable {
         this.cpf = cpf;
     }
 
-    public int getTelefone() {
+    public String getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(int telefone) {
+    public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
 
-    public int getRg() {
+    public String getRg() {
         return rg;
     }
 
-    public void setRg(int rg) {
+    public void setRg(String rg) {
         this.rg = rg;
     }
 

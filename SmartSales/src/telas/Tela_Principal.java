@@ -37,6 +37,11 @@ public class Tela_Principal extends javax.swing.JFrame {
 
         Cadastro_clientes.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         Cadastro_clientes.setText("Clientes");
+        Cadastro_clientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Cadastro_clientesActionPerformed(evt);
+            }
+        });
         Cadatro.add(Cadastro_clientes);
 
         Cadastro_funcionario.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -146,6 +151,12 @@ public class Tela_Principal extends javax.swing.JFrame {
         tcc.setVisible(true);
         tcc.setLocationRelativeTo(null);
     }//GEN-LAST:event_Cadastro_CidadesActionPerformed
+
+    private void Cadastro_clientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cadastro_clientesActionPerformed
+        Tela_CadastroCliente cadcli = new Tela_CadastroCliente();
+        cadcli.setVisible(true);
+        cadcli.setLocationRelativeTo(null);
+    }//GEN-LAST:event_Cadastro_clientesActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

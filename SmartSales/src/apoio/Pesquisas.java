@@ -60,10 +60,10 @@ public class Pesquisas {
             resultado = query.list();
             for (int i = 0; i < resultado.size(); i++) {
                 Produto p = resultado.get(i);
-                modelo.addRow(new Object[]{p.getId(), p.getNome(), "R$ "+p.getPreco(), p.getDescricao()});
+                modelo.addRow(new Object[]{p.getId(), p.getNome(), "R$ " + p.getPreco(), p.getDescricao()});
             }
         } catch (HibernateException e) {
-            
+
         } finally {
             sessao.close();
         }
@@ -89,6 +89,41 @@ public class Pesquisas {
             for (int i = 0; i < resultado.size(); i++) {
                 Cidade c = resultado.get(i);
                 modelo.addRow(new Object[]{c.getId(), c.getNome(), c.getUf()});
+            }
+        } catch (HibernateException e) {
+
+        } finally {
+            sessao.close();
+        }
+    }
+
+    public static void pesquisacliente(JTable tabela, String nome) {
+        Session sessao = HibernateUtil.getSessionFactory().openSession();
+        Transaction transacao = sessao.beginTransaction();
+        List<Cliente> resultado = new ArrayList();
+
+        String sql = "FROM cliente "
+                + "WHERE Nome LIKE '%" + nome + "%' AND Status = 'A' "
+                + "ORDER BY Nome";
+
+        DefaultTableCellRenderer centralizado = new DefaultTableCellRenderer();
+        centralizado.setHorizontalAlignment(SwingConstants.CENTER);
+        DefaultTableModel modelo = (DefaultTableModel) tabela.getModel();
+        modelo.setNumRows(0);
+        try {
+            org.hibernate.Query query = sessao.createQuery(sql);
+            resultado = query.list();
+            for (int i = 0; i < resultado.size(); i++) {
+                
+                Cliente c = resultado.get(i);
+                Cidade x = (Cidade) sessao.get(Cidade.class, c.getCidade());
+                Funcionario y = (Funcionario) sessao.get(Funcionario.class, c.getFuncionario());
+
+                System.out.println(c.getNome());
+                System.out.println(x.getNome());
+                System.out.println(y.getNome());
+
+                modelo.addRow(new Object[]{c.getId(), c.getNome(), c.getCpf(), c.getTelefone(), c.getRg(), c.getEmail(), x.getNome(), y.getNome()});
             }
         } catch (HibernateException e) {
 
