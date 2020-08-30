@@ -5,6 +5,7 @@
  */
 package telas;
 
+import DAO.FuncionarioDAO;
 import apoio.HibernateUtil;
 import apoio.Pesquisas;
 import entidades.Funcionario;
@@ -30,7 +31,7 @@ public class Dlg_SelecionaFuncionario extends javax.swing.JDialog {
     public Dlg_SelecionaFuncionario(java.awt.Frame parent, boolean modal, Tela_CadastroCliente x) {
         super(parent, modal);
         initComponents();
-        Pesquisas.pesquisaFuncionario(tabelaFuncionario, campoPesquisa.getText().toUpperCase());
+        FuncionarioDAO.pesquisa(tabelaFuncionario, campoPesquisa.getText().toUpperCase());
         this.setTitle("Seleciona Funcionário");
         this.CadCli = x;
     }
@@ -142,7 +143,7 @@ public class Dlg_SelecionaFuncionario extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void campoPesquisaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoPesquisaKeyReleased
-        Pesquisas.pesquisaFuncionario(tabelaFuncionario, campoPesquisa.getText().toUpperCase());
+        FuncionarioDAO.pesquisa(tabelaFuncionario, campoPesquisa.getText().toUpperCase());
     }//GEN-LAST:event_campoPesquisaKeyReleased
 
     private void sairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sairActionPerformed

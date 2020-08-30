@@ -1,6 +1,10 @@
 package telas;
 
+import entidades.Funcionario;
+
 public class Tela_Principal extends javax.swing.JFrame {
+
+    public static Funcionario funcionarioLogado;
 
     public Tela_Principal() {
         initComponents();
@@ -182,12 +186,15 @@ public class Tela_Principal extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Tela_Principal().setVisible(true);
             }
         });
+    }
+    
+    public static Funcionario getFunLog(){
+        return funcionarioLogado;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

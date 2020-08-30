@@ -1,8 +1,8 @@
 package telas;
 
+import DAO.ClienteDAO;
 import apoio.*;
 import entidades.*;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -18,9 +18,10 @@ public class Tela_CadastroCliente extends javax.swing.JFrame {
         initComponents();
         Mascaras.formatarCPF(campoCpf);
         Formatacao.formatarTelefone(campoTelefone);
-        Pesquisas.pesquisacliente(tabelaCliente, campoPesquisa.getText().toUpperCase());
+        ClienteDAO.pesquisa(tabelaCliente, campoPesquisa.getText().toUpperCase());
         this.setTitle("Cadastro de Clientes");
         this.getDesativarEdicao();
+
     }
 
     @SuppressWarnings("unchecked")
@@ -76,7 +77,7 @@ public class Tela_CadastroCliente extends javax.swing.JFrame {
         comboCidade1 = new javax.swing.JComboBox<>();
         btSair = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         menuTabs.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         menuTabs.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -94,14 +95,14 @@ public class Tela_CadastroCliente extends javax.swing.JFrame {
 
         tabelaCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Nome", "CPF", "Telefone", "RG", "Email", "Cidade", "Funcionario"
+                "Id", "Nome", "CPF", "Telefone", "RG", "Email", "Cidade", "Funcionario"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -110,6 +111,23 @@ public class Tela_CadastroCliente extends javax.swing.JFrame {
         });
         tabelaCliente.setSurrendersFocusOnKeystroke(true);
         jScrollPane1.setViewportView(tabelaCliente);
+        if (tabelaCliente.getColumnModel().getColumnCount() > 0) {
+            tabelaCliente.getColumnModel().getColumn(0).setMinWidth(40);
+            tabelaCliente.getColumnModel().getColumn(0).setPreferredWidth(40);
+            tabelaCliente.getColumnModel().getColumn(0).setMaxWidth(40);
+            tabelaCliente.getColumnModel().getColumn(2).setMinWidth(125);
+            tabelaCliente.getColumnModel().getColumn(2).setPreferredWidth(125);
+            tabelaCliente.getColumnModel().getColumn(2).setMaxWidth(125);
+            tabelaCliente.getColumnModel().getColumn(3).setMinWidth(125);
+            tabelaCliente.getColumnModel().getColumn(3).setPreferredWidth(125);
+            tabelaCliente.getColumnModel().getColumn(3).setMaxWidth(125);
+            tabelaCliente.getColumnModel().getColumn(4).setMinWidth(125);
+            tabelaCliente.getColumnModel().getColumn(4).setPreferredWidth(125);
+            tabelaCliente.getColumnModel().getColumn(4).setMaxWidth(125);
+            tabelaCliente.getColumnModel().getColumn(6).setMinWidth(125);
+            tabelaCliente.getColumnModel().getColumn(6).setPreferredWidth(125);
+            tabelaCliente.getColumnModel().getColumn(6).setMaxWidth(125);
+        }
 
         btIntivar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btIntivar.setText("Inativar");
@@ -589,59 +607,42 @@ public class Tela_CadastroCliente extends javax.swing.JFrame {
                 .addComponent(menuTabs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btSair, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(11, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void campoPesquisaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoPesquisaKeyReleased
-        Pesquisas.pesquisacliente(tabelaCliente, campoPesquisa.getText().toUpperCase());
+        ClienteDAO.pesquisa(tabelaCliente, campoPesquisa.getText().toUpperCase());
     }//GEN-LAST:event_campoPesquisaKeyReleased
 
     private void btIntivarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btIntivarActionPerformed
-        List resultado = null;
-        Session sessao = HibernateUtil.getSessionFactory().openSession();
-        Transaction transacao = sessao.beginTransaction();
         if (tabelaCliente.getSelectedRowCount() == 0) {
             JOptionPane.showMessageDialog(null, "Nenhum usuário selecionado para inativar!", "Aviso!", JOptionPane.WARNING_MESSAGE);
         } else {
             String idString = String.valueOf(tabelaCliente.getValueAt(tabelaCliente.getSelectedRow(), 0));
             int id = Integer.parseInt(idString);
-            try {
-                cliente = (Cliente) sessao.get(Cliente.class, id);
-                cliente.setStatus("I");
-                sessao.update(cliente);
-                transacao.commit();
-                JOptionPane.showMessageDialog(null, "Usuário inativado com sucesso!");
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Erro imprevisto!\n" + e, "Erro!", JOptionPane.ERROR_MESSAGE);
-            } finally {
-                sessao.close();
+            if (ClienteDAO.inativar(id)) {
+                JOptionPane.showMessageDialog(null, "Cliente inativado com sucesso!");
             }
         }
     }//GEN-LAST:event_btIntivarActionPerformed
 
     private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
-        Session sessao = null;
-        try {
-            sessao = HibernateUtil.getSessionFactory().openSession();
-            Transaction transacao = sessao.beginTransaction();
-            if (campoCpf.getText().replaceAll("\\D", "").isEmpty() || campoEmail.getText().isEmpty() || campoRG.getText().isEmpty() || campoNome.getText().isEmpty() || campoTelefone.getText().replaceAll("\\D", "").isEmpty() || txt_VendedorResponsavel.getText().isEmpty() || txt_cidade.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(null, "Campo(s) obrigatorios em branco(s)!", "Aviso!", JOptionPane.WARNING_MESSAGE);
-            } else {
-                cliente = new Cliente();
-                cliente.setNome(campoNome.getText().toUpperCase());
-                cliente.setCpf(campoCpf.getText());
-                cliente.setEmail(campoEmail.getText());
-                cliente.setRg(campoRG.getText());
-                cliente.setTelefone(campoTelefone.getText());
-                cliente.setStatus("A");
-                cliente.setCidade(c);
-                cliente.setFuncionario(f);
-                JOptionPane.showMessageDialog(null, "Cliente Salvo com sucesso");
-                sessao.save(cliente);
-                transacao.commit();
+        if (campoCpf.getText().replaceAll("\\D", "").isEmpty() || campoEmail.getText().isEmpty() || campoRG.getText().isEmpty() || campoNome.getText().isEmpty() || campoTelefone.getText().replaceAll("\\D", "").isEmpty() || txt_VendedorResponsavel.getText().isEmpty() || txt_cidade.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Campo(s) obrigatorios em branco(s)!", "Aviso!", JOptionPane.WARNING_MESSAGE);
+        } else {
+            Cliente cliente = new Cliente();
+            cliente.setNome(campoNome.getText().toUpperCase());
+            cliente.setCpf(campoCpf.getText());
+            cliente.setEmail(campoEmail.getText());
+            cliente.setRg(campoRG.getText());
+            cliente.setTelefone(campoTelefone.getText());
+            cliente.setStatus("A");
+            cliente.setCidade(c);
+            cliente.setFuncionario(f);
+            if (ClienteDAO.cadastrar(cliente)) {
                 campoNome.setText("");
                 campoCpf.setText("");
                 campoEmail.setText("");
@@ -649,13 +650,9 @@ public class Tela_CadastroCliente extends javax.swing.JFrame {
                 campoTelefone.setText("");
                 txt_VendedorResponsavel.setText("");
                 txt_cidade.setText("");
-                Pesquisas.pesquisacliente(tabelaCliente, campoPesquisa.getText().toUpperCase());
-
+                ClienteDAO.pesquisa(tabelaCliente, campoPesquisa.getText().toUpperCase());
+                JOptionPane.showMessageDialog(null, "Cliente Salvo com sucesso");
             }
-        } catch (HibernateException Hibex) {
-            Hibex.printStackTrace();
-        } finally {
-            sessao.close();
         }
     }//GEN-LAST:event_btSalvarActionPerformed
 
@@ -676,24 +673,15 @@ public class Tela_CadastroCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_pesquisar_clienteActionPerformed
 
     private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
-        List resultado = null;
         Session sessao = HibernateUtil.getSessionFactory().openSession();
         Transaction transacao = sessao.beginTransaction();
         if (tabelaCliente.getSelectedRowCount() == 0) {
             JOptionPane.showMessageDialog(null, "Nenhum produto selecionado para edição!", "Aviso!", JOptionPane.WARNING_MESSAGE);
         } else {
             String idString = String.valueOf(tabelaCliente.getValueAt(tabelaCliente.getSelectedRow(), 0));
-            int id = Integer.parseInt(idString);
-            try {
-                cliente = new Cliente();
-                cliente = (Cliente) sessao.get(Cliente.class, id);
-                this.getAtivarEdicao(cliente);
-                transacao.commit();
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Erro imprevisto!\n" + e, "Erro!", JOptionPane.ERROR_MESSAGE);
-            } finally {
-                sessao.close();
-            }
+            int id = Integer.parseInt(idString);             
+            this.getAtivarEdicao(ClienteDAO.getClienteBanco(id));
+            transacao.commit();
         }
     }//GEN-LAST:event_btEditarActionPerformed
 

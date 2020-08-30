@@ -45,7 +45,7 @@ Contributor(s):
         <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
         <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/SmartSales</property>
         <property name="hibernate.connection.username">postgres</property>
-        <property name="hibernate.connection.password">postgres</property>
+        <property name="hibernate.connection.password">Henrique@1410</property>
     
         <mapping class="entidades.Funcionario"/>
         <mapping class="entidades.Cidade"/>
@@ -54,7 +54,17 @@ Contributor(s):
         <mapping class="entidades.Produto"/>
         <mapping class="entidades.Produtos_Pedido"/>
         <mapping class="entidades.Tipo_Pagamento"/>
+        <mapping class="entidades.Logs"/>
+        <mapping class="entidades.Auditoria"/>
     
+        <mapping class="DAO.FuncionarioDAO"/>
+        <mapping class="DAO.CidadeDAO"/>
+        <mapping class="DAO.ClienteDAO"/>
+        <mapping class="DAO.ProdutoDAO"/>
+        <mapping class="DAO.PedidoDAO"/>
+        <mapping class="DAO.LogsDAO"/>
+        <mapping class="DAO.AuditoriaDAO"/>
+        
         <mapping class="telas.Tela_CadastroFuncionario"/>
         <mapping class="telas.Tela_Login"/>
         <mapping class="telas.Tela_Principal"/>

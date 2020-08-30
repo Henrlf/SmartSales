@@ -1,5 +1,6 @@
 package telas;
 
+import DAO.CidadeDAO;
 import apoio.*;
 import entidades.*;
 import java.util.List;
@@ -14,7 +15,7 @@ public class Tela_CadastroCidade extends javax.swing.JFrame {
 
     public Tela_CadastroCidade() {
         initComponents();
-        Pesquisas.pesquisaCidade(tabelaCidade, campoPesquisa.getText().toUpperCase());
+        CidadeDAO.pesquisar(tabelaCidade, campoPesquisa.getText().toUpperCase());
     }
 
     @SuppressWarnings("unchecked")
@@ -35,7 +36,7 @@ public class Tela_CadastroCidade extends javax.swing.JFrame {
         campoNome = new javax.swing.JTextField();
         campoUF = new javax.swing.JTextField();
         btSalvar = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btSair = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro de Cidade");
@@ -201,11 +202,11 @@ public class Tela_CadastroCidade extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Cadastro", jPanel2);
 
-        jButton1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jButton1.setText("Sair");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btSair.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btSair.setText("Sair");
+        btSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btSairActionPerformed(evt);
             }
         });
 
@@ -217,7 +218,9 @@ public class Tela_CadastroCidade extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTabbedPane1)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btSair, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -226,7 +229,7 @@ public class Tela_CadastroCidade extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btSair, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -234,33 +237,24 @@ public class Tela_CadastroCidade extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
-        Session sessao = null;
-        try {
-            sessao = HibernateUtil.getSessionFactory().openSession();
-            Transaction transacao = sessao.beginTransaction();
-            if (campoNome.getText().isEmpty() || campoUF.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(null, "Campo(s) obrigatorios em branco(s)!", "Aviso!", JOptionPane.WARNING_MESSAGE);
-            } else {
-                cidade = new Cidade();
-                cidade.setNome(campoNome.getText().toUpperCase());
-                cidade.setUf(campoUF.getText().toUpperCase());
-                cidade.setStatus("A");
-                sessao.save(cidade);
-                transacao.commit();
+        if (campoNome.getText().isEmpty() || campoUF.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Campo(s) obrigatorios em branco(s)!", "Aviso!", JOptionPane.WARNING_MESSAGE);
+        } else {
+            cidade = new Cidade();
+            cidade.setNome(campoNome.getText().toUpperCase());
+            cidade.setUf(campoUF.getText().toUpperCase());
+            cidade.setStatus("A");
+            if (CidadeDAO.cadastrar(cidade)) {
                 JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!");
                 campoNome.setText("");
                 campoUF.setText("");
-                Pesquisas.pesquisaCidade(tabelaCidade, campoPesquisa.getText().toUpperCase());
+                CidadeDAO.pesquisar(tabelaCidade, campoPesquisa.getText().toUpperCase());
             }
-        } catch (HibernateException Hibex) {
-            Hibex.printStackTrace();
-        } finally {
-            sessao.close();
         }
     }//GEN-LAST:event_btSalvarActionPerformed
 
     private void campoPesquisaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoPesquisaKeyReleased
-        Pesquisas.pesquisaCidade(tabelaCidade, campoPesquisa.getText().toUpperCase());
+        CidadeDAO.pesquisar(tabelaCidade, campoPesquisa.getText().toUpperCase());
     }//GEN-LAST:event_campoPesquisaKeyReleased
 
     private void btInativarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInativarActionPerformed
@@ -272,24 +266,16 @@ public class Tela_CadastroCidade extends javax.swing.JFrame {
         } else {
             String idString = String.valueOf(tabelaCidade.getValueAt(tabelaCidade.getSelectedRow(), 0));
             int id = Integer.parseInt(idString);
-            try {
-                cidade = (Cidade) sessao.get(Cidade.class, id);
-                cidade.setStatus("I");
-                sessao.update(cidade);
-                transacao.commit();
+            if (CidadeDAO.inativar(id)) {
                 JOptionPane.showMessageDialog(null, "Cidade inativada com sucesso!");
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Erro imprevisto!\n" + e, "Erro!", JOptionPane.ERROR_MESSAGE);
-            } finally {
-                sessao.close();
+                CidadeDAO.pesquisar(tabelaCidade, campoPesquisa.getText().toUpperCase());
             }
         }
-        Pesquisas.pesquisaCidade(tabelaCidade, campoPesquisa.getText().toUpperCase());
     }//GEN-LAST:event_btInativarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
         this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btSairActionPerformed
 
     public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -323,11 +309,11 @@ public class Tela_CadastroCidade extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btInativar;
+    private javax.swing.JButton btSair;
     private javax.swing.JButton btSalvar;
     private javax.swing.JTextField campoNome;
     private javax.swing.JTextField campoPesquisa;
     private javax.swing.JTextField campoUF;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
