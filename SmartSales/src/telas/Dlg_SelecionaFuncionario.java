@@ -7,7 +7,6 @@ package telas;
 
 import DAO.FuncionarioDAO;
 import apoio.HibernateUtil;
-import apoio.Pesquisas;
 import entidades.Funcionario;
 import org.hibernate.Session;
 import org.hibernate.Transaction;

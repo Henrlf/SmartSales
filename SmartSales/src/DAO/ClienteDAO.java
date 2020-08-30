@@ -20,6 +20,9 @@ public class ClienteDAO {
             sessao = HibernateUtil.getSessionFactory().openSession();
             Transaction transacao = sessao.beginTransaction();
             sessao.save(cliente);
+            String sql = "SELECT MAX(id) FROM Cliente";
+            int maiorId = Integer.parseInt(sessao.createQuery(sql).list().toString().replaceAll("\\D", ""));
+            AuditoriaDAO.cadastroCliente(maiorId);
             transacao.commit();
             return true;
         } catch (Exception e) {

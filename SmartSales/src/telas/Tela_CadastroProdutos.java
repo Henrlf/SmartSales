@@ -1,8 +1,9 @@
 package telas;
 
+import DAO.LogsDAO;
+import DAO.ProdutoDAO;
 import apoio.HibernateUtil;
 import apoio.Mascaras;
-import apoio.Pesquisas;
 import entidades.Produto;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -17,7 +18,7 @@ public class Tela_CadastroProdutos extends javax.swing.JFrame {
     public Tela_CadastroProdutos() {
         initComponents();
         this.setTitle("Cadastro de Produtos");
-        Pesquisas.pesquisaProduto(tabelaProduto, campoPesquisa.getText().toUpperCase());
+        ProdutoDAO.pesquisa(tabelaProduto, campoPesquisa.getText().toUpperCase());
         Mascaras.formatarDecimal(campoPreco);
         Mascaras.formatarDecimal(campoPrecoEdicao);
         this.getDesativarEdicao();
@@ -425,60 +426,39 @@ public class Tela_CadastroProdutos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void campoPesquisaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoPesquisaKeyReleased
-        Pesquisas.pesquisaProduto(tabelaProduto, campoPesquisa.getText().toUpperCase());
+        ProdutoDAO.pesquisa(tabelaProduto, campoPesquisa.getText().toUpperCase());
     }//GEN-LAST:event_campoPesquisaKeyReleased
 
     private void btIntivarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btIntivarActionPerformed
-        List resultado = null;
-        Session sessao = HibernateUtil.getSessionFactory().openSession();
-        Transaction transacao = sessao.beginTransaction();
         if (tabelaProduto.getSelectedRowCount() == 0) {
             JOptionPane.showMessageDialog(null, "Nenhum produto selecionado para inativar!", "Aviso!", JOptionPane.WARNING_MESSAGE);
         } else {
             String idString = String.valueOf(tabelaProduto.getValueAt(tabelaProduto.getSelectedRow(), 0));
             int id = Integer.parseInt(idString);
-            try {
-                produto = new Produto();
-                produto = (Produto) sessao.get(Produto.class, id);
-                produto.setStatus("I");
-                sessao.update(produto);
-                transacao.commit();
+            if (ProdutoDAO.inativar(id)) {
+                ProdutoDAO.pesquisa(tabelaProduto, campoPesquisa.getText().toUpperCase());
                 JOptionPane.showMessageDialog(null, "Produto inativado com sucesso!");
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Erro imprevisto!\n" + e, "Erro!", JOptionPane.ERROR_MESSAGE);
-            } finally {
-                sessao.close();
             }
-            Pesquisas.pesquisaProduto(tabelaProduto, campoPesquisa.getText().toUpperCase());
         }
     }//GEN-LAST:event_btIntivarActionPerformed
 
     private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
-        Session sessao = null;
-        try {
-            sessao = HibernateUtil.getSessionFactory().openSession();
-            Transaction transacao = sessao.beginTransaction();
-            if (campoPreco.getText().isEmpty() || campoNome.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(null, "Campo(s) obrigatorios em branco(s)!", "Aviso!", JOptionPane.WARNING_MESSAGE);
-            } else {
-                produto = new Produto();
-                produto.setNome(campoNome.getText().toUpperCase());
-                produto.setPreco(Mascaras.formatarDoubleBanco(campoPreco));
-                produto.setDescricao(campoDescricao.getText());
-                produto.setStatus("A");
-                sessao.save(produto);
-                transacao.commit();
+        if (campoPreco.getText().isEmpty() || campoNome.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Campo(s) obrigatorios em branco(s)!", "Aviso!", JOptionPane.WARNING_MESSAGE);
+        } else {
+            produto = new Produto();
+            produto.setNome(campoNome.getText().toUpperCase());
+            produto.setPreco(Mascaras.formatarDoubleBanco(campoPreco));
+            produto.setDescricao(campoDescricao.getText());
+            produto.setStatus("A");
+            if (ProdutoDAO.cadastrar(produto)) {
+                ProdutoDAO.pesquisa(tabelaProduto, campoPesquisa.getText().toUpperCase());
                 JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!");
                 campoPreco.setText("0,00");
                 campoDescricao.setText("");
                 campoNome.setText("");
             }
-        } catch (HibernateException Hibex) {
-            Hibex.printStackTrace();
-        } finally {
-            sessao.close();
         }
-        Pesquisas.pesquisaProduto(tabelaProduto, campoPesquisa.getText().toUpperCase());
     }//GEN-LAST:event_btSalvarActionPerformed
 
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
@@ -500,6 +480,7 @@ public class Tela_CadastroProdutos extends javax.swing.JFrame {
                 this.getAtivarEdicao(produto);
                 transacao.commit();
             } catch (Exception e) {
+                LogsDAO.salvarLog(Tela_Principal.getFunLog(), "Erro ao tentar ativar a edição do produto.", e);
                 JOptionPane.showMessageDialog(null, "Erro imprevisto!\n" + e, "Erro!", JOptionPane.ERROR_MESSAGE);
             } finally {
                 sessao.close();
@@ -512,26 +493,17 @@ public class Tela_CadastroProdutos extends javax.swing.JFrame {
     }//GEN-LAST:event_btCancelarEdicaoActionPerformed
 
     private void btSalvarEdicaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarEdicaoActionPerformed
-        Session sessao = null;
-        try {
-            sessao = HibernateUtil.getSessionFactory().openSession();
-            Transaction transacao = sessao.beginTransaction();
-            if (campoPrecoEdicao.getText().isEmpty() || campoNomeEdicao.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(null, "Campo(s) obrigatorios em branco(s)!", "Aviso!", JOptionPane.WARNING_MESSAGE);
-            } else {
-                produto.setNome(campoNomeEdicao.getText().toUpperCase());
-                produto.setPreco(Mascaras.formatarDoubleBanco(campoPrecoEdicao));
-                produto.setDescricao(campoDescricaoEdicao.getText());
-                sessao.update(produto);
-                transacao.commit();
+        if (campoPrecoEdicao.getText().isEmpty() || campoNomeEdicao.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Campo(s) obrigatorios em branco(s)!", "Aviso!", JOptionPane.WARNING_MESSAGE);
+        } else {
+            produto.setNome(campoNomeEdicao.getText().toUpperCase());
+            produto.setPreco(Mascaras.formatarDoubleBanco(campoPrecoEdicao));
+            produto.setDescricao(campoDescricaoEdicao.getText());
+            if (ProdutoDAO.salvarEdicao(produto)) {
                 JOptionPane.showMessageDialog(null, "Edição de produto realizado com sucesso!");
-                Pesquisas.pesquisaProduto(tabelaProduto, campoPesquisa.getText().toUpperCase());
+                ProdutoDAO.pesquisa(tabelaProduto, campoPesquisa.getText().toUpperCase());
                 this.getDesativarEdicao();
             }
-        } catch (HibernateException Hibex) {
-            Hibex.printStackTrace();
-        } finally {
-            sessao.close();
         }
 
     }//GEN-LAST:event_btSalvarEdicaoActionPerformed

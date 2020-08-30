@@ -11,17 +11,15 @@ public class LogsDAO {
         Session sessao = null;
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
-            Transaction transacao = sessao.beginTransaction();
-            
+            Transaction transacao = sessao.beginTransaction();            
             Logs log = new Logs();
             log.setFuncionario(funcionario);
             log.setAcao(acao);
-            log.setErro(String.valueOf(e));
-            
+            log.setErro(String.valueOf(e));            
             sessao.save(log);
             transacao.commit();
         } catch (Exception er) {
-            System.out.println("Erro: " + er);
+            
         } finally {
             sessao.close();
         }

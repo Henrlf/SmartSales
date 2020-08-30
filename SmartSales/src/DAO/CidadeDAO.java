@@ -16,6 +16,9 @@ public class CidadeDAO {
             sessao = HibernateUtil.getSessionFactory().openSession();
             Transaction transacao = sessao.beginTransaction();
             sessao.save(cidade);
+            String sql = "SELECT MAX(id) FROM Cidade";
+            int maiorId = Integer.parseInt(sessao.createQuery(sql).list().toString().replaceAll("\\D", ""));
+            AuditoriaDAO.cadastroCidade(maiorId);
             transacao.commit();
             return true;
         } catch (Exception e) {

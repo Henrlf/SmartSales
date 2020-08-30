@@ -101,7 +101,6 @@ public class FuncionarioDAO {
         } finally {
             sessao.close();
         }
-
         return funcionario;
     }
 
@@ -114,6 +113,8 @@ public class FuncionarioDAO {
             transacao.commit();
             return true;
         } catch (Exception e) {
+            LogsDAO.salvarLog(Tela_Principal.getFunLog(), "Erro ao salvar edição de funcionario.", e);
+            JOptionPane.showMessageDialog(null, "Erro imprevisto!\n" + e, "Erro!", JOptionPane.ERROR_MESSAGE);
             return false;
         } finally {
             sessao.close();

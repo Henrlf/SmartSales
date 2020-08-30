@@ -2,7 +2,6 @@ package telas;
 
 import DAO.CidadeDAO;
 import apoio.HibernateUtil;
-import apoio.Pesquisas;
 import entidades.Cidade;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
