@@ -90,5 +90,21 @@ public class ClienteDAO {
             sessao.close();
         }
     }
+      public static boolean salvarEdicao(Cliente cliente) {
+        Session sessao = null;
+        try {
+            sessao = HibernateUtil.getSessionFactory().openSession();
+            Transaction transacao = sessao.beginTransaction();
+            sessao.update(cliente);
+            transacao.commit();
+            return true;
+        } catch (Exception e) {
+            LogsDAO.salvarLog(Tela_Principal.getFunLog(), "Erro ao salvar edição de cliente.", e);
+            JOptionPane.showMessageDialog(null, "Erro imprevisto!\n" + e, "Erro!", JOptionPane.ERROR_MESSAGE);
+            return false;
+        } finally {
+            sessao.close();
+        }
+    }
 
 }

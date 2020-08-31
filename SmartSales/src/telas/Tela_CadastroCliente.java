@@ -62,19 +62,23 @@ public class Tela_CadastroCliente extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        campoNome1 = new javax.swing.JTextField();
-        campoCpf1 = new javax.swing.JFormattedTextField();
-        campoEmail1 = new javax.swing.JTextField();
+        campoNomeEdi = new javax.swing.JTextField();
+        campoCpfEdi = new javax.swing.JFormattedTextField();
+        campoEmailEdi = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        campoTelefone1 = new javax.swing.JPasswordField();
-        campoRG1 = new javax.swing.JFormattedTextField();
+        campoTelefoneEdi = new javax.swing.JPasswordField();
+        campoRGEdi = new javax.swing.JFormattedTextField();
         jLabel15 = new javax.swing.JLabel();
-        jPanel7 = new javax.swing.JPanel();
-        comboFuncionarios1 = new javax.swing.JComboBox<>();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
-        comboCidade1 = new javax.swing.JComboBox<>();
+        jPanel8 = new javax.swing.JPanel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        txt_VendedorResponsavelEdi = new javax.swing.JTextField();
+        pesquisar_funcionarioEdi = new javax.swing.JButton();
+        txt_cidadeEdi = new javax.swing.JTextField();
+        pesquisar_clienteEdi = new javax.swing.JButton();
+        salvarEdi = new javax.swing.JButton();
+        Cancelaredi = new javax.swing.JButton();
         btSair = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -379,9 +383,10 @@ public class Tela_CadastroCliente extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(15, 15, 15)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -392,7 +397,7 @@ public class Tela_CadastroCliente extends javax.swing.JFrame {
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
                         .addComponent(btSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -416,14 +421,14 @@ public class Tela_CadastroCliente extends javax.swing.JFrame {
         jLabel12.setText("*Email:");
         jLabel12.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
-        campoNome1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        campoNome1.setPreferredSize(new java.awt.Dimension(15, 24));
+        campoNomeEdi.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        campoNomeEdi.setPreferredSize(new java.awt.Dimension(15, 24));
 
-        campoCpf1.setMinimumSize(new java.awt.Dimension(15, 22));
-        campoCpf1.setPreferredSize(new java.awt.Dimension(15, 24));
+        campoCpfEdi.setMinimumSize(new java.awt.Dimension(15, 22));
+        campoCpfEdi.setPreferredSize(new java.awt.Dimension(15, 24));
 
-        campoEmail1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        campoEmail1.setPreferredSize(new java.awt.Dimension(15, 24));
+        campoEmailEdi.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        campoEmailEdi.setPreferredSize(new java.awt.Dimension(15, 24));
 
         jLabel13.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -435,9 +440,9 @@ public class Tela_CadastroCliente extends javax.swing.JFrame {
         jLabel14.setText("*Telefone:");
         jLabel14.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
-        campoTelefone1.setPreferredSize(new java.awt.Dimension(15, 24));
+        campoTelefoneEdi.setPreferredSize(new java.awt.Dimension(15, 24));
 
-        campoRG1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        campoRGEdi.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
 
         jLabel15.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -454,23 +459,23 @@ public class Tela_CadastroCliente extends javax.swing.JFrame {
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(campoCpf1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(campoCpfEdi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(campoEmail1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(campoEmailEdi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(campoTelefone1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(campoTelefoneEdi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(campoNome1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(campoNomeEdi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(campoRG1))
+                        .addComponent(campoRGEdi))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 261, Short.MAX_VALUE)))
@@ -481,98 +486,155 @@ public class Tela_CadastroCliente extends javax.swing.JFrame {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(campoNome1, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+                    .addComponent(campoNomeEdi, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
                     .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(campoCpf1, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+                    .addComponent(campoCpfEdi, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
                     .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(campoEmail1, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+                    .addComponent(campoEmailEdi, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
                     .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(campoRG1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(campoRGEdi, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(campoTelefone1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(campoTelefoneEdi, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
-        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true), "Informações de Venda", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Arial", 1, 16))); // NOI18N
+        jPanel8.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true), "Informações de Venda", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Arial", 1, 16))); // NOI18N
 
-        comboFuncionarios1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione" }));
+        jLabel18.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel18.setText("*Vendedor Responsavel:");
+        jLabel18.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
-        jLabel16.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel16.setText("*Vendedor Responsavel:");
-        jLabel16.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jLabel19.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel19.setText("*Cidade:");
+        jLabel19.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
-        jLabel17.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel17.setText("*Cidade:");
-        jLabel17.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        txt_VendedorResponsavelEdi.setEditable(false);
 
-        comboCidade1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        pesquisar_funcionarioEdi.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        pesquisar_funcionarioEdi.setText("Pesquisar");
+        pesquisar_funcionarioEdi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pesquisar_funcionarioEdiActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
+        txt_cidadeEdi.setEditable(false);
+
+        pesquisar_clienteEdi.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        pesquisar_clienteEdi.setText("Pesquisar");
+        pesquisar_clienteEdi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pesquisar_clienteEdiActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txt_cidadeEdi))
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txt_VendedorResponsavelEdi)))
+                .addGap(6, 6, 6))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                .addGap(0, 222, Short.MAX_VALUE)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                        .addComponent(pesquisar_funcionarioEdi, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(79, 79, 79))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                        .addComponent(pesquisar_clienteEdi, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(77, 77, 77))))
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE))
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txt_VendedorResponsavelEdi, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+                    .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(comboFuncionarios1, 0, 236, Short.MAX_VALUE)
-                    .addComponent(comboCidade1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(pesquisar_funcionarioEdi, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txt_cidadeEdi, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(pesquisar_clienteEdi, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(comboFuncionarios1, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(comboCidade1, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE))
-                .addGap(0, 15, Short.MAX_VALUE))
-        );
+
+        salvarEdi.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        salvarEdi.setText("Salvar");
+        salvarEdi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salvarEdiActionPerformed(evt);
+            }
+        });
+
+        Cancelaredi.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        Cancelaredi.setText("Cancelar");
+        Cancelaredi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CancelarediActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 827, Short.MAX_VALUE)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap(402, Short.MAX_VALUE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                        .addComponent(Cancelaredi, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(47, 47, 47)
+                        .addComponent(salvarEdi, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(25, 25, 25))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                        .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
             .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel5Layout.createSequentialGroup()
                     .addContainerGap()
                     .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(18, 18, 18)
-                    .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addContainerGap()))
+                    .addContainerGap(438, Short.MAX_VALUE)))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 383, Short.MAX_VALUE)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(salvarEdi, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Cancelaredi, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(22, 22, 22))
             .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel5Layout.createSequentialGroup()
                     .addContainerGap()
-                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel5Layout.createSequentialGroup()
-                            .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(225, 225, 225)))
+                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addContainerGap()))
         );
 
@@ -625,6 +687,7 @@ public class Tela_CadastroCliente extends javax.swing.JFrame {
             int id = Integer.parseInt(idString);
             if (ClienteDAO.inativar(id)) {
                 JOptionPane.showMessageDialog(null, "Cliente inativado com sucesso!");
+                ClienteDAO.pesquisa(tabelaCliente, campoPesquisa.getText().toUpperCase());
             }
         }
     }//GEN-LAST:event_btIntivarActionPerformed
@@ -679,11 +742,51 @@ public class Tela_CadastroCliente extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Nenhum produto selecionado para edição!", "Aviso!", JOptionPane.WARNING_MESSAGE);
         } else {
             String idString = String.valueOf(tabelaCliente.getValueAt(tabelaCliente.getSelectedRow(), 0));
-            int id = Integer.parseInt(idString);             
+            int id = Integer.parseInt(idString);
             this.getAtivarEdicao(ClienteDAO.getClienteBanco(id));
             transacao.commit();
         }
     }//GEN-LAST:event_btEditarActionPerformed
+
+    private void pesquisar_funcionarioEdiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesquisar_funcionarioEdiActionPerformed
+        Dlg_SelecionaFuncionario sf = new Dlg_SelecionaFuncionario(null, true, this);
+        sf.setLocationRelativeTo(this);
+        sf.setVisible(true);
+    }//GEN-LAST:event_pesquisar_funcionarioEdiActionPerformed
+
+    private void pesquisar_clienteEdiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesquisar_clienteEdiActionPerformed
+        Dlg_SelecionaCidade sc = new Dlg_SelecionaCidade(null, true, this);
+        sc.setLocationRelativeTo(this);
+        sc.setVisible(true);
+    }//GEN-LAST:event_pesquisar_clienteEdiActionPerformed
+
+    private void CancelarediActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarediActionPerformed
+        this.getDesativarEdicao();
+    }//GEN-LAST:event_CancelarediActionPerformed
+
+    private void salvarEdiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvarEdiActionPerformed
+        if (campoCpfEdi.getText().replaceAll("\\D", "").isEmpty() || campoEmailEdi.getText().isEmpty() || campoRGEdi.getText().isEmpty() || campoNomeEdi.getText().isEmpty() || campoTelefoneEdi.getText().replaceAll("\\D", "").isEmpty() || txt_VendedorResponsavelEdi.getText().isEmpty() || txt_cidadeEdi.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Campo(s) obrigatorios em branco(s)!", "Aviso!", JOptionPane.WARNING_MESSAGE);
+        } else {
+            Cliente cliente = new Cliente();
+            String idString = String.valueOf(tabelaCliente.getValueAt(tabelaCliente.getSelectedRow(), 0));
+            int id = Integer.parseInt(idString);
+            cliente.setId(id);
+            cliente.setNome(campoNomeEdi.getText().toUpperCase());
+            cliente.setCpf(campoCpfEdi.getText());
+            cliente.setEmail(campoEmailEdi.getText());
+            cliente.setRg(campoRGEdi.getText());
+            cliente.setTelefone(campoTelefoneEdi.getText());
+            cliente.setStatus("A");
+            cliente.setCidade(c);
+            cliente.setFuncionario(f);
+            ClienteDAO.salvarEdicao(cliente);
+            JOptionPane.showMessageDialog(null, "Edição realizada com sucesso!");
+            this.getDesativarEdicao();
+            ClienteDAO.pesquisa(tabelaCliente, campoPesquisa.getText().toUpperCase());
+
+        }
+    }//GEN-LAST:event_salvarEdiActionPerformed
 
     public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -717,32 +820,26 @@ public class Tela_CadastroCliente extends javax.swing.JFrame {
 
     public void DefinirValorFuncionario(Funcionario f) {
         txt_VendedorResponsavel.setText(f.getNome());
+        txt_VendedorResponsavelEdi.setText(f.getNome());
         this.f = f;
     }
 
     public void DefinirValorCidade(Cidade c) {
         txt_cidade.setText(c.getNome());
+        txt_cidadeEdi.setText(c.getNome());
         this.c = c;
     }
 
     public void getAtivarEdicao(Cliente c) {
-        campoNome.setText(c.getNome());
-        campoCpf.setText(c.getCpf());
-        campoEmail.setText(c.getEmail());
-        campoRG.setText(c.getRg());
-        campoTelefone.setText(c.getTelefone());
-
-        // AQUI E PARA TENTAR PEGAR O NOME DA CIDADE E FUNCIONARIO EM VEZ DE MOSTRAR O ID DELE
-        Session sessao = null;
-        sessao = HibernateUtil.getSessionFactory().openSession();
-        Transaction transacao = sessao.beginTransaction();
-
-        Cidade x = (Cidade) sessao.get(Cidade.class, c.getCidade());
-        Funcionario y = (Funcionario) sessao.get(Funcionario.class, c.getFuncionario());
-
-        /////////////////////////////////////////////////////////////
-        txt_VendedorResponsavel.setText(y.getNome());
-        txt_cidade.setText(x.getNome());
+        campoNomeEdi.setText(c.getNome());
+        campoCpfEdi.setText(c.getCpf());
+        campoEmailEdi.setText(c.getEmail());
+        campoRGEdi.setText(c.getRg());
+        campoTelefoneEdi.setText(c.getTelefone());
+        txt_VendedorResponsavelEdi.setText(c.getFuncionario().getNome());
+        txt_cidadeEdi.setText(c.getCidade().getNome());
+        this.c = c.getCidade();
+        this.f = c.getFuncionario();
 
         menuTabs.setEnabledAt(0, false);
         menuTabs.setEnabledAt(1, false);
@@ -751,13 +848,13 @@ public class Tela_CadastroCliente extends javax.swing.JFrame {
     }
 
     public void getDesativarEdicao() {
-        campoNome.setText("");
-        campoCpf.setText("");
-        campoEmail.setText("");
-        campoRG.setText("");
-        campoTelefone.setText("");
-        txt_VendedorResponsavel.setText("");
-        txt_cidade.setText("");
+        campoNomeEdi.setText("");
+        campoCpfEdi.setText("");
+        campoEmailEdi.setText("");
+        campoRGEdi.setText("");
+        campoTelefoneEdi.setText("");
+        txt_VendedorResponsavelEdi.setText("");
+        txt_cidadeEdi.setText("");
         menuTabs.setEnabledAt(0, true);
         menuTabs.setEnabledAt(1, true);
         menuTabs.setEnabledAt(2, false);
@@ -766,23 +863,22 @@ public class Tela_CadastroCliente extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Cancelaredi;
     private javax.swing.JButton btEditar;
     private javax.swing.JButton btIntivar;
     private javax.swing.JButton btSair;
     private javax.swing.JButton btSalvar;
     private javax.swing.JFormattedTextField campoCpf;
-    private javax.swing.JFormattedTextField campoCpf1;
+    private javax.swing.JFormattedTextField campoCpfEdi;
     private javax.swing.JTextField campoEmail;
-    private javax.swing.JTextField campoEmail1;
+    private javax.swing.JTextField campoEmailEdi;
     private javax.swing.JTextField campoNome;
-    private javax.swing.JTextField campoNome1;
+    private javax.swing.JTextField campoNomeEdi;
     private javax.swing.JTextField campoPesquisa;
     private javax.swing.JFormattedTextField campoRG;
-    private javax.swing.JFormattedTextField campoRG1;
+    private javax.swing.JFormattedTextField campoRGEdi;
     private javax.swing.JFormattedTextField campoTelefone;
-    private javax.swing.JPasswordField campoTelefone1;
-    private javax.swing.JComboBox<String> comboCidade1;
-    private javax.swing.JComboBox<String> comboFuncionarios1;
+    private javax.swing.JPasswordField campoTelefoneEdi;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -790,8 +886,8 @@ public class Tela_CadastroCliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -806,13 +902,18 @@ public class Tela_CadastroCliente extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane menuTabs;
     private javax.swing.JButton pesquisar_cliente;
+    private javax.swing.JButton pesquisar_clienteEdi;
     private javax.swing.JButton pesquisar_funcionario;
+    private javax.swing.JButton pesquisar_funcionarioEdi;
+    private javax.swing.JButton salvarEdi;
     private javax.swing.JTable tabelaCliente;
     private javax.swing.JTextField txt_VendedorResponsavel;
+    private javax.swing.JTextField txt_VendedorResponsavelEdi;
     private javax.swing.JTextField txt_cidade;
+    private javax.swing.JTextField txt_cidadeEdi;
     // End of variables declaration//GEN-END:variables
 }
