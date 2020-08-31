@@ -26,7 +26,7 @@ public class ProdutoDAO {
             transacao.commit();
             String sql = "SELECT MAX(id) FROM Produto";
             int maiorId = Integer.parseInt(sessao.createQuery(sql).list().toString().replaceAll("\\D", ""));
-            AuditoriaDAO.cadastroFuncionario(maiorId);
+            AuditoriaDAO.cadastroProduto(maiorId);
             return true;
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erro imprevisto!\n" + e, "Erro!", JOptionPane.ERROR_MESSAGE);
