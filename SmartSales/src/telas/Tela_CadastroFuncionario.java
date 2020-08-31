@@ -729,8 +729,6 @@ public class Tela_CadastroFuncionario extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Tela_CadastroFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        //</editor-fold>
-
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Tela_CadastroFuncionario().setVisible(true);

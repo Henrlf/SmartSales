@@ -61,7 +61,6 @@ Contributor(s):
         <mapping class="DAO.CidadeDAO"/>
         <mapping class="DAO.ClienteDAO"/>
         <mapping class="DAO.ProdutoDAO"/>
-        <mapping class="DAO.PedidoDAO"/>
         <mapping class="DAO.LogsDAO"/>
         <mapping class="DAO.AuditoriaDAO"/>
         

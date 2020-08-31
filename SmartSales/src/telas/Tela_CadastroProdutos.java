@@ -7,7 +7,6 @@ import apoio.Mascaras;
 import entidades.Produto;
 import java.util.List;
 import javax.swing.JOptionPane;
-import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -505,7 +504,6 @@ public class Tela_CadastroProdutos extends javax.swing.JFrame {
                 this.getDesativarEdicao();
             }
         }
-
     }//GEN-LAST:event_btSalvarEdicaoActionPerformed
 
     public static void main(String args[]) {
