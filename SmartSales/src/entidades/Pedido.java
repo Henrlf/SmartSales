@@ -21,13 +21,13 @@ public class Pedido implements Serializable {
     @ManyToOne
     private Cliente cliente;
     
-    @ManyToOne
-    private Tipo_Pagamento tipo_pagamento;
+    @Column(name = "tipo_pagamento")
+    private String tipo_pagamento;
     
     @Column(name = "data_venda")
     private String data_venda;
     
-    @Column(name = "valor")
+    @Column(name = "valor_total")
     private Double valor;
     
     @Column(name = "desconto")
@@ -63,11 +63,11 @@ public class Pedido implements Serializable {
         this.cliente = cliente;
     }
 
-    public Tipo_Pagamento getTipo_pagamento() {
+    public String getTipo_pagamento() {
         return tipo_pagamento;
     }
 
-    public void setTipo_pagamento(Tipo_Pagamento tipo_pagamento) {
+    public void setTipo_pagamento(String tipo_pagamento) {
         this.tipo_pagamento = tipo_pagamento;
     }
 

@@ -79,4 +79,23 @@ public class AuditoriaDAO {
             sessao.close();
         }
     }
+
+    public static void cadastroVenda(int id_alvo) {
+        Session sessao = null;
+        try {
+            sessao = HibernateUtil.getSessionFactory().openSession();
+            Transaction transacao = sessao.beginTransaction();
+            Auditoria aud = new Auditoria();
+            aud.setFuncionario(Tela_Principal.getFunLog());
+            aud.setAcao("Cadastro de Venda");
+            aud.setId_alvo(id_alvo);
+            sessao.save(aud);
+            transacao.commit();
+        } catch (Exception e) {
+            LogsDAO.salvarLog(Tela_Principal.getFunLog(), "Erro no salvamento de auditoria(Cadastro Venda).", e);
+        } finally {
+            sessao.close();
+        }
+    }
+
 }

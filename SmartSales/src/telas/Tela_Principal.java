@@ -93,6 +93,7 @@ public class Tela_Principal extends javax.swing.JFrame {
         jMenu1.setText("Venda");
         jMenu1.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
 
+        Venda_produtos.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         Venda_produtos.setText("Venda");
         Venda_produtos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

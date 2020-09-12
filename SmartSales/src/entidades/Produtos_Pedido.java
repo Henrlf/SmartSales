@@ -4,7 +4,7 @@ import java.io.Serializable;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "protudos_pedido")
+@Table(name = "produtos_pedido")
 
 public class Produtos_Pedido implements Serializable {
 
@@ -40,6 +40,14 @@ public class Produtos_Pedido implements Serializable {
 
     public Pedido getPedido() {
         return pedido;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setPedido(Pedido pedido) {

@@ -9,6 +9,8 @@ import org.hibernate.Transaction;
 public class Dlg_SelecionaFuncionario extends javax.swing.JDialog {
 
     Tela_CadastroCliente CadCli;
+    Tela_Venda tv;
+    int x = 0;
 
     public Dlg_SelecionaFuncionario(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -21,6 +23,15 @@ public class Dlg_SelecionaFuncionario extends javax.swing.JDialog {
         FuncionarioDAO.pesquisa(tabelaFuncionario, campoPesquisa.getText().toUpperCase());
         this.setTitle("Seleciona Funcionário");
         this.CadCli = x;
+    }
+
+    public Dlg_SelecionaFuncionario(java.awt.Frame parent, boolean modal, Tela_Venda x) {
+        super(parent, modal);
+        initComponents();
+        FuncionarioDAO.pesquisa(tabelaFuncionario, campoPesquisa.getText().toUpperCase());
+        this.setTitle("Seleciona Funcionário");
+        this.tv = x;
+        this.x = 1;
     }
 
     @SuppressWarnings("unchecked")
@@ -138,7 +149,11 @@ public class Dlg_SelecionaFuncionario extends javax.swing.JDialog {
         sessao = HibernateUtil.getSessionFactory().openSession();
         Transaction transacao = sessao.beginTransaction();
         Funcionario x = (Funcionario) sessao.get(Funcionario.class, Integer.parseInt(codigos));
-        CadCli.DefinirValorFuncionario(x);
+        if(x.equals(0)){
+            CadCli.DefinirValorFuncionario(x);
+        }else{
+             tv.DefinirFuncionario(x);
+        }
         this.dispose();
     }//GEN-LAST:event_SelecionarActionPerformed
 
