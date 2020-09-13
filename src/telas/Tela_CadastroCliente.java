@@ -17,7 +17,7 @@ public class Tela_CadastroCliente extends javax.swing.JFrame {
         initComponents();
         Mascaras.formatarCPF(campoCpf);
         Formatacao.formatarTelefone(campoTelefone);
-        GenericoDAO.pesquisa(tabelaCliente, campoPesquisa.getText().toUpperCase(), "cliente");
+        GenericoDAO.pesquisa(tabelaCliente, campoPesquisa.getText().toUpperCase(), "Cliente");
         this.setTitle("Cadastro de Clientes");
         this.getDesativarEdicao();
 
@@ -675,7 +675,7 @@ public class Tela_CadastroCliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void campoPesquisaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoPesquisaKeyReleased
-        GenericoDAO.pesquisa(tabelaCliente, campoPesquisa.getText().toUpperCase(), "cliente");
+        GenericoDAO.pesquisa(tabelaCliente, campoPesquisa.getText().toUpperCase(), "Cliente");
     }//GEN-LAST:event_campoPesquisaKeyReleased
 
     private void btIntivarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btIntivarActionPerformed
@@ -688,7 +688,7 @@ public class Tela_CadastroCliente extends javax.swing.JFrame {
             cli.setStatus("I");
             if (GenericoDAO.inativar(id)) {
                 JOptionPane.showMessageDialog(null, "Cliente inativado com sucesso!");
-                GenericoDAO.pesquisa(tabelaCliente, campoPesquisa.getText().toUpperCase(), "cliente");
+                GenericoDAO.pesquisa(tabelaCliente, campoPesquisa.getText().toUpperCase(), "Cliente");
             }
         }
     }//GEN-LAST:event_btIntivarActionPerformed
@@ -714,7 +714,7 @@ public class Tela_CadastroCliente extends javax.swing.JFrame {
                 campoTelefone.setText("");
                 txt_VendedorResponsavel.setText("");
                 txt_cidade.setText("");
-                GenericoDAO.pesquisa(tabelaCliente, campoPesquisa.getText().toUpperCase(), "cliente");
+                GenericoDAO.pesquisa(tabelaCliente, campoPesquisa.getText().toUpperCase(), "Cliente");
                 JOptionPane.showMessageDialog(null, "Cliente Salvo com sucesso");
             }
         }
@@ -777,7 +777,7 @@ public class Tela_CadastroCliente extends javax.swing.JFrame {
             if (GenericoDAO.salvarEdicao(cliente)) {
                 JOptionPane.showMessageDialog(null, "Edição realizada com sucesso!");
                 this.getDesativarEdicao();
-                GenericoDAO.pesquisa(tabelaCliente, campoPesquisa.getText().toUpperCase(), "cliente");
+                GenericoDAO.pesquisa(tabelaCliente, campoPesquisa.getText().toUpperCase(), "Cliente");
             }
         }
     }//GEN-LAST:event_salvarEdiActionPerformed

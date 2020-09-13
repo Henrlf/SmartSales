@@ -12,7 +12,7 @@ public class Tela_CadastroProdutos extends javax.swing.JFrame {
     public Tela_CadastroProdutos() {
         initComponents();
         this.setTitle("Cadastro de Produtos");
-        GenericoDAO.pesquisa(tabelaProduto, campoPesquisa.getText().toUpperCase(), "produto");
+        GenericoDAO.pesquisa(tabelaProduto, campoPesquisa.getText().toUpperCase(), "Froduto");
         Mascaras.formatarDecimal(campoPreco);
         Mascaras.formatarDecimal(campoPrecoEdicao);
         this.getDesativarEdicao();
@@ -420,7 +420,7 @@ public class Tela_CadastroProdutos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void campoPesquisaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoPesquisaKeyReleased
-        GenericoDAO.pesquisa(tabelaProduto, campoPesquisa.getText().toUpperCase(), "produto");
+        GenericoDAO.pesquisa(tabelaProduto, campoPesquisa.getText().toUpperCase(), "Froduto");
     }//GEN-LAST:event_campoPesquisaKeyReleased
 
     private void btIntivarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btIntivarActionPerformed
@@ -432,7 +432,7 @@ public class Tela_CadastroProdutos extends javax.swing.JFrame {
             Produto pro = (Produto) GenericoDAO.getObjectBanco(id, Produto.class);
             pro.setStatus("I");
             if (GenericoDAO.inativar(pro)) {
-                GenericoDAO.pesquisa(tabelaProduto, campoPesquisa.getText().toUpperCase(), "produto");
+                GenericoDAO.pesquisa(tabelaProduto, campoPesquisa.getText().toUpperCase(), "Froduto");
                 JOptionPane.showMessageDialog(null, "Produto inativado com sucesso!");
             }
         }
@@ -448,7 +448,7 @@ public class Tela_CadastroProdutos extends javax.swing.JFrame {
             produto.setDescricao(campoDescricao.getText());
             produto.setStatus("A");
             if (GenericoDAO.cadastrar(produto)) {
-                GenericoDAO.pesquisa(tabelaProduto, campoPesquisa.getText().toUpperCase(), "produto");
+                GenericoDAO.pesquisa(tabelaProduto, campoPesquisa.getText().toUpperCase(), "Froduto");
                 JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!");
                 campoPreco.setText("0,00");
                 campoDescricao.setText("");
@@ -485,7 +485,7 @@ public class Tela_CadastroProdutos extends javax.swing.JFrame {
             produto.setDescricao(campoDescricaoEdicao.getText());
             if (GenericoDAO.salvarEdicao(produto)) {
                 JOptionPane.showMessageDialog(null, "Edição de produto realizado com sucesso!");
-                GenericoDAO.pesquisa(tabelaProduto, campoPesquisa.getText().toUpperCase(), "produto");
+                GenericoDAO.pesquisa(tabelaProduto, campoPesquisa.getText().toUpperCase(), "Froduto");
                 this.getDesativarEdicao();
             }
         }

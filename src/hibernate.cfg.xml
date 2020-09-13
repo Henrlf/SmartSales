@@ -53,19 +53,25 @@ Contributor(s):
         <mapping class="entidades.Pedido"/>
         <mapping class="entidades.Produto"/>
         <mapping class="entidades.Produtos_Pedido"/>
-        <mapping class="entidades.Tipo_Pagamento"/>
         <mapping class="entidades.Logs"/>
-        <mapping class="entidades.Auditoria"/>
  
         <mapping class="DAO.LogsDAO"/>
-        <mapping class="DAO.AuditoriaDAO"/>
         <mapping class="DAO.GenericoDAO"/>
         
-        <mapping class="telas.Tela_CadastroFuncionario"/>
         <mapping class="telas.Tela_Login"/>
         <mapping class="telas.Tela_Principal"/>
-        <mapping class="telas.Tela_CadastroCliente"/>
         <mapping class="telas.Tela_CadastroProdutos"/>
+        <mapping class="telas.Tela_CadastroCidade"/>
+        <mapping class="telas.Tela_CadastroCliente"/>
+        <mapping class="telas.Tela_CadastroFuncionario"/>
+        <mapping class="telas.Tela_Venda"/>
+        <mapping class="telas.Tela_Compra"/>        
+        <mapping class="telas.Dlg_SelecionaCidade"/>
+        <mapping class="telas.Dlg_SelecionaCliente"/>
+        <mapping class="telas.Dlg_SelecionaFuncionario"/>
+        <mapping class="telas.Dlg_SelecionaProduto"/>
+        
+        
     
         
     </session-factory>

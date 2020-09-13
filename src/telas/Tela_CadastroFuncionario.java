@@ -17,7 +17,7 @@ public class Tela_CadastroFuncionario extends javax.swing.JFrame {
         Mascaras.formatarCPF(campoCpfEdi);
         this.setLocationRelativeTo(null);
         this.setTitle("Cadastro de Funcionários");
-        GenericoDAO.pesquisa(tabelaFuncionario, campoPesquisa.getText().toUpperCase(), "funcionario");
+        GenericoDAO.pesquisa(tabelaFuncionario, campoPesquisa.getText().toUpperCase(), "Funcionario");
         this.getDesativarEdicao();
     }
 
@@ -627,7 +627,7 @@ public class Tela_CadastroFuncionario extends javax.swing.JFrame {
                     funcionario.setLogin(campoLogin.getText());
                     if (GenericoDAO.cadastrar(funcionario)) {
                         JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!");
-                        GenericoDAO.pesquisa(tabelaFuncionario, campoPesquisa.getText().toUpperCase(), "funcionario");
+                        GenericoDAO.pesquisa(tabelaFuncionario, campoPesquisa.getText().toUpperCase(), "Funcionario");
                         campoCpf.setText("");
                         campoEmail.setText("");
                         campoLogin.setText("");
@@ -658,7 +658,7 @@ public class Tela_CadastroFuncionario extends javax.swing.JFrame {
             fun.setStatus("I");
             if (GenericoDAO.inativar(fun)) {
                 JOptionPane.showMessageDialog(null, "Usuário inativado com sucesso!");
-                GenericoDAO.pesquisa(tabelaFuncionario, campoPesquisa.getText().toUpperCase(), "funcionario");
+                GenericoDAO.pesquisa(tabelaFuncionario, campoPesquisa.getText().toUpperCase(), "Funcionario");
             }
         }
     }//GEN-LAST:event_btIntivarActionPerformed
@@ -679,14 +679,14 @@ public class Tela_CadastroFuncionario extends javax.swing.JFrame {
             if (campoSenhaEdi.getText().isEmpty()) {
                 if (GenericoDAO.salvarEdicao(funcionario)) {
                     JOptionPane.showMessageDialog(null, "Edição realizada com sucesso!");
-                    GenericoDAO.pesquisa(tabelaFuncionario, campoPesquisa.getText().toUpperCase(), "funcionario");
+                    GenericoDAO.pesquisa(tabelaFuncionario, campoPesquisa.getText().toUpperCase(), "Funcionario");
                     this.getDesativarEdicao();
                 }
             } else {
                 funcionario.setSenha(Criptografia.encriptografar(campoSenhaEdi.getText()));
                 if (GenericoDAO.salvarEdicao(funcionario)) {
                     JOptionPane.showMessageDialog(null, "Edição realizada com sucesso!");
-                    GenericoDAO.pesquisa(tabelaFuncionario, campoPesquisa.getText().toUpperCase(), "funcionario");
+                    GenericoDAO.pesquisa(tabelaFuncionario, campoPesquisa.getText().toUpperCase(), "Funcionario");
                     this.getDesativarEdicao();
                 }
             }

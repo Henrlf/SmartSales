@@ -1,7 +1,6 @@
 package entidades;
 
 import java.io.Serializable;
-import java.util.*;
 import javax.persistence.*;
 
 @Entity
@@ -25,9 +24,6 @@ public class Produto implements Serializable {
 
     @Column(name = "status")
     private String status;
-    
-    @OneToMany(mappedBy = "produto")
-    private Set<Produtos_Pedido> produtos_pedido = new HashSet<>();
 
     public int getId() {
         return id;

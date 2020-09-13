@@ -94,6 +94,11 @@ public class Tela_Principal extends javax.swing.JFrame {
         jMenu1.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
 
         Venda_produtos.setText("Venda");
+        Venda_produtos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Venda_produtosActionPerformed(evt);
+            }
+        });
         jMenu1.add(Venda_produtos);
 
         jMenuBar1.add(jMenu1);
@@ -161,6 +166,12 @@ public class Tela_Principal extends javax.swing.JFrame {
         cadcli.setVisible(true);
         cadcli.setLocationRelativeTo(null);
     }//GEN-LAST:event_Cadastro_clientesActionPerformed
+
+    private void Venda_produtosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Venda_produtosActionPerformed
+        Tela_Venda tv = new Tela_Venda();
+        tv.setVisible(true);
+        tv.setLocationRelativeTo(null);
+    }//GEN-LAST:event_Venda_produtosActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

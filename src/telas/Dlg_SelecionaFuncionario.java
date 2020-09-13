@@ -9,6 +9,7 @@ import org.hibernate.Transaction;
 public class Dlg_SelecionaFuncionario extends javax.swing.JDialog {
 
     Tela_CadastroCliente CadCli;
+    int x = 0;
 
     public Dlg_SelecionaFuncionario(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -18,7 +19,7 @@ public class Dlg_SelecionaFuncionario extends javax.swing.JDialog {
     public Dlg_SelecionaFuncionario(java.awt.Frame parent, boolean modal, Tela_CadastroCliente x) {
         super(parent, modal);
         initComponents();
-        GenericoDAO.pesquisa(tabelaFuncionario, campoPesquisa.getText().toUpperCase(), "funcionario");
+        GenericoDAO.pesquisa(tabelaFuncionario, campoPesquisa.getText().toUpperCase(), "Funcionario");
         this.setTitle("Seleciona Funcionário");
         this.CadCli = x;
     }
@@ -125,7 +126,7 @@ public class Dlg_SelecionaFuncionario extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void campoPesquisaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoPesquisaKeyReleased
-        GenericoDAO.pesquisa(tabelaFuncionario, campoPesquisa.getText().toUpperCase(), "funcionario");
+        GenericoDAO.pesquisa(tabelaFuncionario, campoPesquisa.getText().toUpperCase(), "Funcionario");
     }//GEN-LAST:event_campoPesquisaKeyReleased
 
     private void sairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sairActionPerformed
@@ -134,10 +135,13 @@ public class Dlg_SelecionaFuncionario extends javax.swing.JDialog {
 
     private void SelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelecionarActionPerformed
         String codigos = String.valueOf(tabelaFuncionario.getValueAt(tabelaFuncionario.getSelectedRow(), 0));
-        Session sessao = HibernateUtil.getSessionFactory().openSession();
+        Session sessao = null;
+        sessao = HibernateUtil.getSessionFactory().openSession();
         Transaction transacao = sessao.beginTransaction();
-        Funcionario x = (Funcionario) GenericoDAO.getObjectBanco(Integer.parseInt(codigos), Funcionario.class);
-        CadCli.DefinirValorFuncionario(x);
+        Funcionario x = (Funcionario) sessao.get(Funcionario.class, Integer.parseInt(codigos));
+        if(x.equals(0)){
+            CadCli.DefinirValorFuncionario(x);
+        }
         this.dispose();
     }//GEN-LAST:event_SelecionarActionPerformed
 

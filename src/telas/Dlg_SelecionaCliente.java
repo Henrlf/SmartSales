@@ -1,66 +1,37 @@
 package telas;
 
 import DAO.GenericoDAO;
-import apoio.HibernateUtil;
-import entidades.Cidade;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
+import entidades.Cliente;
 
-public class Dlg_SelecionaCidade extends javax.swing.JDialog {
+public class Dlg_SelecionaCliente extends javax.swing.JDialog {
 
-    Tela_CadastroCliente CadCli;
+    Tela_Venda tv;
 
-    public Dlg_SelecionaCidade(java.awt.Frame parent, boolean modal) {
+    public Dlg_SelecionaCliente(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
 
-    public Dlg_SelecionaCidade(java.awt.Frame parent, boolean modal, Tela_CadastroCliente x) {
+    public Dlg_SelecionaCliente(java.awt.Frame parent, boolean modal, Tela_Venda x) {
         super(parent, modal);
         initComponents();
-        GenericoDAO.pesquisa(tabelaCidade, campoPesquisa.getText().toUpperCase(), "Cidade");
-        this.setTitle("Seleciona Cidade");
-        this.CadCli = x;
+        GenericoDAO.pesquisa(tabelaCliente, campoPesquisa.getText().toUpperCase(), "Cliente");
+        this.setTitle("Seleciona Cliente");
+        this.tv = x;
     }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Selecionar = new javax.swing.JButton();
-        sair = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tabelaCidade = new javax.swing.JTable();
         campoPesquisa = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         Selecionar1 = new javax.swing.JButton();
         sair1 = new javax.swing.JButton();
-
-        Selecionar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        Selecionar.setText("Selecionar");
-
-        sair.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        sair.setText("Sair");
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tabelaCliente = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-
-        tabelaCidade.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null}
-            },
-            new String [] {
-                "Id", "Nome", "UF"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(tabelaCidade);
 
         campoPesquisa.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         campoPesquisa.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -90,24 +61,44 @@ public class Dlg_SelecionaCidade extends javax.swing.JDialog {
             }
         });
 
+        tabelaCliente.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Id", "Nome", "CPF", "Telefone", "RG", "Email", "Cidade", "Funcionario"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tabelaCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        tabelaCliente.setSurrendersFocusOnKeystroke(true);
+        jScrollPane1.setViewportView(tabelaCliente);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(Selecionar1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(sair1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)
+                .addGap(14, 14, 14))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(campoPesquisa, javax.swing.GroupLayout.DEFAULT_SIZE, 365, Short.MAX_VALUE)))
+                        .addComponent(campoPesquisa, javax.swing.GroupLayout.DEFAULT_SIZE, 463, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -118,34 +109,31 @@ public class Dlg_SelecionaCidade extends javax.swing.JDialog {
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(campoPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(sair1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Selecionar1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Selecionar1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(sair1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(17, 17, 17))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void campoPesquisaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoPesquisaKeyReleased
-        GenericoDAO.pesquisa(tabelaCidade, campoPesquisa.getText().toUpperCase(), "Cidade");
+        GenericoDAO.pesquisa(tabelaCliente, campoPesquisa.getText().toUpperCase(), "Cliente");
     }//GEN-LAST:event_campoPesquisaKeyReleased
+
+    private void Selecionar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Selecionar1ActionPerformed
+        String codigos = String.valueOf(tabelaCliente.getValueAt(tabelaCliente.getSelectedRow(), 0));
+        Cliente cliente = (Cliente) GenericoDAO.getObjectBanco(Integer.parseInt(codigos),Cliente.class);
+        tv.DefinirCliente(cliente);
+        this.dispose();
+    }//GEN-LAST:event_Selecionar1ActionPerformed
 
     private void sair1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sair1ActionPerformed
         this.dispose();
     }//GEN-LAST:event_sair1ActionPerformed
-
-    private void Selecionar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Selecionar1ActionPerformed
-        String codigos = String.valueOf(tabelaCidade.getValueAt(tabelaCidade.getSelectedRow(), 0));
-        Session sessao = null;
-        sessao = HibernateUtil.getSessionFactory().openSession();
-        Transaction transacao = sessao.beginTransaction();
-        Cidade x = (Cidade) GenericoDAO.getObjectBanco(Integer.parseInt(codigos), Cidade.class);
-        CadCli.DefinirValorCidade(x);
-        this.dispose();
-    }//GEN-LAST:event_Selecionar1ActionPerformed
 
     public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -160,18 +148,18 @@ public class Dlg_SelecionaCidade extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Dlg_SelecionaCidade.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Dlg_SelecionaCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Dlg_SelecionaCidade.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Dlg_SelecionaCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Dlg_SelecionaCidade.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Dlg_SelecionaCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Dlg_SelecionaCidade.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Dlg_SelecionaCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                Dlg_SelecionaCidade dialog = new Dlg_SelecionaCidade(new javax.swing.JFrame(), true);
+                Dlg_SelecionaCliente dialog = new Dlg_SelecionaCliente(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -184,13 +172,11 @@ public class Dlg_SelecionaCidade extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Selecionar;
     private javax.swing.JButton Selecionar1;
     private javax.swing.JTextField campoPesquisa;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton sair;
     private javax.swing.JButton sair1;
-    private javax.swing.JTable tabelaCidade;
+    private javax.swing.JTable tabelaCliente;
     // End of variables declaration//GEN-END:variables
 }

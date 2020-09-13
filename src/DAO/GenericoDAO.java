@@ -151,4 +151,41 @@ public class GenericoDAO {
             sessao.close();
         }
     }
+
+    public static void pesquisaPro_Ped(JTable tabela, int id) {
+        Session sessao = HibernateUtil.getSessionFactory().openSession();
+        List<Produtos_Pedido> resultado = new ArrayList();
+        String sql = "FROM Produtos_Pedido "
+                + "WHERE pedido_id = " + id + " AND Status = 'A' ";
+        DefaultTableModel modelo = (DefaultTableModel) tabela.getModel();
+        modelo.setNumRows(0);
+        try {
+            org.hibernate.Query query = sessao.createQuery(sql);
+            resultado = query.list();
+            for (int i = 0; i < resultado.size(); i++) {
+                Produtos_Pedido c = resultado.get(i);
+//                modelo.addRow(new Object[]{c.getId(), c.getProduto().getNome(), c.getPreco()});
+            }
+        } catch (HibernateException e) {
+            LogsDAO.salvarLog(Tela_Principal.getFunLog(), "Erro ao tentar pesquisar um cliente.", e);
+        } finally {
+            sessao.close();
+        }
+    }
+
+    public static int getLastId(String classe) {
+        Session sessao = null;
+        int maiorId = 0;
+        try {
+            String sql = "SELECT MAX(id) FROM " + classe;
+            sessao = HibernateUtil.getSessionFactory().openSession();
+            maiorId = Integer.parseInt(sessao.createQuery(sql).list().toString().replaceAll("\\D", ""));
+        } catch (Exception e) {
+            LogsDAO.salvarLog(Tela_Principal.getFunLog(), "Erro ao realizar uma busca pelo ultimo id de cadastro.", e);
+            JOptionPane.showMessageDialog(null, "Erro imprevisto!\n" + e, "Erro!", JOptionPane.ERROR_MESSAGE);
+        } finally {
+            sessao.close();
+        }
+        return maiorId;
+    }
 }

@@ -24,12 +24,6 @@ public class Produtos_Pedido implements Serializable {
     @Column(name = "quantidade")
     private int quantidade;
 
-    @Column(name = "preco")
-    private Double preco;
-
-    @Column(name = "status")
-    private String status;
-
     public Produto getProduto() {
         return produto;
     }
@@ -52,22 +46,6 @@ public class Produtos_Pedido implements Serializable {
 
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
-    }
-
-    public Double getPreco() {
-        return preco;
-    }
-
-    public void setPreco(Double preco) {
-        this.preco = preco;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
     }
 
 }

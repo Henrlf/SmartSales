@@ -245,13 +245,13 @@ public class Tela_CadastroCidade extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!");
                 campoNome.setText("");
                 campoUF.setText("");
-                GenericoDAO.pesquisa(tabelaCidade, campoPesquisa.getText().toUpperCase(), "cidade");
+                GenericoDAO.pesquisa(tabelaCidade, campoPesquisa.getText().toUpperCase(), "Cidade");
             }
         }
     }//GEN-LAST:event_btSalvarActionPerformed
 
     private void campoPesquisaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoPesquisaKeyReleased
-        GenericoDAO.pesquisa(tabelaCidade, campoPesquisa.getText().toUpperCase(), "cidade");
+        GenericoDAO.pesquisa(tabelaCidade, campoPesquisa.getText().toUpperCase(), "Cidade");
     }//GEN-LAST:event_campoPesquisaKeyReleased
 
     private void btInativarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInativarActionPerformed
@@ -264,7 +264,7 @@ public class Tela_CadastroCidade extends javax.swing.JFrame {
             cid.setStatus("I");
             if (GenericoDAO.inativar(cid)) {
                 JOptionPane.showMessageDialog(null, "Cidade inativada com sucesso!");
-                GenericoDAO.pesquisa(tabelaCidade, campoPesquisa.getText().toUpperCase(), "cidade");
+                GenericoDAO.pesquisa(tabelaCidade, campoPesquisa.getText().toUpperCase(), "Cidade");
             }
         }
     }//GEN-LAST:event_btInativarActionPerformed

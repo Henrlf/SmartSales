@@ -26,7 +26,7 @@ public class Formatacao {
         return campoFormatado;
     }
 
-    public static void formatarDecimal(JTextField campo) {
+    public static void formatarDecimal(JFormattedTextField campo) {
         campo.setText(df.format(Double.parseDouble(campo.getText())));
     }
 
@@ -52,10 +52,6 @@ public class Formatacao {
 
     public static JFormattedTextField getDataHora() {
         return getFormatado("##/##/#### ##:##");
-    }
-
-    public void formatoDecimal(JTextField campo) {
-        campo.setText(df.format(Double.parseDouble(campo.getText())));
     }
 
     public static void formatarData(JFormattedTextField campo) {
