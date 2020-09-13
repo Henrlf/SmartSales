@@ -54,6 +54,7 @@ Contributor(s):
         <mapping class="entidades.Produto"/>
         <mapping class="entidades.Produtos_Pedido"/>
         <mapping class="entidades.Logs"/>
+        <mapping class="entidades.Auditoria"/>
  
         <mapping class="DAO.LogsDAO"/>
         <mapping class="DAO.GenericoDAO"/>
@@ -66,6 +67,7 @@ Contributor(s):
         <mapping class="telas.Tela_CadastroFuncionario"/>
         <mapping class="telas.Tela_Venda"/>
         <mapping class="telas.Tela_Compra"/>        
+        <mapping class="telas.Tela_Auditoria"/>        
         <mapping class="telas.Dlg_SelecionaCidade"/>
         <mapping class="telas.Dlg_SelecionaCliente"/>
         <mapping class="telas.Dlg_SelecionaFuncionario"/>

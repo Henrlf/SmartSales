@@ -126,6 +126,47 @@ public class GenericoDAO {
                     Cidade c = (Cidade) resultado.get(i);
                     modelo.addRow(new Object[]{c.getId(), c.getNome(), c.getUf()});
                 }
+            } else if (classe.equals("Auditoria")) {
+                tabela.getColumnModel().getColumn(1).setCellRenderer(centralizado);
+                tabela.getColumnModel().getColumn(2).setCellRenderer(centralizado);
+                tabela.getColumnModel().getColumn(1).setPreferredWidth(100);
+                tabela.getColumnModel().getColumn(2).setPreferredWidth(40);
+                org.hibernate.Query query = sessao.createQuery(sql);
+                resultado = query.list();
+                for (int i = 0; i < resultado.size(); i++) {
+                    Auditoria aud = (Auditoria) resultado.get(i);
+                    modelo.addRow(new Object[]{aud.getFuncionario(), aud.getFuncao(), aud.getId_alvo(), aud.getNome_alvo(), aud.getData()});
+                }
+            }
+        } catch (Exception e) {
+            LogsDAO.salvarLog(Tela_Principal.getFunLog(), "Erro ao realizar uma pesquisa de preenchimento de tabela.", e);
+            JOptionPane.showMessageDialog(null, "Erro imprevisto!\n" + e, "Erro!", JOptionPane.ERROR_MESSAGE);
+        } finally {
+            sessao.close();
+        }
+    }
+
+    public static void pesquisaAuditoria(JTable tabela) {
+        Session sessao = null;
+        List<Auditoria> resultado = new ArrayList();
+        String sql = "FROM Auditoria";
+        DefaultTableModel modelo = (DefaultTableModel) tabela.getModel();
+        modelo.setNumRows(0);
+        DefaultTableCellRenderer centralizado = new DefaultTableCellRenderer();
+        centralizado.setHorizontalAlignment(SwingConstants.CENTER);
+        try {
+            sessao = HibernateUtil.getSessionFactory().openSession();
+            Transaction transacao = sessao.beginTransaction();
+            tabela.getColumnModel().getColumn(1).setCellRenderer(centralizado);
+            tabela.getColumnModel().getColumn(2).setCellRenderer(centralizado);
+            tabela.getColumnModel().getColumn(1).setPreferredWidth(100);
+            tabela.getColumnModel().getColumn(2).setPreferredWidth(40);
+            org.hibernate.Query query = sessao.createQuery(sql);
+            transacao.commit();
+            resultado = query.list();
+            for (int i = 0; i < resultado.size(); i++) {
+                Auditoria aud = resultado.get(i);
+                modelo.addRow(new Object[]{aud.getFuncionario(), aud.getFuncao(), aud.getId_alvo(), aud.getNome_alvo(), aud.getData()});
             }
         } catch (Exception e) {
             LogsDAO.salvarLog(Tela_Principal.getFunLog(), "Erro ao realizar uma pesquisa de preenchimento de tabela.", e);

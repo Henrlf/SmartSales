@@ -21,6 +21,7 @@ public class Tela_Principal extends javax.swing.JFrame {
         Cadastro_funcionario = new javax.swing.JMenuItem();
         Cadastro_Produtos = new javax.swing.JMenuItem();
         Cadastro_Cidades = new javax.swing.JMenuItem();
+        btAuditorias = new javax.swing.JMenuItem();
         Criacao_metas = new javax.swing.JMenu();
         Gerenciamento_metas = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
@@ -74,6 +75,15 @@ public class Tela_Principal extends javax.swing.JFrame {
             }
         });
         Cadatro.add(Cadastro_Cidades);
+
+        btAuditorias.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btAuditorias.setText("Auditorias");
+        btAuditorias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAuditoriasActionPerformed(evt);
+            }
+        });
+        Cadatro.add(btAuditorias);
 
         jMenuBar1.add(Cadatro);
 
@@ -137,7 +147,7 @@ public class Tela_Principal extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 428, Short.MAX_VALUE)
+            .addGap(0, 445, Short.MAX_VALUE)
         );
 
         pack();
@@ -172,6 +182,12 @@ public class Tela_Principal extends javax.swing.JFrame {
         tv.setVisible(true);
         tv.setLocationRelativeTo(null);
     }//GEN-LAST:event_Venda_produtosActionPerformed
+
+    private void btAuditoriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAuditoriasActionPerformed
+        Tela_Auditoria ta = new Tela_Auditoria();
+        ta.setVisible(true);
+        ta.setLocationRelativeTo(null);
+    }//GEN-LAST:event_btAuditoriasActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -218,6 +234,7 @@ public class Tela_Principal extends javax.swing.JFrame {
     private javax.swing.JMenu Criacao_metas;
     private javax.swing.JMenuItem Gerenciamento_metas;
     private javax.swing.JMenuItem Venda_produtos;
+    private javax.swing.JMenuItem btAuditorias;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
