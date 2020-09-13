@@ -139,7 +139,7 @@ public class Dlg_SelecionaFuncionario extends javax.swing.JDialog {
         sessao = HibernateUtil.getSessionFactory().openSession();
         Transaction transacao = sessao.beginTransaction();
         Funcionario x = (Funcionario) sessao.get(Funcionario.class, Integer.parseInt(codigos));
-        if(x.equals(0)){
+        if (this.x == 0) {
             CadCli.DefinirValorFuncionario(x);
         }
         this.dispose();
