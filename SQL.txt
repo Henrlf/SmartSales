@@ -1,0 +1,102 @@
+CREATE TABLE cidade(
+	id SERIAL NOT NULL,
+	nome VARCHAR(100) NOT NULL,
+	uf VARCHAR(2) NOT NULL,
+	status VARCHAR(1) NOT NULL,
+	PRIMARY KEY (id));
+
+
+CREATE TABLE tipo_pagamento(
+	id SERIAL NOT NULL,
+	nome VARCHAR(100) NOT NULL,
+	status VARCHAR(1) NOT NULL,
+	PRIMARY KEY (id));
+
+CREATE TABLE produto(
+	id SERIAL NOT NULL,
+	nome VARCHAR(100) NOT NULL,
+	preco DECIMAL(10,2) NOT NULL,
+	descricao VARCHAR(200) ,
+	status VARCHAR(1) NOT NULL,
+	PRIMARY KEY (id));
+
+CREATE TABLE funcionario(
+	id SERIAL NOT NULL,
+	cpf VARCHAR(20) NOT NULL,
+	nome VARCHAR(100) NOT NULL,
+	cargo VARCHAR(100) NOT NULL,
+	login VARCHAR(100) NOT NULL,
+	senha VARCHAR(100) NOT NULL,
+	email VARCHAR(100) NOT NULL,
+	status VARCHAR(1) NOT NULL,
+	PRIMARY KEY (id));
+
+CREATE TABLE cliente(
+	id SERIAL NOT NULL,
+	nome VARCHAR(100) NOT NULL,
+	cpf VARCHAR(30) NOT NULL,
+	telefone VARCHAR(30) NOT NULL,
+	RG VARCHAR(30) NOT NULL,
+	email VARCHAR(100) NOT NULL,
+	status VARCHAR(1) NOT NULL,
+	cidade_id INT NOT NULL,
+	funcionario_id INT NOT NULL,
+	PRIMARY KEY (id),
+	CONSTRAINT fk_cliente_cidade FOREIGN KEY (cidade_id) REFERENCES cidade(id),
+	CONSTRAINT fk_cliente_funcionario FOREIGN KEY (funcionario_id) REFERENCES funcionario(id));
+
+
+CREATE TABLE pedido(
+	id SERIAL NOT NULL,
+	data_venda DATE NOT NULL,
+	valor DECIMAL (10,2) NOT NULL,
+	desconto DECIMAL (10,2),
+	status VARCHAR(1) NOT NULL,
+	funcionario_id INT NOT NULL,
+	cliente_id INT NOT NULL,
+	tipo_pagamento_id INT NOT NULL,
+	PRIMARY KEY (id),
+	CONSTRAINT fk_pedido_funcionario FOREIGN KEY (funcionario_id) REFERENCES funcionario(id),
+	CONSTRAINT fk_pedido_cliente FOREIGN KEY (cliente_id) REFERENCES cliente(id),
+	CONSTRAINT fk_pedido_tipo_pagamento FOREIGN KEY (tipo_pagamento_id) REFERENCES tipo_pagamento(id));
+
+CREATE TABLE produtos_pedido(
+	id SERIAL NOT NULL,
+	quantiade INT NOT NULL,
+	preco DECIMAL(10,2) NOT NULL,
+	status VARCHAR(1) NOT NULL,
+	produto_id INT NOT NULL,
+	pedido_id INT NOT NULL,
+	PRIMARY KEY (id),
+	CONSTRAINT fk_produtos_pedido_produto FOREIGN KEY (produto_id) REFERENCES produto(id),
+	CONSTRAINT fk_produtos_pedido_pedido FOREIGN KEY (pedido_id) REFERENCES pedido(id));
+
+CREATE TABLE compra(
+	id SERIAL NOT NULL,
+	data DATE,
+	preco_total DECIMAL(10,2),
+	PRIMARY KEY (id));
+
+CREATE TABLE produtos_compra(
+	id SERIAL NOT NULL,
+	quantidade INT,
+	preco DECIMAL(10,2),
+	produto_id INT NOT NULL,
+	compra_id INT NOT NULL,
+	PRIMARY KEY (id),
+	CONSTRAINT fk_produtos_compra_compra FOREIGN KEY (compra_id) REFERENCES compra(id),
+	CONSTRAINT fk_produtos_compra_produto FOREIGN KEY (produto_id) REFERENCES produto(id));
+
+CREATE TABLE logs(
+	id SERIAL NOT NULL,
+	quemfez VARCHAR(100) NOT NULL,
+	oquefez VARCHAR(200) NOT NULL,
+	erros VARCHAR(500),
+	PRIMARY KEY (id));
+
+CREATE TABLE auditoria(
+	id SERIAL NOT NULL,
+	quemfez VARCHAR(100) NOT NULL,
+	oquefez VARCHAR(200) NOT NULL,
+	ondefez VARCHAR(200),
+	PRIMARY KEY (id));
