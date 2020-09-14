@@ -21,12 +21,23 @@ public class Pedido implements Serializable {
 
     @Column(name = "valor")
     private Double valor;
-    
+
     @Column(name = "status")
     private String status;
-    
+
     @Column(name = "tipo_pagamento")
     private String tipo_pagamento;
+
+    @Column(name = "data_venda")
+    private String data_venda;
+
+    public String getData_venda() {
+        return data_venda;
+    }
+
+    public void setData_venda(String data_venda) {
+        this.data_venda = data_venda;
+    }
 
     public String getTipo_pagamento() {
         return tipo_pagamento;

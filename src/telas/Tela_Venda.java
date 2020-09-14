@@ -382,9 +382,11 @@ public class Tela_Venda extends javax.swing.JFrame {
                 DefaultTableModel modelo = (DefaultTableModel) tabProdPed.getModel();
                 modelo.removeRow(lin);
                 modelo.addRow(obj);
-                int n = (Integer.parseInt(campoQuantProd.getText()) + quant);
-                this.total += n * produto.getPreco();
+
+                this.total += Double.parseDouble(campoQuantProd.getText()) * produto.getPreco();
                 campoPrecoTotal.setText(String.valueOf(total));
+                campoProdudo.setText("");
+                campoQuantProd.setText("");
 
             } else {
                 Object[] obj = {produto.getId(), produto.getNome(), "R$ " + produto.getPreco(), Integer.parseInt(campoQuantProd.getText())};
@@ -392,6 +394,8 @@ public class Tela_Venda extends javax.swing.JFrame {
                 modelo.addRow(obj);
                 this.total += Double.parseDouble(campoQuantProd.getText()) * produto.getPreco();
                 campoPrecoTotal.setText(String.valueOf(total));
+                campoProdudo.setText("");
+                campoQuantProd.setText("");
 
             }
         }
@@ -438,7 +442,9 @@ public class Tela_Venda extends javax.swing.JFrame {
     private void btRemoverProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRemoverProdutoActionPerformed
         if (tabProdPed.getSelectedRowCount() != 0) {
             DefaultTableModel modelo = (DefaultTableModel) tabProdPed.getModel();
-            this.total -= 0;
+            double v = Double.parseDouble(tabProdPed.getValueAt(tabProdPed.getSelectedRow(), 3).toString().replace("R$ ", ""));
+            double b = Double.parseDouble(tabProdPed.getValueAt(tabProdPed.getSelectedRow(), 2).toString().replace("R$ ", ""));
+            this.total -= v * b;
             campoPrecoTotal.setText(String.valueOf(total));
             modelo.removeRow(tabProdPed.getSelectedRow());
         }
