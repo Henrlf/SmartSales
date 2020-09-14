@@ -21,7 +21,7 @@ public class Logs {
     @Column(name = "erro")
     private String erro;
 
-    @Column(name = "data")
+    @Column(name = "data_op")
     private String data;
 
     public int getId() {

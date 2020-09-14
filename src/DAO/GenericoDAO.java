@@ -169,7 +169,7 @@ public class GenericoDAO {
                 modelo.addRow(new Object[]{aud.getFuncionario(), aud.getFuncao(), aud.getId_alvo(), aud.getNome_alvo(), aud.getData()});
             }
         } catch (Exception e) {
-            LogsDAO.salvarLog(Tela_Principal.getFunLog(), "Erro ao realizar uma pesquisa de preenchimento de tabela.", e);
+            LogsDAO.salvarLog(Tela_Principal.getFunLog(), "Erro ao realizar uma pesquisa de preenchimento de tabela de auditoria.", e);
             JOptionPane.showMessageDialog(null, "Erro imprevisto!\n" + e, "Erro!", JOptionPane.ERROR_MESSAGE);
         } finally {
             sessao.close();
@@ -228,5 +228,36 @@ public class GenericoDAO {
             sessao.close();
         }
         return maiorId;
+    }
+
+    public static void pesquisaLogs(JTable tabela) {
+        Session sessao = null;
+        List<Logs> resultado = new ArrayList();
+        String sql = "FROM Logs";
+        DefaultTableModel modelo = (DefaultTableModel) tabela.getModel();
+        modelo.setNumRows(0);
+        DefaultTableCellRenderer centralizado = new DefaultTableCellRenderer();
+        centralizado.setHorizontalAlignment(SwingConstants.CENTER);
+        try {
+            sessao = HibernateUtil.getSessionFactory().openSession();
+            Transaction transacao = sessao.beginTransaction();
+            tabela.getColumnModel().getColumn(0).setCellRenderer(centralizado);
+            tabela.getColumnModel().getColumn(1).setCellRenderer(centralizado);
+            tabela.getColumnModel().getColumn(0).setPreferredWidth(40);
+            tabela.getColumnModel().getColumn(5).setPreferredWidth(125);
+            org.hibernate.Query query = sessao.createQuery(sql);
+            transacao.commit();
+            resultado = query.list();
+            for (int i = 0; i < resultado.size(); i++) {
+                Logs log = resultado.get(i);
+                Funcionario fun = (Funcionario) log.getFuncionario();
+                modelo.addRow(new Object[]{log.getId(), String.valueOf(fun.getId()), fun.getNome(), log.getAcao(), log.getErro(), log.getData()});
+            }
+        } catch (Exception e) {
+            LogsDAO.salvarLog(Tela_Principal.getFunLog(), "Erro ao realizar uma pesquisa de preenchimento de tabela de logs.", e);
+            JOptionPane.showMessageDialog(null, "Erro imprevisto!\n" + e, "Erro!", JOptionPane.ERROR_MESSAGE);
+        } finally {
+            sessao.close();
+        }
     }
 }
