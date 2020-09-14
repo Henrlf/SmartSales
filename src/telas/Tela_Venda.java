@@ -10,6 +10,7 @@ public class Tela_Venda extends javax.swing.JFrame {
 
     Cliente cliente;
     Produto produto;
+    double total;
 
     public Tela_Venda() {
         initComponents();
@@ -381,12 +382,17 @@ public class Tela_Venda extends javax.swing.JFrame {
                 DefaultTableModel modelo = (DefaultTableModel) tabProdPed.getModel();
                 modelo.removeRow(lin);
                 modelo.addRow(obj);
-                calculaTotal();
+                int n = (Integer.parseInt(campoQuantProd.getText()) + quant);
+                this.total += n * produto.getPreco();
+                campoPrecoTotal.setText(String.valueOf(total));
+
             } else {
                 Object[] obj = {produto.getId(), produto.getNome(), "R$ " + produto.getPreco(), Integer.parseInt(campoQuantProd.getText())};
                 DefaultTableModel modelo = (DefaultTableModel) tabProdPed.getModel();
                 modelo.addRow(obj);
-                calculaTotal();
+                this.total += Double.parseDouble(campoQuantProd.getText()) * produto.getPreco();
+                campoPrecoTotal.setText(String.valueOf(total));
+
             }
         }
     }//GEN-LAST:event_btAddProdActionPerformed
@@ -410,7 +416,7 @@ public class Tela_Venda extends javax.swing.JFrame {
             pedido.setFuncionario(Tela_Principal.funcionarioLogado);
             pedido.setStaus("A");
             pedido.setTipo_pagamento(String.valueOf(ComboPagamento.getItemAt(ComboPagamento.getSelectedIndex())));
-            pedido.setValor(Mascaras.formatarDoubleBanco(campoPrecoTotal));
+            pedido.setValor(total);
             if (GenericoDAO.cadastrar(pedido)) {
                 Produtos_Pedido pp = new Produtos_Pedido();
                 for (int i = 0; i < tabProdPed.getRowCount(); i++) {
@@ -426,11 +432,14 @@ public class Tela_Venda extends javax.swing.JFrame {
                 }
             }
         }
+        //  calculaTotal();
     }//GEN-LAST:event_btFinalizarActionPerformed
 
     private void btRemoverProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRemoverProdutoActionPerformed
         if (tabProdPed.getSelectedRowCount() != 0) {
             DefaultTableModel modelo = (DefaultTableModel) tabProdPed.getModel();
+            this.total -= 0;
+            campoPrecoTotal.setText(String.valueOf(total));
             modelo.removeRow(tabProdPed.getSelectedRow());
         }
     }//GEN-LAST:event_btRemoverProdutoActionPerformed
@@ -478,22 +487,13 @@ public class Tela_Venda extends javax.swing.JFrame {
 
     }
 
-    public double calculaTotal() {
-        double valorTotal = 0.0;
-        for (int i = 0; i < tabProdPed.getRowCount(); i++) {
-            int quantidade = Integer.parseInt(String.valueOf(tabProdPed.getValueAt(i, 3)));
-            Produto prod = (Produto) GenericoDAO.getObjectBanco(Integer.parseInt(String.valueOf(tabProdPed.getValueAt(i, 0))), Produto.class);
-            valorTotal += (quantidade * (prod.getPreco()));
-        }
-        return valorTotal;
-    }
-
     public boolean verificaPresenca(Produto prod) {
         boolean pas = false;
         for (int i = 0; i < tabProdPed.getRowCount(); i++) {
             int id = Integer.parseInt(String.valueOf(tabProdPed.getValueAt(i, 0)));
             if (produto.getId() == id) {
                 pas = true;
+
             }
         }
         return pas;

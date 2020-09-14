@@ -20,7 +20,7 @@ public class Mascaras {
     }
 
     public static void formatarDecimal(JFormattedTextField campo) {
-        DecimalFormat dFormat = new DecimalFormat("#,##0.00");
+        DecimalFormat dFormat = new DecimalFormat("########");
         NumberFormatter formatter = new NumberFormatter(dFormat);
         formatter.setFormat(dFormat);
         formatter.setAllowsInvalid(false);

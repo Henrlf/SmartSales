@@ -4,7 +4,7 @@ import java.io.Serializable;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "protudos_pedido")
+@Table(name = "produtos_pedido")
 
 public class Produtos_Pedido implements Serializable {
 
@@ -21,7 +21,7 @@ public class Produtos_Pedido implements Serializable {
     @JoinColumn(name = "pedido_id")
     private Pedido pedido;
 
-    @Column(name = "quantidade")
+    @Column(name = "quantiade")
     private int quantidade;
 
     public Produto getProduto() {
