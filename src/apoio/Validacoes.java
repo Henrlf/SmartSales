@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import org.hibernate.Session;
+import telas.Tela_Login;
 import telas.Tela_Principal;
 
 public class Validacoes {
@@ -25,6 +26,7 @@ public class Validacoes {
                         Tela_Principal.funcionarioLogado = funcionario;
                         sessao.byId(Funcionario.class);
                         System.out.println(sessao.byId(Funcionario.class));
+                        Tela_Login.SetFuncionario(funcionario); 
                         pas = true;
                     }
                 }

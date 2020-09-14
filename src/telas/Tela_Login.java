@@ -1,13 +1,17 @@
 package telas;
 
 import apoio.*;
+import entidades.Funcionario;
 import javax.swing.JOptionPane;
 
 public class Tela_Login extends javax.swing.JFrame {
 
+    private static Funcionario fun;
+
     public Tela_Login() {
         initComponents();
         this.setLocationRelativeTo(null);
+
     }
 
     @SuppressWarnings("unchecked")
@@ -126,9 +130,21 @@ public class Tela_Login extends javax.swing.JFrame {
     private void btLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLoginActionPerformed
         if (!campoLogin.getText().equals("") && !campoSenha.getText().equals("")) {
             if (Validacoes.logar(campoLogin.getText(), Criptografia.encriptografar(campoSenha.getText()))) {
-                Tela_Principal tp = new Tela_Principal();
-                tp.setVisible(true);
-                this.dispose();
+
+                if (fun.getCargo().equals("Administrador")) {
+
+                    Tela_Principal tp = new Tela_Principal();
+                    tp.setVisible(true);
+                    this.dispose();
+
+                } else {
+
+                    Tela_PrincipalFuncionario tpf = new Tela_PrincipalFuncionario();
+                    tpf.setVisible(true);
+                    this.dispose();
+
+                }
+
             } else {
                 JOptionPane.showMessageDialog(null, "Login/Senha incorretos ou usuário inativado!", "Aviso!", JOptionPane.WARNING_MESSAGE);
             }
@@ -179,6 +195,10 @@ public class Tela_Login extends javax.swing.JFrame {
 
             }
         });
+    }
+
+    public static void SetFuncionario(Funcionario f) {
+        Tela_Login.fun = f;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

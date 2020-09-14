@@ -23,19 +23,19 @@ public class Tela_Principal extends javax.swing.JFrame {
         Cadastro_Cidades = new javax.swing.JMenuItem();
         Criacao_metas = new javax.swing.JMenu();
         Gerenciamento_metas = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
+        Criacao_Metas = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         Venda_produtos = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        Vizualiza_Vendas = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         Compra_Produtos = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        Vizualiza_Compras = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
-        jMenuItem7 = new javax.swing.JMenuItem();
-        jMenuItem8 = new javax.swing.JMenuItem();
+        Relatorio_Vendas = new javax.swing.JMenuItem();
+        Relatorio_Compras = new javax.swing.JMenuItem();
+        Relatorio_Cadastros = new javax.swing.JMenuItem();
+        Relatorio_Logs = new javax.swing.JMenuItem();
+        Relatorio_Auditoria = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         Pesquisa_Generico = new javax.swing.JMenuItem();
         btLogs = new javax.swing.JMenuItem();
@@ -92,9 +92,14 @@ public class Tela_Principal extends javax.swing.JFrame {
         Gerenciamento_metas.setText("Gereciamento de Metas");
         Criacao_metas.add(Gerenciamento_metas);
 
-        jMenuItem5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jMenuItem5.setText("Criaçao de metas");
-        Criacao_metas.add(jMenuItem5);
+        Criacao_Metas.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        Criacao_Metas.setText("Criaçao de metas");
+        Criacao_Metas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Criacao_MetasActionPerformed(evt);
+            }
+        });
+        Criacao_metas.add(Criacao_Metas);
 
         jMenuBar1.add(Criacao_metas);
 
@@ -110,9 +115,9 @@ public class Tela_Principal extends javax.swing.JFrame {
         });
         jMenu1.add(Venda_produtos);
 
-        jMenuItem1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jMenuItem1.setText("Vizualizar Vendas");
-        jMenu1.add(jMenuItem1);
+        Vizualiza_Vendas.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        Vizualiza_Vendas.setText("Vizualizar Vendas");
+        jMenu1.add(Vizualiza_Vendas);
 
         jMenuBar1.add(jMenu1);
 
@@ -123,39 +128,49 @@ public class Tela_Principal extends javax.swing.JFrame {
         Compra_Produtos.setText("Compra");
         jMenu2.add(Compra_Produtos);
 
-        jMenuItem2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jMenuItem2.setText("Vizualizar Compras");
-        jMenu2.add(jMenuItem2);
+        Vizualiza_Compras.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        Vizualiza_Compras.setText("Vizualizar Compras");
+        Vizualiza_Compras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Vizualiza_ComprasActionPerformed(evt);
+            }
+        });
+        jMenu2.add(Vizualiza_Compras);
 
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Relatório");
         jMenu3.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
 
-        jMenuItem3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jMenuItem3.setText("Vendas");
-        jMenu3.add(jMenuItem3);
+        Relatorio_Vendas.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        Relatorio_Vendas.setText("Vendas");
+        jMenu3.add(Relatorio_Vendas);
 
-        jMenuItem4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jMenuItem4.setText("Compras");
-        jMenu3.add(jMenuItem4);
-
-        jMenuItem6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jMenuItem6.setText("Cadastros");
-        jMenu3.add(jMenuItem6);
-
-        jMenuItem7.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jMenuItem7.setText("Log's");
-        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+        Relatorio_Compras.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        Relatorio_Compras.setText("Compras");
+        Relatorio_Compras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem7ActionPerformed(evt);
+                Relatorio_ComprasActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem7);
+        jMenu3.add(Relatorio_Compras);
 
-        jMenuItem8.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jMenuItem8.setText("Auditoria");
-        jMenu3.add(jMenuItem8);
+        Relatorio_Cadastros.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        Relatorio_Cadastros.setText("Cadastros");
+        jMenu3.add(Relatorio_Cadastros);
+
+        Relatorio_Logs.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        Relatorio_Logs.setText("Log's");
+        Relatorio_Logs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Relatorio_LogsActionPerformed(evt);
+            }
+        });
+        jMenu3.add(Relatorio_Logs);
+
+        Relatorio_Auditoria.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        Relatorio_Auditoria.setText("Auditoria");
+        jMenu3.add(Relatorio_Auditoria);
 
         jMenuBar1.add(jMenu3);
 
@@ -244,9 +259,21 @@ public class Tela_Principal extends javax.swing.JFrame {
         tl.setLocationRelativeTo(null);
     }//GEN-LAST:event_btLogsActionPerformed
 
-    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+    private void Relatorio_LogsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Relatorio_LogsActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem7ActionPerformed
+    }//GEN-LAST:event_Relatorio_LogsActionPerformed
+
+    private void Relatorio_ComprasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Relatorio_ComprasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Relatorio_ComprasActionPerformed
+
+    private void Vizualiza_ComprasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Vizualiza_ComprasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Vizualiza_ComprasActionPerformed
+
+    private void Criacao_MetasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Criacao_MetasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Criacao_MetasActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -290,10 +317,18 @@ public class Tela_Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem Cadastro_funcionario;
     private javax.swing.JMenu Cadatro;
     private javax.swing.JMenuItem Compra_Produtos;
+    private javax.swing.JMenuItem Criacao_Metas;
     private javax.swing.JMenu Criacao_metas;
     private javax.swing.JMenuItem Gerenciamento_metas;
     private javax.swing.JMenuItem Pesquisa_Generico;
+    private javax.swing.JMenuItem Relatorio_Auditoria;
+    private javax.swing.JMenuItem Relatorio_Cadastros;
+    private javax.swing.JMenuItem Relatorio_Compras;
+    private javax.swing.JMenuItem Relatorio_Logs;
+    private javax.swing.JMenuItem Relatorio_Vendas;
     private javax.swing.JMenuItem Venda_produtos;
+    private javax.swing.JMenuItem Vizualiza_Compras;
+    private javax.swing.JMenuItem Vizualiza_Vendas;
     private javax.swing.JMenuItem btAuditorias;
     private javax.swing.JMenuItem btLogs;
     private javax.swing.JMenu jMenu1;
@@ -301,13 +336,5 @@ public class Tela_Principal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
     // End of variables declaration//GEN-END:variables
 }
