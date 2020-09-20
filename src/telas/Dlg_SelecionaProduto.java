@@ -6,6 +6,8 @@ import entidades.Produto;
 public class Dlg_SelecionaProduto extends javax.swing.JDialog {
 
     Tela_Venda tv;
+    Tela_Compra tc;
+    int x = 0;
 
     public Dlg_SelecionaProduto(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -18,6 +20,15 @@ public class Dlg_SelecionaProduto extends javax.swing.JDialog {
         GenericoDAO.pesquisa(tabelaProduto, campoPesquisa.getText().toUpperCase(), "Produto");
         this.setTitle("Seleciona Produto");
         this.tv = x;
+    }
+
+    public Dlg_SelecionaProduto(java.awt.Frame parent, boolean modal, Tela_Compra tc) {
+        super(parent, modal);
+        initComponents();
+        GenericoDAO.pesquisa(tabelaProduto, campoPesquisa.getText().toUpperCase(), "Produto");
+        this.setTitle("Seleciona Produto");
+        this.tc = tc;
+        this.x = 1;
     }
 
     @SuppressWarnings("unchecked")
@@ -128,8 +139,14 @@ public class Dlg_SelecionaProduto extends javax.swing.JDialog {
     private void Selecionar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Selecionar1ActionPerformed
         String codigos = String.valueOf(tabelaProduto.getValueAt(tabelaProduto.getSelectedRow(), 0));
         Produto produto = (Produto) GenericoDAO.getObjectBanco(Integer.parseInt(codigos), Produto.class);
-        tv.DefinirProduto(produto);
-        this.dispose();
+        if (x == 0) {
+            tv.DefinirProduto(produto);
+            this.dispose();
+        } else {
+            tc.DefinirProduto(produto);
+            this.dispose();
+        }
+
     }//GEN-LAST:event_Selecionar1ActionPerformed
 
     private void sair1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sair1ActionPerformed

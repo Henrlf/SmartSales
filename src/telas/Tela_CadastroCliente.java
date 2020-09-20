@@ -686,7 +686,7 @@ public class Tela_CadastroCliente extends javax.swing.JFrame {
             int id = Integer.parseInt(idString);
             Cliente cli = (Cliente) GenericoDAO.getObjectBanco(id, Cliente.class);
             cli.setStatus("I");
-            if (GenericoDAO.inativar(id)) {
+            if (GenericoDAO.inativar(cli)) {
                 JOptionPane.showMessageDialog(null, "Cliente inativado com sucesso!");
                 GenericoDAO.pesquisa(tabelaCliente, campoPesquisa.getText().toUpperCase(), "Cliente");
             }

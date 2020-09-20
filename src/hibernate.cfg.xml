@@ -52,7 +52,9 @@ Contributor(s):
         <mapping class="entidades.Cliente"/>
         <mapping class="entidades.Pedido"/>
         <mapping class="entidades.Produto"/>
+        <mapping class="entidades.Compra"/>
         <mapping class="entidades.Produtos_Pedido"/>
+        <mapping class="entidades.Produtos_compra"/>
         <mapping class="entidades.Logs"/>
         <mapping class="entidades.Auditoria"/>
  

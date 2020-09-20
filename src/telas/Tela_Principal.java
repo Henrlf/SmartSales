@@ -126,6 +126,11 @@ public class Tela_Principal extends javax.swing.JFrame {
 
         Compra_Produtos.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         Compra_Produtos.setText("Compra");
+        Compra_Produtos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Compra_ProdutosActionPerformed(evt);
+            }
+        });
         jMenu2.add(Compra_Produtos);
 
         Vizualiza_Compras.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -274,6 +279,12 @@ public class Tela_Principal extends javax.swing.JFrame {
     private void Criacao_MetasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Criacao_MetasActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_Criacao_MetasActionPerformed
+
+    private void Compra_ProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Compra_ProdutosActionPerformed
+        Tela_Compra tc = new Tela_Compra();
+        tc.setVisible(true);
+        tc.setLocationRelativeTo(null);
+    }//GEN-LAST:event_Compra_ProdutosActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
