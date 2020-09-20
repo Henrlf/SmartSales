@@ -74,7 +74,8 @@ Contributor(s):
         <mapping class="telas.Dlg_SelecionaCliente"/>
         <mapping class="telas.Dlg_SelecionaFuncionario"/>
         <mapping class="telas.Dlg_SelecionaProduto"/>
-        
+        <mapping class="telas.Tela_VizualizaVenda"/>
+        <mapping class="telas.Tela_VizualizaCompra"/>
         
     
         

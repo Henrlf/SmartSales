@@ -137,7 +137,7 @@ public class GenericoDAO {
                     Auditoria aud = (Auditoria) resultado.get(i);
                     modelo.addRow(new Object[]{aud.getFuncionario(), aud.getFuncao(), aud.getId_alvo(), aud.getNome_alvo(), aud.getData()});
                 }
-            }
+            } 
         } catch (Exception e) {
             LogsDAO.salvarLog(Tela_Principal.getFunLog(), "Erro ao realizar uma pesquisa de preenchimento de tabela.", e);
             JOptionPane.showMessageDialog(null, "Erro imprevisto!\n" + e, "Erro!", JOptionPane.ERROR_MESSAGE);
