@@ -139,7 +139,7 @@ public class Tela_Login extends javax.swing.JFrame {
                     
                 }
                 if (fun.getCargo().equals("Tele-Vendedor")) {
-                    Tela_PrincipalTelaVendedor tv = new Tela_PrincipalTelaVendedor();
+                    Tela_PrincipalTeleVendedor tv = new Tela_PrincipalTeleVendedor();
                     tv.setVisible(true);
                     this.dispose();
                 }                
