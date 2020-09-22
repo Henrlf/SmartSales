@@ -5,15 +5,15 @@ import entidades.Funcionario;
 import javax.swing.JOptionPane;
 
 public class Tela_Login extends javax.swing.JFrame {
-
+    
     private static Funcionario fun;
-
+    
     public Tela_Login() {
         initComponents();
         this.setLocationRelativeTo(null);
-
+        
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -130,21 +130,27 @@ public class Tela_Login extends javax.swing.JFrame {
     private void btLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLoginActionPerformed
         if (!campoLogin.getText().equals("") && !campoSenha.getText().equals("")) {
             if (Validacoes.logar(campoLogin.getText(), Criptografia.encriptografar(campoSenha.getText()))) {
-
+                
                 if (fun.getCargo().equals("Administrador")) {
-
+                    
                     Tela_Principal tp = new Tela_Principal();
                     tp.setVisible(true);
                     this.dispose();
-
-                } else {
-
+                    
+                }
+                if (fun.getCargo().equals("Tele-Vendedor")) {
+                    Tela_PrincipalTelaVendedor tv = new Tela_PrincipalTelaVendedor();
+                    tv.setVisible(true);
+                    this.dispose();
+                }                
+                if (fun.getCargo().equals("Vendedor")) {
+                    
                     Tela_PrincipalFuncionario tpf = new Tela_PrincipalFuncionario();
                     tpf.setVisible(true);
                     this.dispose();
-
-                }
-
+                    
+                } 
+                
             } else {
                 JOptionPane.showMessageDialog(null, "Login/Senha incorretos ou usuário inativado!", "Aviso!", JOptionPane.WARNING_MESSAGE);
             }
@@ -162,7 +168,7 @@ public class Tela_Login extends javax.swing.JFrame {
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
         this.dispose();
     }//GEN-LAST:event_btSairActionPerformed
-
+    
     public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -192,11 +198,11 @@ public class Tela_Login extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Tela_Login().setVisible(true);
-
+                
             }
         });
     }
-
+    
     public static void SetFuncionario(Funcionario f) {
         Tela_Login.fun = f;
     }

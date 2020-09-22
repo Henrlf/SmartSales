@@ -20,7 +20,17 @@ public class Tela_CadastroCliente extends javax.swing.JFrame {
         GenericoDAO.pesquisa(tabelaCliente, campoPesquisa.getText().toUpperCase(), "Cliente");
         this.setTitle("Cadastro de Clientes");
         this.getDesativarEdicao();
-
+        btEditar.setEnabled(true);
+        btIntivar.setEnabled(true);
+    }
+    
+     public Tela_CadastroCliente(int x) {
+        initComponents();
+        Mascaras.formatarCPF(campoCpf);
+        Formatacao.formatarTelefone(campoTelefone);
+        GenericoDAO.pesquisa(tabelaCliente, campoPesquisa.getText().toUpperCase(), "Cliente");
+        this.setTitle("Cadastro de Clientes");
+        this.getDesativarEdicao();
     }
 
     @SuppressWarnings("unchecked")
@@ -134,6 +144,7 @@ public class Tela_CadastroCliente extends javax.swing.JFrame {
 
         btIntivar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btIntivar.setText("Inativar");
+        btIntivar.setEnabled(false);
         btIntivar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btIntivarActionPerformed(evt);
@@ -142,6 +153,7 @@ public class Tela_CadastroCliente extends javax.swing.JFrame {
 
         btEditar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btEditar.setText("Editar");
+        btEditar.setEnabled(false);
         btEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btEditarActionPerformed(evt);

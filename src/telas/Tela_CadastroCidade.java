@@ -13,6 +13,13 @@ public class Tela_CadastroCidade extends javax.swing.JFrame {
     public Tela_CadastroCidade() {
         initComponents();
         GenericoDAO.pesquisa(tabelaCidade, campoPesquisa.getText().toUpperCase(), "cidade");
+        btInativar.setEnabled(true);
+        
+    }
+    
+        public Tela_CadastroCidade(int x) {
+        initComponents();
+        GenericoDAO.pesquisa(tabelaCidade, campoPesquisa.getText().toUpperCase(), "cidade");
     }
 
     @SuppressWarnings("unchecked")
@@ -82,6 +89,7 @@ public class Tela_CadastroCidade extends javax.swing.JFrame {
 
         btInativar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btInativar.setText("Inativar");
+        btInativar.setEnabled(false);
         btInativar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btInativarActionPerformed(evt);
