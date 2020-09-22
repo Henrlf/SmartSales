@@ -34,7 +34,6 @@ public class Tela_PrincipalTeleVendedor extends javax.swing.JFrame {
         Cadastro_Cidades = new javax.swing.JMenuItem();
         Criacao_metas = new javax.swing.JMenu();
         Gerenciamento_metas = new javax.swing.JMenuItem();
-        Criacao_Metas = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         Venda_produtos = new javax.swing.JMenuItem();
         Vizualiza_Vendas = new javax.swing.JMenuItem();
@@ -77,15 +76,6 @@ public class Tela_PrincipalTeleVendedor extends javax.swing.JFrame {
         Gerenciamento_metas.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         Gerenciamento_metas.setText("Gereciamento de Metas");
         Criacao_metas.add(Gerenciamento_metas);
-
-        Criacao_Metas.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        Criacao_Metas.setText("Criaçao de metas");
-        Criacao_Metas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Criacao_MetasActionPerformed(evt);
-            }
-        });
-        Criacao_metas.add(Criacao_Metas);
 
         jMenuBar1.add(Criacao_metas);
 
@@ -166,10 +156,6 @@ public class Tela_PrincipalTeleVendedor extends javax.swing.JFrame {
         tcc.setLocationRelativeTo(null);
     }//GEN-LAST:event_Cadastro_CidadesActionPerformed
 
-    private void Criacao_MetasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Criacao_MetasActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Criacao_MetasActionPerformed
-
     private void Venda_produtosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Venda_produtosActionPerformed
         Tela_Venda tv = new Tela_Venda();
         tv.setVisible(true);
@@ -220,7 +206,6 @@ public class Tela_PrincipalTeleVendedor extends javax.swing.JFrame {
     private javax.swing.JMenuItem Cadastro_Cidades;
     private javax.swing.JMenuItem Cadastro_clientes;
     private javax.swing.JMenu Cadatro;
-    private javax.swing.JMenuItem Criacao_Metas;
     private javax.swing.JMenu Criacao_metas;
     private javax.swing.JMenuItem Gerenciamento_metas;
     private javax.swing.JMenuItem Pesquisa_Generico;
