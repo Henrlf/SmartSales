@@ -15,8 +15,8 @@ public class Tela_Compra extends javax.swing.JFrame {
 
     public Tela_Compra() {
         initComponents();
-        campoNomeFuncionario.setText(Tela_Principal.funcionarioLogado.getNome());
-        campoCargoFuncionario.setText(Tela_Principal.funcionarioLogado.getCargo());
+        campoNomeFuncionario.setText(Tela_Login.fun.getNome());
+        campoCargoFuncionario.setText(Tela_Login.fun.getCargo());
         Mascaras.formatarDecimal(campoPrecoTotal);
         DefaultTableModel modelo = (DefaultTableModel) tabProdPed.getModel();
         modelo.setNumRows(0);
@@ -360,7 +360,7 @@ public class Tela_Compra extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Campos obrigatórios em branco!", "Aviso!", JOptionPane.WARNING_MESSAGE);
         } else {
             Compra compra = new Compra();
-            compra.setFuncionario(Tela_Principal.funcionarioLogado);
+            compra.setFuncionario(Tela_Login.fun);
             compra.setStatus("A");
             compra.setTipo_pagamento(String.valueOf(ComboPagamento.getItemAt(ComboPagamento.getSelectedIndex())));
             compra.setValor_total(total);

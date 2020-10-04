@@ -7,7 +7,7 @@ import java.util.List;
 import javax.swing.*;
 import javax.swing.table.*;
 import org.hibernate.*;
-import telas.Tela_Principal;
+import telas.Tela_Login;
 
 public class GenericoDAO {
 
@@ -21,7 +21,7 @@ public class GenericoDAO {
             return true;
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erro imprevisto!\n" + e, "Erro!", JOptionPane.ERROR_MESSAGE);
-            LogsDAO.salvarLog(Tela_Principal.getFunLog(), "Erro ao realizar cadastro.", e);
+            LogsDAO.salvarLog(Tela_Login.fun, "Erro ao realizar cadastro.", e);
             return false;
         } finally {
             sessao.close();
@@ -37,7 +37,7 @@ public class GenericoDAO {
             transacao.commit();
             return true;
         } catch (Exception e) {
-            LogsDAO.salvarLog(Tela_Principal.getFunLog(), "Erro ao realizar uma inativação.", e);
+            LogsDAO.salvarLog(Tela_Login.fun, "Erro ao realizar uma inativação.", e);
             JOptionPane.showMessageDialog(null, "Erro imprevisto!\n" + e, "Erro!", JOptionPane.ERROR_MESSAGE);
             return false;
         } finally {
@@ -53,7 +53,7 @@ public class GenericoDAO {
             obj = sessao.get(classe, id);
             transacao.commit();
         } catch (Exception e) {
-            LogsDAO.salvarLog(Tela_Principal.getFunLog(), "Erro ao puxar algum registro do banco de dados.", e);
+            LogsDAO.salvarLog(Tela_Login.fun, "Erro ao puxar algum registro do banco de dados.", e);
             JOptionPane.showMessageDialog(null, "Erro imprevisto!\n" + e, "Erro!", JOptionPane.ERROR_MESSAGE);
         } finally {
             sessao.close();
@@ -135,11 +135,11 @@ public class GenericoDAO {
                 resultado = query.list();
                 for (int i = 0; i < resultado.size(); i++) {
                     Auditoria aud = (Auditoria) resultado.get(i);
-                    modelo.addRow(new Object[]{aud.getFuncionario(), aud.getFuncao(), aud.getId_alvo(), aud.getNome_alvo(), aud.getData()});
+                    modelo.addRow(new Object[]{aud.getId(), aud.getOperacao(), aud.getTabela(), aud.getOld_value(), aud.getNew_value(), aud.getUsuario()});
                 }
-            } 
+            }
         } catch (Exception e) {
-            LogsDAO.salvarLog(Tela_Principal.getFunLog(), "Erro ao realizar uma pesquisa de preenchimento de tabela.", e);
+            LogsDAO.salvarLog(Tela_Login.fun, "Erro ao realizar uma pesquisa de preenchimento de tabela.", e);
             JOptionPane.showMessageDialog(null, "Erro imprevisto!\n" + e, "Erro!", JOptionPane.ERROR_MESSAGE);
         } finally {
             sessao.close();
@@ -148,28 +148,31 @@ public class GenericoDAO {
 
     public static void pesquisaAuditoria(JTable tabela) {
         Session sessao = null;
-        List<Auditoria> resultado = new ArrayList();
         String sql = "FROM Auditoria";
         DefaultTableModel modelo = (DefaultTableModel) tabela.getModel();
         modelo.setNumRows(0);
         DefaultTableCellRenderer centralizado = new DefaultTableCellRenderer();
         centralizado.setHorizontalAlignment(SwingConstants.CENTER);
+        tabela.getColumnModel().getColumn(0).setCellRenderer(centralizado);
+        tabela.getColumnModel().getColumn(1).setCellRenderer(centralizado);
+        tabela.getColumnModel().getColumn(2).setCellRenderer(centralizado);
+        tabela.getColumnModel().getColumn(6).setCellRenderer(centralizado);
+        tabela.getColumnModel().getColumn(0).setPreferredWidth(50);
+        tabela.getColumnModel().getColumn(1).setPreferredWidth(100);
+        tabela.getColumnModel().getColumn(2).setPreferredWidth(100);
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
             Transaction transacao = sessao.beginTransaction();
-            tabela.getColumnModel().getColumn(1).setCellRenderer(centralizado);
-            tabela.getColumnModel().getColumn(2).setCellRenderer(centralizado);
-            tabela.getColumnModel().getColumn(1).setPreferredWidth(100);
-            tabela.getColumnModel().getColumn(2).setPreferredWidth(40);
             org.hibernate.Query query = sessao.createQuery(sql);
             transacao.commit();
+            List<Auditoria> resultado = new ArrayList();
             resultado = query.list();
             for (int i = 0; i < resultado.size(); i++) {
                 Auditoria aud = resultado.get(i);
-                modelo.addRow(new Object[]{aud.getFuncionario(), aud.getFuncao(), aud.getId_alvo(), aud.getNome_alvo(), aud.getData()});
+                modelo.addRow(new Object[]{aud.getId(), aud.getOperacao(), aud.getTabela(), aud.getOld_value(), aud.getNew_value(), aud.getData(), aud.getUsuario()});
             }
         } catch (Exception e) {
-            LogsDAO.salvarLog(Tela_Principal.getFunLog(), "Erro ao realizar uma pesquisa de preenchimento de tabela de auditoria.", e);
+            LogsDAO.salvarLog(Tela_Login.fun, "Erro ao realizar uma pesquisa de preenchimento de tabela de auditoria.", e);
             JOptionPane.showMessageDialog(null, "Erro imprevisto!\n" + e, "Erro!", JOptionPane.ERROR_MESSAGE);
         } finally {
             sessao.close();
@@ -185,7 +188,7 @@ public class GenericoDAO {
             transacao.commit();
             return true;
         } catch (Exception e) {
-            LogsDAO.salvarLog(Tela_Principal.getFunLog(), "Erro ao realizar uma edição.", e);
+            LogsDAO.salvarLog(Tela_Login.fun, "Erro ao realizar uma edição.", e);
             JOptionPane.showMessageDialog(null, "Erro imprevisto!\n" + e, "Erro!", JOptionPane.ERROR_MESSAGE);
             return false;
         } finally {
@@ -208,7 +211,7 @@ public class GenericoDAO {
 //                modelo.addRow(new Object[]{c.getId(), c.getProduto().getNome(), c.getPreco()});
             }
         } catch (HibernateException e) {
-            LogsDAO.salvarLog(Tela_Principal.getFunLog(), "Erro ao tentar pesquisar um cliente.", e);
+            LogsDAO.salvarLog(Tela_Login.fun, "Erro ao tentar pesquisar um cliente.", e);
         } finally {
             sessao.close();
         }
@@ -222,7 +225,7 @@ public class GenericoDAO {
             sessao = HibernateUtil.getSessionFactory().openSession();
             maiorId = Integer.parseInt(sessao.createQuery(sql).list().toString().replaceAll("\\D", ""));
         } catch (Exception e) {
-            LogsDAO.salvarLog(Tela_Principal.getFunLog(), "Erro ao realizar uma busca pelo ultimo id de cadastro.", e);
+            LogsDAO.salvarLog(Tela_Login.fun, "Erro ao realizar uma busca pelo ultimo id de cadastro.", e);
             JOptionPane.showMessageDialog(null, "Erro imprevisto!\n" + e, "Erro!", JOptionPane.ERROR_MESSAGE);
         } finally {
             sessao.close();
@@ -254,7 +257,7 @@ public class GenericoDAO {
                 modelo.addRow(new Object[]{log.getId(), String.valueOf(fun.getId()), fun.getNome(), log.getAcao(), log.getErro(), log.getData()});
             }
         } catch (Exception e) {
-            LogsDAO.salvarLog(Tela_Principal.getFunLog(), "Erro ao realizar uma pesquisa de preenchimento de tabela de logs.", e);
+            LogsDAO.salvarLog(Tela_Login.fun, "Erro ao realizar uma pesquisa de preenchimento de tabela de logs.", e);
             JOptionPane.showMessageDialog(null, "Erro imprevisto!\n" + e, "Erro!", JOptionPane.ERROR_MESSAGE);
         } finally {
             sessao.close();

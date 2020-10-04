@@ -17,20 +17,23 @@ public class Auditoria {
     @Column(name = "id")
     private int id;
 
-    @Column(name = "funcionario")
-    private String funcionario;
+    @Column(name = "tabela")
+    private String tabela;
 
-    @Column(name = "funcao")
-    private String funcao;
+    @Column(name = "operacao")
+    private String operacao;
 
-    @Column(name = "id_alvo")
-    private int id_alvo;
+    @Column(name = "old_value")
+    private int old_value;
 
-    @Column(name = "nome_alvo")
-    private String nome_alvo;
+    @Column(name = "new_value")
+    private String new_value;
 
-    @Column(name = "data_op")
+    @Column(name = "data")
     private String data;
+
+    @Column(name = "usuario")
+    private int usuario;
 
     public int getId() {
         return id;
@@ -40,36 +43,44 @@ public class Auditoria {
         this.id = id;
     }
 
-    public String getFuncionario() {
-        return funcionario;
+    public String getTabela() {
+        return tabela;
     }
 
-    public void setFuncionario(String funcionario) {
-        this.funcionario = funcionario;
+    public void setTabela(String tabela) {
+        this.tabela = tabela;
     }
 
-    public String getFuncao() {
-        return funcao;
+    public String getOperacao() {
+        return operacao;
     }
 
-    public void setFuncao(String funcao) {
-        this.funcao = funcao;
+    public void setOperacao(String operacao) {
+        this.operacao = operacao;
     }
 
-    public int getId_alvo() {
-        return id_alvo;
+    public int getOld_value() {
+        return old_value;
     }
 
-    public void setId_alvo(int id_alvo) {
-        this.id_alvo = id_alvo;
+    public void setOld_value(int old_value) {
+        this.old_value = old_value;
     }
 
-    public String getNome_alvo() {
-        return nome_alvo;
+    public String getNew_value() {
+        return new_value;
     }
 
-    public void setNome_alvo(String nome_alvo) {
-        this.nome_alvo = nome_alvo;
+    public void setNew_value(String new_value) {
+        this.new_value = new_value;
+    }
+
+    public int getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(int usuario) {
+        this.usuario = usuario;
     }
 
     public String getData() {
@@ -79,6 +90,5 @@ public class Auditoria {
     public void setData(String data) {
         this.data = data;
     }
-    
-    
+
 }

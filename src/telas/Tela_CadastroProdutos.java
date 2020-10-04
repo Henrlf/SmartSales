@@ -447,6 +447,7 @@ public class Tela_CadastroProdutos extends javax.swing.JFrame {
             produto.setPreco(Mascaras.formatarDoubleBanco(campoPreco));
             produto.setDescricao(campoDescricao.getText());
             produto.setStatus("A");
+            produto.setFun_id(Tela_Login.fun.getId());
             if (GenericoDAO.cadastrar(produto)) {
                 GenericoDAO.pesquisa(tabelaProduto, campoPesquisa.getText().toUpperCase(), "Froduto");
                 JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!");
@@ -483,6 +484,7 @@ public class Tela_CadastroProdutos extends javax.swing.JFrame {
             produto.setNome(campoNomeEdicao.getText().toUpperCase());
             produto.setPreco(Mascaras.formatarDoubleBanco(campoPrecoEdicao));
             produto.setDescricao(campoDescricaoEdicao.getText());
+            produto.setFun_id(Tela_Login.fun.getId());
             if (GenericoDAO.salvarEdicao(produto)) {
                 JOptionPane.showMessageDialog(null, "Edição de produto realizado com sucesso!");
                 GenericoDAO.pesquisa(tabelaProduto, campoPesquisa.getText().toUpperCase(), "Froduto");

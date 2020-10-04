@@ -14,10 +14,9 @@ public class Tela_CadastroCidade extends javax.swing.JFrame {
         initComponents();
         GenericoDAO.pesquisa(tabelaCidade, campoPesquisa.getText().toUpperCase(), "cidade");
         btInativar.setEnabled(true);
-        
     }
-    
-        public Tela_CadastroCidade(int x) {
+
+    public Tela_CadastroCidade(int x) {
         initComponents();
         GenericoDAO.pesquisa(tabelaCidade, campoPesquisa.getText().toUpperCase(), "cidade");
     }
@@ -249,6 +248,7 @@ public class Tela_CadastroCidade extends javax.swing.JFrame {
             cidade.setNome(campoNome.getText().toUpperCase());
             cidade.setUf(campoUF.getText().toUpperCase());
             cidade.setStatus("A");
+            cidade.setFun_id(Tela_Login.fun.getId());
             if (GenericoDAO.cadastrar(cidade)) {
                 JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!");
                 campoNome.setText("");

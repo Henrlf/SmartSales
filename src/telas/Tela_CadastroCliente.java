@@ -718,6 +718,7 @@ public class Tela_CadastroCliente extends javax.swing.JFrame {
             cliente.setStatus("A");
             cliente.setCidade(c);
             cliente.setFuncionario(f);
+            cliente.setFun_id(Tela_Login.fun.getId());
             if (GenericoDAO.cadastrar(cliente)) {
                 campoNome.setText("");
                 campoCpf.setText("");
@@ -786,6 +787,7 @@ public class Tela_CadastroCliente extends javax.swing.JFrame {
             cliente.setStatus("A");
             cliente.setCidade(c);
             cliente.setFuncionario(f);
+            cliente.setFun_id(Tela_Login.fun.getId());
             if (GenericoDAO.salvarEdicao(cliente)) {
                 JOptionPane.showMessageDialog(null, "Edição realizada com sucesso!");
                 this.getDesativarEdicao();

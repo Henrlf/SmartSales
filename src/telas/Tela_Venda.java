@@ -14,8 +14,8 @@ public class Tela_Venda extends javax.swing.JFrame {
 
     public Tela_Venda() {
         initComponents();
-        campoNomeFuncionario.setText(Tela_Principal.funcionarioLogado.getNome());
-        campoCargoFuncionario.setText(Tela_Principal.funcionarioLogado.getCargo());
+        campoNomeFuncionario.setText(Tela_Login.fun.getNome());
+        campoCargoFuncionario.setText(Tela_Login.fun.getCargo());
         Mascaras.formatarDecimal(campoPrecoTotal);
         DefaultTableModel modelo = (DefaultTableModel) tabProdPed.getModel();
         modelo.setNumRows(0);
@@ -417,7 +417,7 @@ public class Tela_Venda extends javax.swing.JFrame {
         } else {
             Pedido pedido = new Pedido();
             pedido.setCliente(cliente);
-            pedido.setFuncionario(Tela_Principal.funcionarioLogado);
+            pedido.setFuncionario(Tela_Login.fun);
             pedido.setStaus("A");
             pedido.setTipo_pagamento(String.valueOf(ComboPagamento.getItemAt(ComboPagamento.getSelectedIndex())));
             pedido.setValor(total);

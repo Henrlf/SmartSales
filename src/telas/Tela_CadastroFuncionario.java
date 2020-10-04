@@ -617,6 +617,7 @@ public class Tela_CadastroFuncionario extends javax.swing.JFrame {
             funcionario.setEmail(campoEmail.getText());
             funcionario.setSenha(Criptografia.encriptografar(campoSenha.getText()));
             funcionario.setStatus("A");
+            funcionario.setFun_id(Tela_Login.fun.getId());
             if (comboCargo.getSelectedIndex() == 0) {
                 JOptionPane.showMessageDialog(null, "Cargo inválido!", "Aviso!", JOptionPane.WARNING_MESSAGE);
             } else {
@@ -676,6 +677,7 @@ public class Tela_CadastroFuncionario extends javax.swing.JFrame {
             funcionario.setEmail(campoEmailEdi.getText());
             funcionario.setLogin(campoLoginEdi.getText());
             funcionario.setCargo(String.valueOf(comboCargoEdi.getSelectedItem()));
+            funcionario.setFun_id(Tela_Login.fun.getId());
             if (campoSenhaEdi.getText().isEmpty()) {
                 if (GenericoDAO.salvarEdicao(funcionario)) {
                     JOptionPane.showMessageDialog(null, "Edição realizada com sucesso!");

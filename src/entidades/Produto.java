@@ -24,6 +24,9 @@ public class Produto implements Serializable {
 
     @Column(name = "status")
     private String status;
+    
+    @Column(name = "fun_id")
+    private int fun_id; 
 
     public int getId() {
         return id;
@@ -63,6 +66,14 @@ public class Produto implements Serializable {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public int getFun_id() {
+        return fun_id;
+    }
+
+    public void setFun_id(int fun_id) {
+        this.fun_id = fun_id;
     }
 
 }

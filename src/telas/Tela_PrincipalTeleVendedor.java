@@ -5,11 +5,14 @@
  */
 package telas;
 
+import entidades.Funcionario;
+
 /**
  *
  * @author yNot
  */
 public class Tela_PrincipalTeleVendedor extends javax.swing.JFrame {
+
 
     /**
      * Creates new form Tela_PrincipalTelaVendedor

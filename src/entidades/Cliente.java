@@ -18,30 +18,33 @@ public class Cliente implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
-    
+
     @ManyToOne
     private Cidade cidade;
-    
+
     @ManyToOne
     private Funcionario funcionario;
-    
+
     @Column(name = "nome")
     private String nome;
-    
+
     @Column(name = "cpf")
     private String cpf;
-    
+
     @Column(name = "telefone")
     private String telefone;
-    
+
     @Column(name = "rg")
     private String rg;
-    
+
     @Column(name = "email")
     private String email;
-    
+
     @Column(name = "status")
     private String status;
+
+    @Column(name = "fun_id")
+    private int fun_id;
 
     public int getId() {
         return id;
@@ -115,4 +118,11 @@ public class Cliente implements Serializable {
         this.status = status;
     }
 
+    public int getFun_id() {
+        return fun_id;
+    }
+
+    public void setFun_id(int fun_id) {
+        this.fun_id = fun_id;
+    }
 }

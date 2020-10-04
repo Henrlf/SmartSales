@@ -17,27 +17,30 @@ public class Funcionario implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
-    
+
     @Column(name = "cpf")
     private String cpf;
-    
+
     @Column(name = "nome")
     private String nome;
-    
+
     @Column(name = "cargo")
     private String cargo;
-    
+
     @Column(name = "login")
     private String login;
-    
+
     @Column(name = "senha")
     private String senha;
-    
+
     @Column(name = "email")
     private String email;
-    
+
     @Column(name = "status")
     private String status;
+
+    @Column(name = "fun_id")
+    private int fun_id;
 
     public int getId() {
         return id;
@@ -103,4 +106,11 @@ public class Funcionario implements Serializable {
         this.cpf = cpf;
     }
 
+    public int getFun_id() {
+        return fun_id;
+    }
+
+    public void setFun_id(int fun_id) {
+        this.fun_id = fun_id;
+    }
 }

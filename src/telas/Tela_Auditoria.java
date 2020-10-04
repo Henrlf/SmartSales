@@ -23,14 +23,14 @@ public class Tela_Auditoria extends javax.swing.JFrame {
 
         tabAuditoria.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null}
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Funcionario", "Ação", "Id", "Nome", "Data da Operação"
+                "Id", "Tabela", "Operação", "Valor Antigo", "Valor Novo", "Data", "Funcionario"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -39,12 +39,15 @@ public class Tela_Auditoria extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tabAuditoria);
         if (tabAuditoria.getColumnModel().getColumnCount() > 0) {
-            tabAuditoria.getColumnModel().getColumn(1).setMinWidth(75);
-            tabAuditoria.getColumnModel().getColumn(1).setPreferredWidth(75);
-            tabAuditoria.getColumnModel().getColumn(1).setMaxWidth(75);
-            tabAuditoria.getColumnModel().getColumn(2).setMinWidth(40);
-            tabAuditoria.getColumnModel().getColumn(2).setPreferredWidth(40);
-            tabAuditoria.getColumnModel().getColumn(2).setMaxWidth(40);
+            tabAuditoria.getColumnModel().getColumn(0).setMinWidth(50);
+            tabAuditoria.getColumnModel().getColumn(0).setPreferredWidth(50);
+            tabAuditoria.getColumnModel().getColumn(0).setMaxWidth(50);
+            tabAuditoria.getColumnModel().getColumn(1).setMinWidth(100);
+            tabAuditoria.getColumnModel().getColumn(1).setPreferredWidth(100);
+            tabAuditoria.getColumnModel().getColumn(1).setMaxWidth(100);
+            tabAuditoria.getColumnModel().getColumn(2).setMinWidth(75);
+            tabAuditoria.getColumnModel().getColumn(2).setPreferredWidth(75);
+            tabAuditoria.getColumnModel().getColumn(2).setMaxWidth(75);
         }
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);

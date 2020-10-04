@@ -5,12 +5,13 @@
  */
 package telas;
 
+import entidades.Funcionario;
+
 /**
  *
  * @author yNot
  */
 public class Tela_PrincipalFuncionario extends javax.swing.JFrame {
-
     /**
      * Creates new form Tela_PrincipalFuncionario
      */

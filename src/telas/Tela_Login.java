@@ -6,7 +6,7 @@ import javax.swing.JOptionPane;
 
 public class Tela_Login extends javax.swing.JFrame {
     
-    private static Funcionario fun;
+    public static Funcionario fun;
     
     public Tela_Login() {
         initComponents();
@@ -129,28 +129,22 @@ public class Tela_Login extends javax.swing.JFrame {
 
     private void btLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLoginActionPerformed
         if (!campoLogin.getText().equals("") && !campoSenha.getText().equals("")) {
-            if (Validacoes.logar(campoLogin.getText(), Criptografia.encriptografar(campoSenha.getText()))) {
-                
-                if (fun.getCargo().equals("Administrador")) {
-                    
+            if (Validacoes.logar(campoLogin.getText(), Criptografia.encriptografar(campoSenha.getText()))) {                
+                if (fun.getCargo().equals("Administrador")) {                    
                     Tela_Principal tp = new Tela_Principal();
                     tp.setVisible(true);
                     this.dispose();
-                    
                 }
                 if (fun.getCargo().equals("Tele-Vendedor")) {
                     Tela_PrincipalTeleVendedor tv = new Tela_PrincipalTeleVendedor();
                     tv.setVisible(true);
                     this.dispose();
                 }                
-                if (fun.getCargo().equals("Vendedor")) {
-                    
+                if (fun.getCargo().equals("Vendedor")) {                    
                     Tela_PrincipalFuncionario tpf = new Tela_PrincipalFuncionario();
                     tpf.setVisible(true);
-                    this.dispose();
-                    
-                } 
-                
+                    this.dispose();                  
+                }                 
             } else {
                 JOptionPane.showMessageDialog(null, "Login/Senha incorretos ou usuário inativado!", "Aviso!", JOptionPane.WARNING_MESSAGE);
             }

@@ -7,7 +7,6 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import org.hibernate.Session;
 import telas.Tela_Login;
-import telas.Tela_Principal;
 
 public class Validacoes {
 
@@ -23,7 +22,6 @@ public class Validacoes {
                 Funcionario funcionario = resultado.get(i);
                 if (funcionario.getLogin().equals(login) && funcionario.getSenha().equals(senha)) {
                     if (funcionario.getStatus().equals("A")) {
-                        Tela_Principal.funcionarioLogado = funcionario;
                         sessao.byId(Funcionario.class);
                         System.out.println(sessao.byId(Funcionario.class));
                         Tela_Login.SetFuncionario(funcionario); 
@@ -55,7 +53,7 @@ public class Validacoes {
                 }
             }
         } catch (Exception e) {
-            LogsDAO.salvarLog(Tela_Principal.getFunLog(), "Erro ao validar o usúario de cadastro.", e);
+            LogsDAO.salvarLog(Tela_Login.fun, "Erro ao validar o usúario de cadastro.", e);
             JOptionPane.showMessageDialog(null, "Erro imprevisto!\n" + e, "Erro!", JOptionPane.ERROR_MESSAGE);
             pas = true;
         } finally {
