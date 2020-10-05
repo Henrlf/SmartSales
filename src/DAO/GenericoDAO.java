@@ -160,6 +160,7 @@ public class GenericoDAO {
         tabela.getColumnModel().getColumn(0).setPreferredWidth(50);
         tabela.getColumnModel().getColumn(1).setPreferredWidth(100);
         tabela.getColumnModel().getColumn(2).setPreferredWidth(100);
+        tabela.getColumnModel().getColumn(6).setPreferredWidth(50);
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
             Transaction transacao = sessao.beginTransaction();
@@ -169,7 +170,7 @@ public class GenericoDAO {
             resultado = query.list();
             for (int i = 0; i < resultado.size(); i++) {
                 Auditoria aud = resultado.get(i);
-                modelo.addRow(new Object[]{aud.getId(), aud.getOperacao(), aud.getTabela(), aud.getOld_value(), aud.getNew_value(), aud.getData(), aud.getUsuario()});
+                modelo.addRow(new Object[]{aud.getId(), aud.getTabela(), aud.getOperacao(), aud.getOld_value(), aud.getNew_value(), aud.getData(), aud.getUsuario()});
             }
         } catch (Exception e) {
             LogsDAO.salvarLog(Tela_Login.fun, "Erro ao realizar uma pesquisa de preenchimento de tabela de auditoria.", e);

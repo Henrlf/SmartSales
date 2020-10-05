@@ -12,7 +12,7 @@ public class Tela_CadastroProdutos extends javax.swing.JFrame {
     public Tela_CadastroProdutos() {
         initComponents();
         this.setTitle("Cadastro de Produtos");
-        GenericoDAO.pesquisa(tabelaProduto, campoPesquisa.getText().toUpperCase(), "Froduto");
+        GenericoDAO.pesquisa(tabelaProduto, campoPesquisa.getText().toUpperCase(), "Produto");
         Mascaras.formatarDecimal(campoPreco);
         Mascaras.formatarDecimal(campoPrecoEdicao);
         this.getDesativarEdicao();
@@ -432,7 +432,7 @@ public class Tela_CadastroProdutos extends javax.swing.JFrame {
             Produto pro = (Produto) GenericoDAO.getObjectBanco(id, Produto.class);
             pro.setStatus("I");
             if (GenericoDAO.inativar(pro)) {
-                GenericoDAO.pesquisa(tabelaProduto, campoPesquisa.getText().toUpperCase(), "Froduto");
+                GenericoDAO.pesquisa(tabelaProduto, campoPesquisa.getText().toUpperCase(), "Produto");
                 JOptionPane.showMessageDialog(null, "Produto inativado com sucesso!");
             }
         }
@@ -449,7 +449,7 @@ public class Tela_CadastroProdutos extends javax.swing.JFrame {
             produto.setStatus("A");
             produto.setFun_id(Tela_Login.fun.getId());
             if (GenericoDAO.cadastrar(produto)) {
-                GenericoDAO.pesquisa(tabelaProduto, campoPesquisa.getText().toUpperCase(), "Froduto");
+                GenericoDAO.pesquisa(tabelaProduto, campoPesquisa.getText().toUpperCase(), "Produto");
                 JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!");
                 campoPreco.setText("0,00");
                 campoDescricao.setText("");
@@ -487,7 +487,7 @@ public class Tela_CadastroProdutos extends javax.swing.JFrame {
             produto.setFun_id(Tela_Login.fun.getId());
             if (GenericoDAO.salvarEdicao(produto)) {
                 JOptionPane.showMessageDialog(null, "Edição de produto realizado com sucesso!");
-                GenericoDAO.pesquisa(tabelaProduto, campoPesquisa.getText().toUpperCase(), "Froduto");
+                GenericoDAO.pesquisa(tabelaProduto, campoPesquisa.getText().toUpperCase(), "Produto");
                 this.getDesativarEdicao();
             }
         }

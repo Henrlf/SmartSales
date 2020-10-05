@@ -24,7 +24,7 @@ public class Auditoria {
     private String operacao;
 
     @Column(name = "old_value")
-    private int old_value;
+    private String old_value;
 
     @Column(name = "new_value")
     private String new_value;
@@ -33,7 +33,7 @@ public class Auditoria {
     private String data;
 
     @Column(name = "usuario")
-    private int usuario;
+    private String usuario;
 
     public int getId() {
         return id;
@@ -59,11 +59,11 @@ public class Auditoria {
         this.operacao = operacao;
     }
 
-    public int getOld_value() {
+    public String getOld_value() {
         return old_value;
     }
 
-    public void setOld_value(int old_value) {
+    public void setOld_value(String old_value) {
         this.old_value = old_value;
     }
 
@@ -75,11 +75,11 @@ public class Auditoria {
         this.new_value = new_value;
     }
 
-    public int getUsuario() {
+    public String getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(int usuario) {
+    public void setUsuario(String usuario) {
         this.usuario = usuario;
     }
 

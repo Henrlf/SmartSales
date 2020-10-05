@@ -672,6 +672,7 @@ public class Tela_CadastroFuncionario extends javax.swing.JFrame {
         if (campoCpfEdi.getText().replaceAll("\\D", "").isEmpty() || campoEmailEdi.getText().isEmpty() || campoLoginEdi.getText().isEmpty() || campoNomeEdi.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Campo(s) obrigatorios em branco(s)!", "Aviso!", JOptionPane.WARNING_MESSAGE);
         } else {
+            funcionario.setId(Integer.parseInt(campoIdEdic.getText()));
             funcionario.setNome(campoNomeEdi.getText().toUpperCase());
             funcionario.setCpf(campoCpfEdi.getText());
             funcionario.setEmail(campoEmailEdi.getText());
@@ -692,7 +693,6 @@ public class Tela_CadastroFuncionario extends javax.swing.JFrame {
                     this.getDesativarEdicao();
                 }
             }
-
         }
     }//GEN-LAST:event_salvarEdicaoActionPerformed
 
@@ -702,7 +702,7 @@ public class Tela_CadastroFuncionario extends javax.swing.JFrame {
         } else {
             String idString = String.valueOf(tabelaFuncionario.getValueAt(tabelaFuncionario.getSelectedRow(), 0));
             int id = Integer.parseInt(idString);
-            this.getAtivarEdicao((Funcionario)GenericoDAO.getObjectBanco(id, Funcionario.class));
+            this.getAtivarEdicao((Funcionario) GenericoDAO.getObjectBanco(id, Funcionario.class));
         }
     }//GEN-LAST:event_btEditarActionPerformed
 

@@ -75,9 +75,7 @@ Contributor(s):
         <mapping class="telas.Dlg_SelecionaFuncionario"/>
         <mapping class="telas.Dlg_SelecionaProduto"/>
         <mapping class="telas.Tela_VizualizaVenda"/>
-        <mapping class="telas.Tela_VizualizaCompra"/>
-        
-    
-        
+        <mapping class="telas.Tela_VizualizaCompra"/>        
+            
     </session-factory>
 </hibernate-configuration>
