@@ -40,42 +40,38 @@ made subject to such option by the copyright holder.
 Contributor(s):
 -->
 <hibernate-configuration>
-    <session-factory>
-        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
-        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
-        <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/SmartSales</property>
-        <property name="hibernate.connection.username">postgres</property>
-        <property name="hibernate.connection.password">Henrique@1410</property>
-    
-        <mapping class="entidades.Funcionario"/>
-        <mapping class="entidades.Cidade"/>
-        <mapping class="entidades.Cliente"/>
-        <mapping class="entidades.Pedido"/>
-        <mapping class="entidades.Produto"/>
-        <mapping class="entidades.Compra"/>
-        <mapping class="entidades.Produtos_Pedido"/>
-        <mapping class="entidades.Produtos_compra"/>
-        <mapping class="entidades.Logs"/>
-        <mapping class="entidades.Auditoria"/>
- 
-        <mapping class="DAO.LogsDAO"/>
-        <mapping class="DAO.GenericoDAO"/>
-        
-        <mapping class="telas.Tela_Login"/>
-        <mapping class="telas.Tela_Principal"/>
-        <mapping class="telas.Tela_CadastroProdutos"/>
-        <mapping class="telas.Tela_CadastroCidade"/>
-        <mapping class="telas.Tela_CadastroCliente"/>
-        <mapping class="telas.Tela_CadastroFuncionario"/>
-        <mapping class="telas.Tela_Venda"/>
-        <mapping class="telas.Tela_Compra"/>        
-        <mapping class="telas.Tela_Auditoria"/>        
-        <mapping class="telas.Dlg_SelecionaCidade"/>
-        <mapping class="telas.Dlg_SelecionaCliente"/>
-        <mapping class="telas.Dlg_SelecionaFuncionario"/>
-        <mapping class="telas.Dlg_SelecionaProduto"/>
-        <mapping class="telas.Tela_VizualizaVenda"/>
-        <mapping class="telas.Tela_VizualizaCompra"/>        
-            
-    </session-factory>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+    <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+    <property name="hibernate.connection.url">jdbc:postgresql://tuffi.db.elephantsql.com:5432/fdggikmc</property>
+    <property name="hibernate.connection.username">fdggikmc</property>
+    <property name="hibernate.connection.password">9fL_ynJ6IeLHC_YHE7TX7eTC9GtMW_3m</property>
+    <mapping class="entidades.Funcionario"/>
+    <mapping class="entidades.Cidade"/>
+    <mapping class="entidades.Cliente"/>
+    <mapping class="entidades.Pedido"/>
+    <mapping class="entidades.Produto"/>
+    <mapping class="entidades.Compra"/>
+    <mapping class="entidades.Produtos_Pedido"/>
+    <mapping class="entidades.Produtos_compra"/>
+    <mapping class="entidades.Logs"/>
+    <mapping class="entidades.Auditoria"/>
+    <mapping class="DAO.LogsDAO"/>
+    <mapping class="DAO.GenericoDAO"/>
+    <mapping class="telas.Tela_Login"/>
+    <mapping class="telas.Tela_Principal"/>
+    <mapping class="telas.Tela_CadastroProdutos"/>
+    <mapping class="telas.Tela_CadastroCidade"/>
+    <mapping class="telas.Tela_CadastroCliente"/>
+    <mapping class="telas.Tela_CadastroFuncionario"/>
+    <mapping class="telas.Tela_Venda"/>
+    <mapping class="telas.Tela_Compra"/>
+    <mapping class="telas.Tela_Auditoria"/>
+    <mapping class="telas.Dlg_SelecionaCidade"/>
+    <mapping class="telas.Dlg_SelecionaCliente"/>
+    <mapping class="telas.Dlg_SelecionaFuncionario"/>
+    <mapping class="telas.Dlg_SelecionaProduto"/>
+    <mapping class="telas.Tela_VizualizaVenda"/>
+    <mapping class="telas.Tela_VizualizaCompra"/>
+  </session-factory>
 </hibernate-configuration>
