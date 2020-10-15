@@ -12,13 +12,13 @@ public class Tela_CadastroCidade extends javax.swing.JFrame {
 
     public Tela_CadastroCidade() {
         initComponents();
-        GenericoDAO.pesquisa(tabelaCidade, campoPesquisa.getText().toUpperCase(), "cidade");
+        GenericoDAO.pesquisa(tabelaCidade, campoPesquisa.getText().toUpperCase(), "Cidade");
         btInativar.setEnabled(true);
     }
 
     public Tela_CadastroCidade(int x) {
         initComponents();
-        GenericoDAO.pesquisa(tabelaCidade, campoPesquisa.getText().toUpperCase(), "cidade");
+        GenericoDAO.pesquisa(tabelaCidade, campoPesquisa.getText().toUpperCase(), "Cidade");
     }
 
     @SuppressWarnings("unchecked")
