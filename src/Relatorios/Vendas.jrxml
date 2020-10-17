@@ -8,10 +8,33 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="79" splitType="Stretch"/>
+		<band height="116" splitType="Stretch">
+			<staticText>
+				<reportElement x="200" y="0" width="230" height="60" uuid="7c3d6bc7-d995-4f6b-bd13-34940606b8a0"/>
+				<textElement>
+					<font fontName="Arial Black" size="22"/>
+				</textElement>
+				<text><![CDATA[Smart Sales]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="86" width="261" height="30" uuid="ffd119cc-3348-4781-9c27-df861ad5ba3b"/>
+				<textElement>
+					<font fontName="Arial Black" size="14"/>
+				</textElement>
+				<text><![CDATA[Relatório de Vendas]]></text>
+			</staticText>
+		</band>
 	</title>
 	<pageHeader>
-		<band height="35" splitType="Stretch"/>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="2" width="100" height="30" uuid="6e6c5df0-0ee3-45ab-9328-abfcddfde171"/>
+				<textElement>
+					<font fontName="Arial Black" size="14"/>
+				</textElement>
+				<text><![CDATA[Informações:]]></text>
+			</staticText>
+		</band>
 	</pageHeader>
 	<columnHeader>
 		<band height="61" splitType="Stretch"/>

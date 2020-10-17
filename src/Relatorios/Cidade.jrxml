@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.15.0.final using JasperReports Library version 6.15.0-dd49bfb94918336b8321d5507193f0169ead4e95  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Cidade" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a5a5ba39-5874-411e-94cd-926c050f445b">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="SmartSales"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<queryString>
+		<![CDATA[SELECT * FROM cidade
+ORDER BY id ASC]]>
+	</queryString>
+	<field name="id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="id"/>
+		<property name="com.jaspersoft.studio.field.label" value="id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="cidade"/>
+	</field>
+	<field name="nome" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nome"/>
+		<property name="com.jaspersoft.studio.field.label" value="nome"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="cidade"/>
+	</field>
+	<field name="uf" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="uf"/>
+		<property name="com.jaspersoft.studio.field.label" value="uf"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="cidade"/>
+	</field>
+	<field name="status" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="status"/>
+		<property name="com.jaspersoft.studio.field.label" value="status"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="cidade"/>
+	</field>
+	<field name="fun_id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="fun_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="fun_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="cidade"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="116" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="86" width="261" height="30" uuid="73ee500e-e9e5-4d1b-b9bc-d7dd8f34b750"/>
+				<textElement>
+					<font fontName="Arial Black" size="14"/>
+				</textElement>
+				<text><![CDATA[Relatório de Cidades]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="200" y="0" width="230" height="60" uuid="2bc60444-a7b6-4acd-9b12-d220c2f0ad55"/>
+				<textElement>
+					<font fontName="Arial Black" size="22"/>
+				</textElement>
+				<text><![CDATA[Smart Sales]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="30" uuid="4d28b919-dcb2-4d08-bbe4-b70362b95f03"/>
+				<textElement>
+					<font fontName="Arial Black" size="14"/>
+				</textElement>
+				<text><![CDATA[Informações:]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="33" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="40" height="30" uuid="ecb95497-8b70-471b-86ef-e1a2fe9430e6">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9e7d8b23-de25-4491-bdb9-c0ebb8b9e0c2"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial Black" size="12"/>
+				</textElement>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="60" y="0" width="120" height="30" uuid="b44099b2-2ce3-43fa-85c9-31a2f7eceba9">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ed889b13-dc95-4137-b384-146932b9de5d"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial Black" size="12"/>
+				</textElement>
+				<text><![CDATA[Nome da cidade]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="200" y="0" width="100" height="30" uuid="28efd6ab-2561-4fdd-aea1-95f514972405">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="bd432184-ca0f-4d44-baae-9ff2f654fc62"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial Black" size="12"/>
+				</textElement>
+				<text><![CDATA[UF da Cidade]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="30" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="40" height="30" uuid="55afed14-acdd-43d7-8306-f8c8159742bb">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9e7d8b23-de25-4491-bdb9-c0ebb8b9e0c2"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="60" y="0" width="120" height="30" uuid="37349536-9795-4320-8cd4-9c93f328a0e1">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ed889b13-dc95-4137-b384-146932b9de5d"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="200" y="0" width="100" height="30" uuid="ba9cf6ca-b247-4eb0-a6eb-c1480bc8af9a">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="bd432184-ca0f-4d44-baae-9ff2f654fc62"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{uf}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
