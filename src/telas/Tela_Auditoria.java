@@ -1,8 +1,6 @@
 package telas;
 
 import DAO.GenericoDAO;
-import java.text.MessageFormat;
-import javax.swing.JTable;
 
 public class Tela_Auditoria extends javax.swing.JFrame {
 
