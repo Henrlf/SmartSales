@@ -13,6 +13,7 @@ public class Tela_Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollBar1 = new javax.swing.JScrollBar();
         jMenuBar1 = new javax.swing.JMenuBar();
         Cadatro = new javax.swing.JMenu();
         Cadastro_clientes = new javax.swing.JMenuItem();
@@ -32,7 +33,6 @@ public class Tela_Principal extends javax.swing.JFrame {
         Relatorio_Vendas = new javax.swing.JMenuItem();
         Relatorio_Compras = new javax.swing.JMenuItem();
         Relatorio_Cadastros = new javax.swing.JMenuItem();
-        Relatorio_Logs = new javax.swing.JMenuItem();
         Relatorio_Auditoria = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         Pesquisa_Generico = new javax.swing.JMenuItem();
@@ -147,6 +147,11 @@ public class Tela_Principal extends javax.swing.JFrame {
 
         Relatorio_Vendas.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         Relatorio_Vendas.setText("Vendas");
+        Relatorio_Vendas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Relatorio_VendasActionPerformed(evt);
+            }
+        });
         jMenu3.add(Relatorio_Vendas);
 
         Relatorio_Compras.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -160,19 +165,20 @@ public class Tela_Principal extends javax.swing.JFrame {
 
         Relatorio_Cadastros.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         Relatorio_Cadastros.setText("Cadastros");
-        jMenu3.add(Relatorio_Cadastros);
-
-        Relatorio_Logs.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        Relatorio_Logs.setText("Log's");
-        Relatorio_Logs.addActionListener(new java.awt.event.ActionListener() {
+        Relatorio_Cadastros.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Relatorio_LogsActionPerformed(evt);
+                Relatorio_CadastrosActionPerformed(evt);
             }
         });
-        jMenu3.add(Relatorio_Logs);
+        jMenu3.add(Relatorio_Cadastros);
 
         Relatorio_Auditoria.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         Relatorio_Auditoria.setText("Auditoria");
+        Relatorio_Auditoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Relatorio_AuditoriaActionPerformed(evt);
+            }
+        });
         jMenu3.add(Relatorio_Auditoria);
 
         jMenuBar1.add(jMenu3);
@@ -262,12 +268,10 @@ public class Tela_Principal extends javax.swing.JFrame {
         tl.setLocationRelativeTo(null);
     }//GEN-LAST:event_btLogsActionPerformed
 
-    private void Relatorio_LogsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Relatorio_LogsActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Relatorio_LogsActionPerformed
-
     private void Relatorio_ComprasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Relatorio_ComprasActionPerformed
-        // TODO add your handling code here:
+        Dlg_RelatorioCompra rc = new Dlg_RelatorioCompra(null, true);
+        rc.setLocationRelativeTo(this);
+        rc.setVisible(true);
     }//GEN-LAST:event_Relatorio_ComprasActionPerformed
 
     private void Vizualiza_ComprasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Vizualiza_ComprasActionPerformed
@@ -283,6 +287,24 @@ public class Tela_Principal extends javax.swing.JFrame {
         tc.setVisible(true);
         tc.setLocationRelativeTo(null);
     }//GEN-LAST:event_Compra_ProdutosActionPerformed
+
+    private void Relatorio_AuditoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Relatorio_AuditoriaActionPerformed
+        Dlg_RelatorioAuditoria ra = new Dlg_RelatorioAuditoria(null, true);
+        ra.setLocationRelativeTo(this);
+        ra.setVisible(true);
+    }//GEN-LAST:event_Relatorio_AuditoriaActionPerformed
+
+    private void Relatorio_VendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Relatorio_VendasActionPerformed
+        Dlg_RelatorioVenda rv = new Dlg_RelatorioVenda(null, true);
+        rv.setLocationRelativeTo(this);
+        rv.setVisible(true);
+    }//GEN-LAST:event_Relatorio_VendasActionPerformed
+
+    private void Relatorio_CadastrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Relatorio_CadastrosActionPerformed
+        Dlg_RelatorioCadastro rc = new Dlg_RelatorioCadastro(null, true);
+        rc.setLocationRelativeTo(this);
+        rc.setVisible(true);
+    }//GEN-LAST:event_Relatorio_CadastrosActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -329,7 +351,6 @@ public class Tela_Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem Relatorio_Auditoria;
     private javax.swing.JMenuItem Relatorio_Cadastros;
     private javax.swing.JMenuItem Relatorio_Compras;
-    private javax.swing.JMenuItem Relatorio_Logs;
     private javax.swing.JMenuItem Relatorio_Vendas;
     private javax.swing.JMenuItem Venda_produtos;
     private javax.swing.JMenuItem Vizualiza_Compras;
@@ -341,5 +362,6 @@ public class Tela_Principal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JScrollBar jScrollBar1;
     // End of variables declaration//GEN-END:variables
 }
