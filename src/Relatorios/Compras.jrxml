@@ -8,8 +8,8 @@
 	<queryString>
 		<![CDATA[SELECT * FROM compra
 
-WHERE  data >= to_date('$P!{dataInicial}', 'DD/MM/YYYY') AND
-	 data <= to_date('$P!{dataFinal}', 'DD/MM/YYYY')
+WHERE  data_venda >= to_date('$P!{dataInicial}', 'DD/MM/YYYY') AND
+	 data_venda <= to_date('$P!{dataFinal}', 'DD/MM/YYYY')
 
 ORDER BY id ASC]]>
 	</queryString>
@@ -18,14 +18,29 @@ ORDER BY id ASC]]>
 		<property name="com.jaspersoft.studio.field.label" value="id"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="compra"/>
 	</field>
-	<field name="data" class="java.sql.Date">
-		<property name="com.jaspersoft.studio.field.name" value="data"/>
-		<property name="com.jaspersoft.studio.field.label" value="data"/>
+	<field name="data_venda" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="data_venda"/>
+		<property name="com.jaspersoft.studio.field.label" value="data_venda"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="compra"/>
 	</field>
 	<field name="preco_total" class="java.math.BigDecimal">
 		<property name="com.jaspersoft.studio.field.name" value="preco_total"/>
 		<property name="com.jaspersoft.studio.field.label" value="preco_total"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="compra"/>
+	</field>
+	<field name="funcionario_id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="funcionario_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="funcionario_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="compra"/>
+	</field>
+	<field name="status" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="status"/>
+		<property name="com.jaspersoft.studio.field.label" value="status"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="compra"/>
+	</field>
+	<field name="tipo_pagamento" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="tipo_pagamento"/>
+		<property name="com.jaspersoft.studio.field.label" value="tipo_pagamento"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="compra"/>
 	</field>
 	<background>
@@ -63,53 +78,83 @@ ORDER BY id ASC]]>
 	<columnHeader>
 		<band height="31" splitType="Stretch">
 			<staticText>
-				<reportElement x="0" y="0" width="70" height="30" uuid="cf9daf90-f5e6-4ca8-812f-e5eed4904046">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d1712aca-2893-47b9-89e5-cd7cb96839dc"/>
+				<reportElement x="0" y="0" width="30" height="30" uuid="30d43429-8045-454f-964b-dc6699606430">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b5c29524-14be-4e1f-9327-7cac2e32f24f"/>
 				</reportElement>
 				<textElement>
-					<font fontName="Arial Black" size="12"/>
+					<font fontName="Arial Black"/>
 				</textElement>
 				<text><![CDATA[ID]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="80" y="0" width="150" height="30" uuid="4fb95961-1e7f-47dd-8aeb-c53695f0dbad">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="aec1dc3f-fc78-4864-8591-9c5a8cbe3464"/>
+				<reportElement x="40" y="0" width="130" height="30" uuid="780cf492-a6bf-4db4-89a0-3371e62b23ec">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1dc9b14a-e2b2-4571-b69a-2855ab079325"/>
 				</reportElement>
 				<textElement>
-					<font fontName="Arial Black" size="12"/>
+					<font fontName="Arial Black" size="14"/>
 				</textElement>
-				<text><![CDATA[Preço total da Compra]]></text>
+				<text><![CDATA[Data da Compra]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="240" y="0" width="100" height="30" uuid="644fd5e3-52ad-42e2-9844-2a59ed49a518">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="dc56f869-78b2-46a3-be2a-e0042af61cd3"/>
+				<reportElement x="180" y="0" width="100" height="30" uuid="87d7366e-3a0d-4721-8739-1e1781b83b65">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f0718559-4201-410a-a9ee-b4ab1e3c7d4c"/>
 				</reportElement>
 				<textElement>
 					<font fontName="Arial Black" size="12"/>
 				</textElement>
-				<text><![CDATA[Data]]></text>
+				<text><![CDATA[Preço Total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="290" y="0" width="130" height="30" uuid="e2905035-087d-4a54-b397-5dbf669ba567">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9d0b72c5-4869-449d-b7d5-ba3f643331e4"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial Black" size="12"/>
+				</textElement>
+				<text><![CDATA[Tipo de Pagamento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="430" y="0" width="100" height="30" uuid="c25b3489-72cf-4acc-8382-f5cb9c5fa0be">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7d51e35a-31d7-4bb5-90d6-9b72798a332a"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial Black" size="12"/>
+				</textElement>
+				<text><![CDATA[Funcionário]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
 		<band height="31" splitType="Stretch">
 			<textField>
-				<reportElement x="0" y="0" width="70" height="30" uuid="0883c004-e53e-4d76-a017-1f205fec35f7">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d1712aca-2893-47b9-89e5-cd7cb96839dc"/>
+				<reportElement x="0" y="0" width="30" height="30" uuid="910b3b92-d759-49e6-bdef-a7d7a86047db">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b5c29524-14be-4e1f-9327-7cac2e32f24f"/>
 				</reportElement>
 				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="80" y="-1" width="150" height="30" uuid="fc5da5de-6ce8-45c9-a768-a2b7480f51b6">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="aec1dc3f-fc78-4864-8591-9c5a8cbe3464"/>
+				<reportElement x="40" y="0" width="130" height="30" uuid="ac97a3c4-409c-4a27-9db6-7da8b67c3bad">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1dc9b14a-e2b2-4571-b69a-2855ab079325"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{data_venda}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="180" y="0" width="100" height="30" uuid="03a8ede2-93e1-45d4-93dc-8052cb2ec9c0">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f0718559-4201-410a-a9ee-b4ab1e3c7d4c"/>
 				</reportElement>
 				<textFieldExpression><![CDATA[$F{preco_total}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="240" y="0" width="100" height="30" uuid="a889accf-71c4-4537-9dcc-6933ee324ffa">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="dc56f869-78b2-46a3-be2a-e0042af61cd3"/>
+				<reportElement x="290" y="0" width="130" height="30" uuid="229b9d0b-d990-425e-ad28-1c5c787528f5">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9d0b72c5-4869-449d-b7d5-ba3f643331e4"/>
 				</reportElement>
-				<textFieldExpression><![CDATA[$F{data}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{tipo_pagamento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="430" y="0" width="100" height="30" uuid="130dd3c6-4f3a-4fbc-9069-89b7424748be">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7d51e35a-31d7-4bb5-90d6-9b72798a332a"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{funcionario_id}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

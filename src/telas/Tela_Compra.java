@@ -5,6 +5,7 @@ import apoio.Mascaras;
 import entidades.Compra;
 import entidades.Produto;
 import entidades.Produtos_compra;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -12,6 +13,7 @@ public class Tela_Compra extends javax.swing.JFrame {
 
     Produto produto;
     double total;
+    Date dataAtual = new Date();
 
     public Tela_Compra() {
         initComponents();
@@ -364,6 +366,7 @@ public class Tela_Compra extends javax.swing.JFrame {
             compra.setStatus("A");
             compra.setTipo_pagamento(String.valueOf(ComboPagamento.getItemAt(ComboPagamento.getSelectedIndex())));
             compra.setValor_total(total);
+            compra.setData_venda(dataAtual);
             if (GenericoDAO.cadastrar(compra)) {
                 Produtos_compra pc = new Produtos_compra();
                 for (int i = 0; i < tabProdPed.getRowCount(); i++) {

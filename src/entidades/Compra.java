@@ -31,8 +31,6 @@ public class Compra implements Serializable {
     @Column(name = "preco_total")
     private Double valor_total;
     
-     @Column(name = "desconto")
-    private Double desconto;
 
     @Column(name = "status")
     private String status;
@@ -40,7 +38,7 @@ public class Compra implements Serializable {
     @Column(name = "tipo_pagamento")
     private String tipo_pagamento;
 
-    @Column(name = "data")
+    @Column(name = "data_venda")
     private Date data_venda;
 
     public int getId() {
@@ -65,14 +63,6 @@ public class Compra implements Serializable {
 
     public void setValor_total(Double valor_total) {
         this.valor_total = valor_total;
-    }
-
-    public Double getDesconto() {
-        return desconto;
-    }
-
-    public void setDesconto(Double desconto) {
-        this.desconto = desconto;
     }
 
     public String getStatus() {
