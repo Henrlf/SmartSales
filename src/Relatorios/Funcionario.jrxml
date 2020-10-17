@@ -90,30 +90,45 @@ ORDER BY id ASC]]>
 				<reportElement x="0" y="0" width="30" height="30" uuid="1a1093ec-d0df-4d90-9522-f99f2ef53c81">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1e7ec511-1560-405d-be64-22c2107c9c72"/>
 				</reportElement>
+				<textElement>
+					<font fontName="Arial Black" size="12"/>
+				</textElement>
 				<text><![CDATA[ID]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="60" y="0" width="130" height="30" uuid="55de74c5-0b91-41a3-86cc-890b1b538c3c">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f567a4df-a925-4af7-9535-42f18da3f7b5"/>
 				</reportElement>
+				<textElement>
+					<font fontName="Arial Black" size="12"/>
+				</textElement>
 				<text><![CDATA[Nome]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="210" y="1" width="100" height="30" uuid="8a61c342-f96d-4155-b50a-90c783f71855">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="215e1df2-ccdc-45b5-b52d-6419c26b1b1e"/>
 				</reportElement>
-				<text><![CDATA[cpf]]></text>
+				<textElement>
+					<font fontName="Arial Black" size="12"/>
+				</textElement>
+				<text><![CDATA[CPF]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="330" y="0" width="100" height="30" uuid="076d7527-45f7-4f1a-aa22-acd10d61832b">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1083ff0d-e16f-4add-9c4c-c9af75319bb2"/>
 				</reportElement>
+				<textElement>
+					<font fontName="Arial Black" size="12"/>
+				</textElement>
 				<text><![CDATA[Cargo]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="450" y="-3" width="100" height="30" uuid="d19d1abe-9745-496b-8cb1-fccdf12b7e21">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ecfcc24c-2fd6-4d5d-8ac5-3f1bdf4f0c5b"/>
 				</reportElement>
+				<textElement>
+					<font fontName="Arial Black" size="12"/>
+				</textElement>
 				<text><![CDATA[Email]]></text>
 			</staticText>
 		</band>

@@ -143,7 +143,7 @@ public class Dlg_RelatorioVenda extends javax.swing.JDialog {
 
             try {
                 // Compila o relatorio
-                JasperReport relatorio = JasperCompileManager.compileReport(getClass().getResourceAsStream("/SmartSales/src/Relatorios/Vendas"));
+                JasperReport relatorio = JasperCompileManager.compileReport(getClass().getResourceAsStream("/Relatorios/Vendas.jrxml"));
 
                 // Mapeia campos de parametros para o relatorio, mesmo que nao existam
                 Map parametros = new HashMap();

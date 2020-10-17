@@ -6,6 +6,7 @@
 package entidades;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -40,7 +41,7 @@ public class Compra implements Serializable {
     private String tipo_pagamento;
 
     @Column(name = "data")
-    private String data_venda;
+    private Date data_venda;
 
     public int getId() {
         return id;
@@ -90,11 +91,11 @@ public class Compra implements Serializable {
         this.tipo_pagamento = tipo_pagamento;
     }
 
-    public String getData_venda() {
+    public Date getData_venda() {
         return data_venda;
     }
 
-    public void setData_venda(String data_venda) {
+    public void setData_venda(Date data_venda) {
         this.data_venda = data_venda;
     }
 

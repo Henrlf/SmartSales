@@ -7,6 +7,8 @@ package telas;
 
 import apoio.ConexaoBD;
 import apoio.Formatacao;
+import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JOptionPane;
@@ -108,13 +110,12 @@ public class Dlg_RelatorioCadastro extends javax.swing.JDialog {
         if (!comboCadastro.getSelectedItem().toString().equals("Selecione")) {
 
             if (comboCadastro.getSelectedItem().toString().equals("Cliente")) {
+
                 try {
                     // Compila o relatorio
-                    JasperReport relatorio = JasperCompileManager.compileReport(getClass().getResourceAsStream("/SmartSales/src/Relatorios/Cliente"));
-
+                    JasperReport relatorio = JasperCompileManager.compileReport(getClass().getResourceAsStream("/Relatorios/Cliente.jrxml"));
                     // Mapeia campos de parametros para o relatorio, mesmo que nao existam
                     Map parametros = new HashMap();
-                    parametros.put("cadastro", comboCadastro.getSelectedItem().toString());
 
                     // Executa relatoio
                     JasperPrint impressao = JasperFillManager.fillReport(relatorio, parametros, ConexaoBD.getInstance().getConnection());
@@ -131,11 +132,10 @@ public class Dlg_RelatorioCadastro extends javax.swing.JDialog {
             if (comboCadastro.getSelectedItem().toString().equals("Funcionário")) {
                 try {
                     // Compila o relatorio
-                    JasperReport relatorio = JasperCompileManager.compileReport(getClass().getResourceAsStream("/SmartSales/src/Relatorios/Funcionario"));
+                    JasperReport relatorio = JasperCompileManager.compileReport(getClass().getResourceAsStream("/Relatorios/Funcionario.jrxml"));
 
                     // Mapeia campos de parametros para o relatorio, mesmo que nao existam
                     Map parametros = new HashMap();
-                    parametros.put("cadastro", comboCadastro.getSelectedItem().toString());
 
                     // Executa relatoio
                     JasperPrint impressao = JasperFillManager.fillReport(relatorio, parametros, ConexaoBD.getInstance().getConnection());
@@ -151,11 +151,10 @@ public class Dlg_RelatorioCadastro extends javax.swing.JDialog {
             if (comboCadastro.getSelectedItem().toString().equals("Cidade")) {
                 try {
                     // Compila o relatorio
-                    JasperReport relatorio = JasperCompileManager.compileReport(getClass().getResourceAsStream("/SmartSales/src/Relatorios/Cidade"));
+                    JasperReport relatorio = JasperCompileManager.compileReport(getClass().getResourceAsStream("/Relatorios/Cidade.jrxml"));
 
                     // Mapeia campos de parametros para o relatorio, mesmo que nao existam
                     Map parametros = new HashMap();
-                    parametros.put("cadastro", comboCadastro.getSelectedItem().toString());
 
                     // Executa relatoio
                     JasperPrint impressao = JasperFillManager.fillReport(relatorio, parametros, ConexaoBD.getInstance().getConnection());
@@ -167,15 +166,15 @@ public class Dlg_RelatorioCadastro extends javax.swing.JDialog {
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(null, "Erro ao gerar relatório: " + e);
                 }
+
             }
             if (comboCadastro.getSelectedItem().toString().equals("Produto")) {
                 try {
                     // Compila o relatorio
-                    JasperReport relatorio = JasperCompileManager.compileReport(getClass().getResourceAsStream("/SmartSales/src/Relatorios/Produto"));
+                    JasperReport relatorio = JasperCompileManager.compileReport(getClass().getResourceAsStream("/Relatorios/Produto.jrxml"));
 
                     // Mapeia campos de parametros para o relatorio, mesmo que nao existam
                     Map parametros = new HashMap();
-                    parametros.put("cadastro", comboCadastro.getSelectedItem().toString());
 
                     // Executa relatoio
                     JasperPrint impressao = JasperFillManager.fillReport(relatorio, parametros, ConexaoBD.getInstance().getConnection());

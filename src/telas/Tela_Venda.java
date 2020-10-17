@@ -3,6 +3,7 @@ package telas;
 import DAO.GenericoDAO;
 import apoio.Mascaras;
 import entidades.*;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -11,6 +12,7 @@ public class Tela_Venda extends javax.swing.JFrame {
     Cliente cliente;
     Produto produto;
     double total;
+    Date dataAtual = new Date();
 
     public Tela_Venda() {
         initComponents();
@@ -415,12 +417,14 @@ public class Tela_Venda extends javax.swing.JFrame {
         if (campoCliente.getText().isEmpty() || ComboPagamento.getSelectedIndex() == 0 || tabProdPed.getRowCount() == 0) {
             JOptionPane.showMessageDialog(null, "Campos obrigatórios em branco!", "Aviso!", JOptionPane.WARNING_MESSAGE);
         } else {
+            System.out.println(dataAtual);
             Pedido pedido = new Pedido();
             pedido.setCliente(cliente);
             pedido.setFuncionario(Tela_Login.fun);
             pedido.setStaus("A");
             pedido.setTipo_pagamento(String.valueOf(ComboPagamento.getItemAt(ComboPagamento.getSelectedIndex())));
             pedido.setValor(total);
+            pedido.setData_venda(dataAtual);
             if (GenericoDAO.cadastrar(pedido)) {
                 Produtos_Pedido pp = new Produtos_Pedido();
                 for (int i = 0; i < tabProdPed.getRowCount(); i++) {

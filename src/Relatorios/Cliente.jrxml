@@ -148,7 +148,7 @@ ORDER BY id ASC]]>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="125" splitType="Stretch">
+		<band height="33" splitType="Stretch">
 			<textField>
 				<reportElement x="0" y="0" width="27" height="30" uuid="1794471f-9e7a-4e56-b492-b09a38f15ba9">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ffe4b736-f7be-4ae3-9b3b-0d923c01f263"/>

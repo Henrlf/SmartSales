@@ -1,6 +1,7 @@
 package entidades;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.*;
 
 @Entity
@@ -19,7 +20,7 @@ public class Pedido implements Serializable {
     @ManyToOne
     private Cliente cliente;
 
-    @Column(name = "valor")
+    @Column(name = "valor_total")
     private Double valor;
 
     @Column(name = "status")
@@ -29,13 +30,13 @@ public class Pedido implements Serializable {
     private String tipo_pagamento;
 
     @Column(name = "data_venda")
-    private String data_venda;
+    private Date data_venda;
 
-    public String getData_venda() {
+    public Date getData_venda() {
         return data_venda;
     }
 
-    public void setData_venda(String data_venda) {
+    public void setData_venda(Date data_venda) {
         this.data_venda = data_venda;
     }
 

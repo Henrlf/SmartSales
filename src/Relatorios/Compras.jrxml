@@ -1,9 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.15.0.final using JasperReports Library version 6.15.0-dd49bfb94918336b8321d5507193f0169ead4e95  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Compras" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="33386002-3be7-4ce1-a657-03998dd23f38">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="SmartSales"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<parameter name="dataInicial" class="java.lang.String"/>
+	<parameter name="dataFinal" class="java.lang.String"/>
 	<queryString>
-		<![CDATA[]]>
+		<![CDATA[SELECT * FROM compra
+
+WHERE  data >= to_date('$P!{dataInicial}', 'DD/MM/YYYY') AND
+	 data <= to_date('$P!{dataFinal}', 'DD/MM/YYYY')
+
+ORDER BY id ASC]]>
 	</queryString>
+	<field name="id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="id"/>
+		<property name="com.jaspersoft.studio.field.label" value="id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="compra"/>
+	</field>
+	<field name="data" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="data"/>
+		<property name="com.jaspersoft.studio.field.label" value="data"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="compra"/>
+	</field>
+	<field name="preco_total" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="preco_total"/>
+		<property name="com.jaspersoft.studio.field.label" value="preco_total"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="compra"/>
+	</field>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -37,10 +61,57 @@
 		</band>
 	</pageHeader>
 	<columnHeader>
-		<band height="61" splitType="Stretch"/>
+		<band height="31" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="70" height="30" uuid="cf9daf90-f5e6-4ca8-812f-e5eed4904046">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d1712aca-2893-47b9-89e5-cd7cb96839dc"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial Black" size="12"/>
+				</textElement>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="80" y="0" width="150" height="30" uuid="4fb95961-1e7f-47dd-8aeb-c53695f0dbad">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="aec1dc3f-fc78-4864-8591-9c5a8cbe3464"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial Black" size="12"/>
+				</textElement>
+				<text><![CDATA[Preço total da Compra]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="240" y="0" width="100" height="30" uuid="644fd5e3-52ad-42e2-9844-2a59ed49a518">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="dc56f869-78b2-46a3-be2a-e0042af61cd3"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial Black" size="12"/>
+				</textElement>
+				<text><![CDATA[Data]]></text>
+			</staticText>
+		</band>
 	</columnHeader>
 	<detail>
-		<band height="125" splitType="Stretch"/>
+		<band height="31" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="70" height="30" uuid="0883c004-e53e-4d76-a017-1f205fec35f7">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d1712aca-2893-47b9-89e5-cd7cb96839dc"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="80" y="-1" width="150" height="30" uuid="fc5da5de-6ce8-45c9-a768-a2b7480f51b6">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="aec1dc3f-fc78-4864-8591-9c5a8cbe3464"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{preco_total}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="240" y="0" width="100" height="30" uuid="a889accf-71c4-4537-9dcc-6933ee324ffa">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="dc56f869-78b2-46a3-be2a-e0042af61cd3"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{data}]]></textFieldExpression>
+			</textField>
+		</band>
 	</detail>
 	<columnFooter>
 		<band height="45" splitType="Stretch"/>
