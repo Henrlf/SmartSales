@@ -164,6 +164,8 @@ public class Dlg_RelatorioCompra extends javax.swing.JDialog {
         } else {
             JOptionPane.showMessageDialog(null, "Preecha todos os Campos Obrigatórios");
         }
+        
+          this.dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

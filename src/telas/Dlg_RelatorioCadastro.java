@@ -191,6 +191,8 @@ public class Dlg_RelatorioCadastro extends javax.swing.JDialog {
         } else {
             JOptionPane.showMessageDialog(null, "Selecione um Cadastro Valido");
         }
+        
+          this.dispose();
 
     }//GEN-LAST:event_jButton4ActionPerformed
 

@@ -157,6 +157,8 @@ public class Dlg_RelatorioAuditoria extends javax.swing.JDialog {
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Erro ao gerar relatório: " + e);
             }
+            
+            this.dispose();
 
         } else {
             JOptionPane.showMessageDialog(null, "Preecha todos os Campos Obrigatórios");
