@@ -48,11 +48,10 @@ public class Email {
         try {
 
             Message message = new MimeMessage(session);
-            message.setFrom(new InternetAddress("dionatan.ritter@universo.univates.br"));
-            //Remetente
+            message.setFrom(new InternetAddress("dionatan.ritter@universo.univates.br"));//Remetente
 
-            Address[] toUser = InternetAddress //Destinatário(s)
-                    .parse("dionatan.ritter@universo.univates.br");
+            Address[] toUser = InternetAddress
+                    .parse("dionatan.ritter@universo.univates.br"); //Destinatário(s)
 
             message.setRecipients(Message.RecipientType.TO, toUser);
             message.setSubject("Teste Envio de email's");//Assunto
