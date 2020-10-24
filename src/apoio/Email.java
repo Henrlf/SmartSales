@@ -41,8 +41,6 @@ public class Email {
                         "TGj157MNo234ZZa");
             }
         });
-
-        // Ativa Debug para sessão
         session.setDebug(true);
 
         try {
@@ -54,8 +52,8 @@ public class Email {
                     .parse("dionatan.ritter@universo.univates.br"); //Destinatário(s)
 
             message.setRecipients(Message.RecipientType.TO, toUser);
-            message.setSubject("Teste Envio de email's");//Assunto
-            message.setText("Testando o teste!");
+            message.setSubject("Teste Envio de email's");//Titulo
+            message.setText("Testando o teste!");//Assunto 
 
             //  Método para enviar a mensagem criada
             Transport.send(message);
