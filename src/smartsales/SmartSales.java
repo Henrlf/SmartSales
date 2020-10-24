@@ -14,5 +14,6 @@ public class SmartSales {
         Tela_Login log = new Tela_Login();
         log.setVisible(true);
         log.setLocationRelativeTo(null);
+
     }
 }
