@@ -5,16 +5,23 @@
  */
 package apoio;
 
+import java.io.IOException;
 import java.util.Properties;
+import javax.activation.DataHandler;
+import javax.activation.FileDataSource;
 import javax.mail.Address;
 import javax.mail.Message;
 import javax.mail.MessagingException;
+import javax.mail.Multipart;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
 import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JasperReport;
 
 /**
  *
@@ -22,7 +29,7 @@ import javax.swing.JOptionPane;
  */
 public class Email {
 
-    public void enviar() {
+    public void enviar() throws IOException {
 
         Properties props = new Properties();
 
@@ -55,6 +62,16 @@ public class Email {
             message.setSubject("Teste Envio de email's");//Titulo
             message.setText("Testando o teste!");//Assunto 
 
+            Multipart emailContent = new MimeMultipart();
+            MimeBodyPart textBodyPart = new MimeBodyPart();
+            textBodyPart.setText("teste anexo");
+            MimeBodyPart anexo = new MimeBodyPart();
+            anexo.attachFile("C:/Users/yNot/Desktop/Integrador/SmartSales/Anexo/SQL.txt");
+            emailContent.addBodyPart(textBodyPart);
+            emailContent.addBodyPart(anexo);
+
+            message.setContent(emailContent);
+
             //  Método para enviar a mensagem criada
             Transport.send(message);
             JOptionPane.showMessageDialog(null, "Email enviado com sucesso!");
@@ -62,5 +79,9 @@ public class Email {
         } catch (MessagingException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public void enviar(String text, JasperReport relatorio) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

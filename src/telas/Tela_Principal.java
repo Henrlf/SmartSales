@@ -3,6 +3,9 @@ package telas;
 
 import apoio.Email;
 import entidades.Funcionario;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Tela_Principal extends javax.swing.JFrame {
 
@@ -339,7 +342,11 @@ public class Tela_Principal extends javax.swing.JFrame {
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
        Email c = new Email();
-       c.enviar();
+        try {
+            c.enviar();
+        } catch (IOException ex) {
+            Logger.getLogger(Tela_Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     public static void main(String args[]) {
