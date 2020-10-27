@@ -2,10 +2,7 @@ package telas;
 
 
 import apoio.Email;
-import entidades.Funcionario;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 public class Tela_Principal extends javax.swing.JFrame {
 
@@ -233,7 +230,9 @@ public class Tela_Principal extends javax.swing.JFrame {
         jMenuBar1.add(jMenu4);
 
         jMenu8.setText("Email");
+        jMenu8.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
 
+        jMenuItem2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jMenuItem2.setText("Enviar");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -341,12 +340,9 @@ public class Tela_Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_Relatorio_CadastrosActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-       Email c = new Email();
-        try {
-            c.enviar();
-        } catch (IOException ex) {
-            Logger.getLogger(Tela_Principal.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        Tela_Email te = new Tela_Email();
+        te.setLocationRelativeTo(this);
+        te.setVisible(true); 
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     public static void main(String args[]) {
