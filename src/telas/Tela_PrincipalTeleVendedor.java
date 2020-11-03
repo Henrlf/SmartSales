@@ -35,8 +35,6 @@ public class Tela_PrincipalTeleVendedor extends javax.swing.JFrame {
         Cadatro = new javax.swing.JMenu();
         Cadastro_clientes = new javax.swing.JMenuItem();
         Cadastro_Cidades = new javax.swing.JMenuItem();
-        Criacao_metas = new javax.swing.JMenu();
-        Gerenciamento_metas = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         Venda_produtos = new javax.swing.JMenuItem();
         Vizualiza_Vendas = new javax.swing.JMenuItem();
@@ -72,15 +70,6 @@ public class Tela_PrincipalTeleVendedor extends javax.swing.JFrame {
         Cadatro.add(Cadastro_Cidades);
 
         jMenuBar1.add(Cadatro);
-
-        Criacao_metas.setText("Metas");
-        Criacao_metas.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
-
-        Gerenciamento_metas.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        Gerenciamento_metas.setText("Gereciamento de Metas");
-        Criacao_metas.add(Gerenciamento_metas);
-
-        jMenuBar1.add(Criacao_metas);
 
         jMenu1.setText("Venda");
         jMenu1.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
@@ -209,8 +198,6 @@ public class Tela_PrincipalTeleVendedor extends javax.swing.JFrame {
     private javax.swing.JMenuItem Cadastro_Cidades;
     private javax.swing.JMenuItem Cadastro_clientes;
     private javax.swing.JMenu Cadatro;
-    private javax.swing.JMenu Criacao_metas;
-    private javax.swing.JMenuItem Gerenciamento_metas;
     private javax.swing.JMenuItem Pesquisa_Generico;
     private javax.swing.JMenuItem Relatorio_Cadastros;
     private javax.swing.JMenuItem Relatorio_Compras;

@@ -4,9 +4,9 @@ package telas;
 import apoio.Email;
 
 
-public class Tela_Principal extends javax.swing.JFrame {
+public class Tela_PrincipalAdm extends javax.swing.JFrame {
 
-    public Tela_Principal() {
+    public Tela_PrincipalAdm() {
         initComponents();
         this.setExtendedState(MAXIMIZED_BOTH);
     }
@@ -27,9 +27,6 @@ public class Tela_Principal extends javax.swing.JFrame {
         Cadastro_funcionario = new javax.swing.JMenuItem();
         Cadastro_Produtos = new javax.swing.JMenuItem();
         Cadastro_Cidades = new javax.swing.JMenuItem();
-        Criacao_metas = new javax.swing.JMenu();
-        Gerenciamento_metas = new javax.swing.JMenuItem();
-        Criacao_Metas = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         Venda_produtos = new javax.swing.JMenuItem();
         Vizualiza_Vendas = new javax.swing.JMenuItem();
@@ -47,6 +44,8 @@ public class Tela_Principal extends javax.swing.JFrame {
         btAuditorias = new javax.swing.JMenuItem();
         jMenu8 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
+        jMenu9 = new javax.swing.JMenu();
+        btMetas = new javax.swing.JMenuItem();
 
         jMenu5.setText("jMenu5");
 
@@ -101,24 +100,6 @@ public class Tela_Principal extends javax.swing.JFrame {
         Cadatro.add(Cadastro_Cidades);
 
         jMenuBar1.add(Cadatro);
-
-        Criacao_metas.setText("Metas");
-        Criacao_metas.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
-
-        Gerenciamento_metas.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        Gerenciamento_metas.setText("Gereciamento de Metas");
-        Criacao_metas.add(Gerenciamento_metas);
-
-        Criacao_Metas.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        Criacao_Metas.setText("Criaçao de metas");
-        Criacao_Metas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Criacao_MetasActionPerformed(evt);
-            }
-        });
-        Criacao_metas.add(Criacao_Metas);
-
-        jMenuBar1.add(Criacao_metas);
 
         jMenu1.setText("Venda");
         jMenu1.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
@@ -243,6 +224,20 @@ public class Tela_Principal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu8);
 
+        jMenu9.setText("Metas");
+        jMenu9.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+
+        btMetas.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btMetas.setText("Metas");
+        btMetas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btMetasActionPerformed(evt);
+            }
+        });
+        jMenu9.add(btMetas);
+
+        jMenuBar1.add(jMenu9);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -311,10 +306,6 @@ public class Tela_Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_Vizualiza_ComprasActionPerformed
 
-    private void Criacao_MetasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Criacao_MetasActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Criacao_MetasActionPerformed
-
     private void Compra_ProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Compra_ProdutosActionPerformed
         Tela_Compra tc = new Tela_Compra();
         tc.setVisible(true);
@@ -345,6 +336,12 @@ public class Tela_Principal extends javax.swing.JFrame {
         te.setVisible(true); 
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
+    private void btMetasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btMetasActionPerformed
+        Tela_Funcionarios tf = new Tela_Funcionarios();
+        tf.setLocationRelativeTo(this);
+        tf.setVisible(true); 
+    }//GEN-LAST:event_btMetasActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -359,19 +356,20 @@ public class Tela_Principal extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Tela_Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Tela_PrincipalAdm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Tela_Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Tela_PrincipalAdm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Tela_Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Tela_PrincipalAdm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Tela_Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Tela_PrincipalAdm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Tela_Principal().setVisible(true);
+                new Tela_PrincipalAdm().setVisible(true);
             }
         });
     }
@@ -383,9 +381,6 @@ public class Tela_Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem Cadastro_funcionario;
     private javax.swing.JMenu Cadatro;
     private javax.swing.JMenuItem Compra_Produtos;
-    private javax.swing.JMenuItem Criacao_Metas;
-    private javax.swing.JMenu Criacao_metas;
-    private javax.swing.JMenuItem Gerenciamento_metas;
     private javax.swing.JMenuItem Pesquisa_Generico;
     private javax.swing.JMenuItem Relatorio_Auditoria;
     private javax.swing.JMenuItem Relatorio_Cadastros;
@@ -396,6 +391,7 @@ public class Tela_Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem Vizualiza_Vendas;
     private javax.swing.JMenuItem btAuditorias;
     private javax.swing.JMenuItem btLogs;
+    private javax.swing.JMenuItem btMetas;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -404,6 +400,7 @@ public class Tela_Principal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenu jMenu7;
     private javax.swing.JMenu jMenu8;
+    private javax.swing.JMenu jMenu9;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuItem jMenuItem1;

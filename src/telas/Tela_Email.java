@@ -51,7 +51,7 @@ public class Tela_Email extends javax.swing.JFrame {
         anexo = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         enviar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         enviar.setText("Enviar");
@@ -186,7 +186,7 @@ public class Tela_Email extends javax.swing.JFrame {
                     c.enviar(destinatario.getText(), titulo.getText(), mensagem.getText());
                     this.dispose();
                 } catch (IOException ex) {
-                    Logger.getLogger(Tela_Principal.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(Tela_PrincipalAdm.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 this.dispose();
             } else {
@@ -195,7 +195,7 @@ public class Tela_Email extends javax.swing.JFrame {
                     c.enviarAnexo(destinatario.getText(), titulo.getText(), mensagem.getText(), caminho);
                     this.dispose();
                 } catch (IOException ex) {
-                    Logger.getLogger(Tela_Principal.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(Tela_PrincipalAdm.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         } else {

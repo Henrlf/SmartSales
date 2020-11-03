@@ -46,6 +46,7 @@ Contributor(s):
     <property name="hibernate.connection.url">jdbc:postgresql://tuffi.db.elephantsql.com:5432/fdggikmc</property>
     <property name="hibernate.connection.username">fdggikmc</property>
     <property name="hibernate.connection.password">9fL_ynJ6IeLHC_YHE7TX7eTC9GtMW_3m</property>
+    
     <mapping class="entidades.Funcionario"/>
     <mapping class="entidades.Cidade"/>
     <mapping class="entidades.Cliente"/>
@@ -56,10 +57,14 @@ Contributor(s):
     <mapping class="entidades.Produtos_compra"/>
     <mapping class="entidades.Logs"/>
     <mapping class="entidades.Auditoria"/>
+    <mapping class="entidades.Ano"/>
+    <mapping class="entidades.Metas"/>
+    
     <mapping class="DAO.LogsDAO"/>
     <mapping class="DAO.GenericoDAO"/>
+    
     <mapping class="telas.Tela_Login"/>
-    <mapping class="telas.Tela_Principal"/>
+    <mapping class="telas.Tela_PrincipalAdm"/>
     <mapping class="telas.Tela_CadastroProdutos"/>
     <mapping class="telas.Tela_CadastroCidade"/>
     <mapping class="telas.Tela_CadastroCliente"/>
@@ -73,5 +78,7 @@ Contributor(s):
     <mapping class="telas.Dlg_SelecionaProduto"/>
     <mapping class="telas.Tela_VizualizaVenda"/>
     <mapping class="telas.Tela_VizualizaCompra"/>
+    <mapping class="telas.Tela_GerenciamentoMetas"/>
+    
   </session-factory>
 </hibernate-configuration>

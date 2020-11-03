@@ -168,7 +168,7 @@ public class Tela_CadastroFuncionario extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(35, 35, 35)
+                        .addGap(18, 18, 18)
                         .addComponent(btIntivar, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -646,7 +646,7 @@ public class Tela_CadastroFuncionario extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void campoPesquisaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoPesquisaKeyReleased
-        GenericoDAO.pesquisa(tabelaFuncionario, campoPesquisa.getText().toUpperCase(), "funcionario");
+        GenericoDAO.pesquisa(tabelaFuncionario, campoPesquisa.getText().toUpperCase(), "Funcionario");
     }//GEN-LAST:event_campoPesquisaKeyReleased
 
     private void btIntivarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btIntivarActionPerformed

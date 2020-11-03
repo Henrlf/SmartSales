@@ -118,7 +118,7 @@ public class Tela_Login extends javax.swing.JFrame {
         if (!campoLogin.getText().equals("") && !campoSenha.getText().equals("")) {
             if (Validacoes.logar(campoLogin.getText(), Criptografia.encriptografar(campoSenha.getText()))) {                
                 if (fun.getCargo().equals("Administrador")) {                    
-                    Tela_Principal tp = new Tela_Principal();
+                    Tela_PrincipalAdm tp = new Tela_PrincipalAdm();
                     tp.setVisible(true);
                     this.dispose();
                 }
