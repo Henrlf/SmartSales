@@ -137,7 +137,6 @@ public class Tela_Funcionarios extends javax.swing.JFrame {
         int id = Integer.parseInt(idString);
         Funcionario funcionario = (Funcionario)GenericoDAO.getObjectBanco(id, Funcionario.class);
         Tela_GerenciamentoMetas tgm = new Tela_GerenciamentoMetas(funcionario);
-        this.dispose();
         tgm.setLocationRelativeTo(this);
         tgm.setVisible(true);
     }//GEN-LAST:event_btMetasActionPerformed

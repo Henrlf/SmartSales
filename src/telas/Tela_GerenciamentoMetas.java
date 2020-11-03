@@ -1,14 +1,19 @@
 package telas;
 
 import DAO.GenericoDAO;
+import apoio.ComboItem;
 import apoio.FormatacaoCombos;
 import apoio.Mascaras;
 import entidades.Ano;
 import entidades.Funcionario;
+import entidades.Metas;
+import javax.swing.JOptionPane;
 
 public class Tela_GerenciamentoMetas extends javax.swing.JFrame {
-    
+
     private Funcionario funcionario;
+    private Metas metas = new Metas();
+    private Ano ano;
 
     public Tela_GerenciamentoMetas(Funcionario fun) {
         initComponents();
@@ -19,7 +24,7 @@ public class Tela_GerenciamentoMetas extends javax.swing.JFrame {
         Mascaras.formatarDecimal(campoMai);
         Mascaras.formatarDecimal(campoJun);
         Mascaras.formatarDecimal(campoJul);
-        Mascaras.formatarDecimal(campoAgo);        
+        Mascaras.formatarDecimal(campoAgo);
         Mascaras.formatarDecimal(campoSet);
         Mascaras.formatarDecimal(campoOut);
         Mascaras.formatarDecimal(campoNov);
@@ -31,7 +36,7 @@ public class Tela_GerenciamentoMetas extends javax.swing.JFrame {
     }
 
     private Tela_GerenciamentoMetas() {
-        
+
     }
 
     @SuppressWarnings("unchecked")
@@ -100,6 +105,11 @@ public class Tela_GerenciamentoMetas extends javax.swing.JFrame {
 
         comboAno.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         comboAno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione" }));
+        comboAno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboAnoActionPerformed(evt);
+            }
+        });
 
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
@@ -163,40 +173,40 @@ public class Tela_GerenciamentoMetas extends javax.swing.JFrame {
         jLabel15.setText("Dezembro:");
         jLabel15.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
-        campoJan.setText("0.00");
+        campoJan.setText("0,00");
         campoJan.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
 
-        campoAbr.setText("0.00");
+        campoAbr.setText("0,00");
         campoAbr.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
 
-        campoJul.setText("0.00");
+        campoJul.setText("0,00");
         campoJul.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
 
-        campoOut.setText("0.00");
+        campoOut.setText("0,00");
         campoOut.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
 
-        campoFev.setText("0.00");
+        campoFev.setText("0,00");
         campoFev.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
 
-        campoMai.setText("0.00");
+        campoMai.setText("0,00");
         campoMai.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
 
-        campoAgo.setText("0.00");
+        campoAgo.setText("0,00");
         campoAgo.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
 
-        campoNov.setText("0.00");
+        campoNov.setText("0,00");
         campoNov.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
 
-        campoMar.setText("0.00");
+        campoMar.setText("0,00");
         campoMar.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
 
-        campoJun.setText("0.00");
+        campoJun.setText("0,00");
         campoJun.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
 
-        campoSet.setText("0.00");
+        campoSet.setText("0,00");
         campoSet.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
 
-        campoDez.setText("0.00");
+        campoDez.setText("0,00");
         campoDez.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -311,6 +321,11 @@ public class Tela_GerenciamentoMetas extends javax.swing.JFrame {
 
         btSalvar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btSalvar.setText("Salvar");
+        btSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSalvarActionPerformed(evt);
+            }
+        });
 
         btAdAno.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btAdAno.setText("Adicionar Ano Meta");
@@ -378,8 +393,8 @@ public class Tela_GerenciamentoMetas extends javax.swing.JFrame {
 
     private void btAdAnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAdAnoActionPerformed
         int lastId = GenericoDAO.getLastId("Ano");
-        Ano ano = (Ano)GenericoDAO.getObjectBanco(lastId, Ano.class);
-        int newAno = ano.getAno_numerico()+1;
+        Ano ano = (Ano) GenericoDAO.getObjectBanco(lastId, Ano.class);
+        int newAno = ano.getAno_numerico() + 1;
         ano = new Ano();
         ano.setAno_numerico(newAno);
         GenericoDAO.cadastrar(ano);
@@ -388,6 +403,100 @@ public class Tela_GerenciamentoMetas extends javax.swing.JFrame {
     private void btCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarActionPerformed
         this.dispose();
     }//GEN-LAST:event_btCancelarActionPerformed
+
+    private void comboAnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboAnoActionPerformed
+        if (comboAno.getSelectedIndex() >= 1) {
+            ComboItem ci = (ComboItem) comboAno.getSelectedItem();
+            ano = (Ano) GenericoDAO.getObjectBanco(ci.getCodigo(), Ano.class);
+            if (GenericoDAO.getValidaMetas(ano, funcionario)) {
+                int id = GenericoDAO.getMetas(ano, funcionario);
+                metas = (Metas) GenericoDAO.getObjectBanco(id, Metas.class);
+                if (metas.getJaneiro() != 0) {
+                    campoJan.setText(String.valueOf(metas.getJaneiro()));
+                }else{
+                    campoJan.setText("0.00");
+                }
+                if (metas.getFevereiro() != 0) {
+                    campoFev.setText(String.valueOf(metas.getFevereiro()));
+                }else{
+                    campoFev.setText("0.00");
+                }
+                if (metas.getMarco() != 0) {
+                    campoMar.setText(String.valueOf(metas.getMarco()));
+                }else{
+                    campoMar.setText("0.00");
+                }
+                if (metas.getAbril() != 0) {
+                    campoAbr.setText(String.valueOf(metas.getAbril()));
+                }else{
+                    campoAbr.setText("0.00");
+                }
+                if (metas.getMaio() != 0) {
+                    campoMai.setText(String.valueOf(metas.getMaio()));
+                }else{
+                    campoMai.setText("0.00");
+                }
+                if (metas.getJunho() != 0) {
+                    campoJun.setText(String.valueOf(metas.getJunho()));
+                }else{
+                    campoJun.setText("0.00");
+                }
+                if (metas.getJulho() != 0) {
+                    campoJul.setText(String.valueOf(metas.getJulho()));
+                }else{
+                    campoJul.setText("0.00");
+                }
+                if (metas.getAgosto() != 0) {
+                    campoAgo.setText(String.valueOf(metas.getAgosto()));
+                }else{
+                    campoAgo.setText("0.00");
+                }
+                if (metas.getSetembro() != 0) {
+                    campoSet.setText(String.valueOf(metas.getSetembro()));
+                }else{
+                    campoSet.setText("0.00");
+                }
+                if (metas.getOutubro() != 0) {
+                    campoOut.setText(String.valueOf(metas.getOutubro()));
+                }else{
+                    campoOut.setText("0.00");
+                }
+                if (metas.getNovembro() != 0) {
+                    campoNov.setText(String.valueOf(metas.getNovembro()));
+                }else{
+                    campoNov.setText("0.00");
+                }
+                if (metas.getDezembro() != 0) {
+                    campoDez.setText(String.valueOf(metas.getDezembro()));
+                }else{
+                    campoDez.setText("0.00");
+                }
+            }
+        }
+    }//GEN-LAST:event_comboAnoActionPerformed
+
+    private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
+        if (comboAno.getSelectedIndex() != 0) {
+            if (GenericoDAO.getValidaMetas(ano, funcionario)) {
+                this.setValores(metas);
+                if (GenericoDAO.salvarEdicao(metas)) {
+                    JOptionPane.showMessageDialog(null, "Metas editado com sucesso!");
+                    this.dispose();
+                }
+            } else {
+                Metas m = new Metas();
+                m.setFuncionario(funcionario);
+                m.setAno(ano);
+                this.setValores(m);
+                if (GenericoDAO.cadastrar(m)) {
+                    JOptionPane.showMessageDialog(null, "Metas cadastradas com sucesso!");
+                    this.dispose();
+                }
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Selecione um ano!");
+        }
+    }//GEN-LAST:event_btSalvarActionPerformed
 
     public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -416,6 +525,45 @@ public class Tela_GerenciamentoMetas extends javax.swing.JFrame {
                 new Tela_GerenciamentoMetas().setVisible(true);
             }
         });
+    }
+
+    public void setValores(Metas met) {
+        if (!campoJan.getText().isEmpty()) {
+            met.setJaneiro(Mascaras.formatarDoubleBanco(campoJan));
+        }
+        if (!campoFev.getText().isEmpty()) {
+            met.setFevereiro(Mascaras.formatarDoubleBanco(campoFev));
+        }
+        if (!campoMar.getText().isEmpty()) {
+            met.setMarco(Mascaras.formatarDoubleBanco(campoMar));
+        }
+        if (!campoAbr.getText().isEmpty()) {
+            met.setAbril(Mascaras.formatarDoubleBanco(campoAbr));
+        }
+        if (!campoMai.getText().isEmpty()) {
+            met.setMaio(Mascaras.formatarDoubleBanco(campoMai));
+        }
+        if (!campoJun.getText().isEmpty()) {
+            met.setJunho(Mascaras.formatarDoubleBanco(campoJun));
+        }
+        if (!campoJul.getText().isEmpty()) {
+            met.setJulho(Mascaras.formatarDoubleBanco(campoJul));
+        }
+        if (!campoAgo.getText().isEmpty()) {
+            met.setAgosto(Mascaras.formatarDoubleBanco(campoAgo));
+        }
+        if (!campoSet.getText().isEmpty()) {
+            met.setSetembro(Mascaras.formatarDoubleBanco(campoSet));
+        }
+        if (!campoOut.getText().isEmpty()) {
+            met.setOutubro(Mascaras.formatarDoubleBanco(campoOut));
+        }
+        if (!campoNov.getText().isEmpty()) {
+            met.setNovembro(Mascaras.formatarDoubleBanco(campoNov));
+        }
+        if (!campoDez.getText().isEmpty()) {
+            met.setDezembro(Mascaras.formatarDoubleBanco(campoDez));
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

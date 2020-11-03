@@ -61,6 +61,51 @@ public class GenericoDAO {
         return obj;
     }
 
+    public static int getMetas(Ano ano, Funcionario fun) {
+        Session sessao = HibernateUtil.getSessionFactory().openSession();
+        Transaction transacao = sessao.beginTransaction();
+        List<Object> resultado = new ArrayList();
+        String sql = "FROM Metas"
+                + " WHERE Funcionario_id = " + fun.getId() + " AND Ano_id = " + ano.getId();
+        int id = 0;
+        try {
+            org.hibernate.Query query = sessao.createQuery(sql);
+            resultado = query.list();
+            Metas m = (Metas) resultado.get(0);
+            id = m.getId();
+            transacao.commit();
+        } catch (Exception e) {
+            LogsDAO.salvarLog(Tela_Login.fun, "Erro ao puxar algum registro do banco de dados.", e);
+            JOptionPane.showMessageDialog(null, "Erro imprevisto!\n" + e, "Erro!", JOptionPane.ERROR_MESSAGE);
+        } finally {
+            sessao.close();
+        }
+        return id;
+    }
+
+    public static boolean getValidaMetas(Ano ano, Funcionario fun) {
+        Session sessao = HibernateUtil.getSessionFactory().openSession();
+        Transaction transacao = sessao.beginTransaction();
+        List<Object> resultado = new ArrayList();
+        String sql = "FROM Metas"
+                + " WHERE Funcionario_id = " + fun.getId() + " AND Ano_id = " + ano.getId();
+        boolean pas = false;
+        try {
+            org.hibernate.Query query = sessao.createQuery(sql);
+            resultado = query.list();
+            if (!resultado.isEmpty()) {
+                pas = true;
+            }
+            transacao.commit();
+        } catch (Exception e) {
+            LogsDAO.salvarLog(Tela_Login.fun, "Erro ao puxar algum registro do banco de dados.", e);
+            JOptionPane.showMessageDialog(null, "Erro imprevisto!\n" + e, "Erro!", JOptionPane.ERROR_MESSAGE);
+        } finally {
+            sessao.close();
+        }        
+        return pas;
+    }
+
     public static void pesquisa(JTable tabela, String nome, String classe) {
         Session sessao = HibernateUtil.getSessionFactory().openSession();
         List<Object> resultado = new ArrayList();
@@ -264,4 +309,5 @@ public class GenericoDAO {
             sessao.close();
         }
     }
+
 }
