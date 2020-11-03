@@ -28,41 +28,77 @@ public class Metas implements Serializable {
     @JoinColumn(name = "funcionario_id")
     private Funcionario funcionario;
 
-    @Column(name = "janeiro")
-    private double janeiro;
+    @Column(name = "meta_janeiro")
+    private double meta_janeiro;
 
-    @Column(name = "fevereiro")
-    private double fevereiro;
+    @Column(name = "meta_fevereiro")
+    private double meta_fevereiro;
 
-    @Column(name = "marco")
-    private double marco;
+    @Column(name = "meta_marco")
+    private double meta_marco;
 
-    @Column(name = "abril")
-    private double abril;
+    @Column(name = "meta_abril")
+    private double meta_abril;
 
-    @Column(name = "maio")
-    private double maio;
+    @Column(name = "meta_maio")
+    private double meta_maio;
 
-    @Column(name = "junho")
-    private double junho;
+    @Column(name = "meta_junho")
+    private double meta_junho;
 
-    @Column(name = "julho")
-    private double julho;
+    @Column(name = "meta_julho")
+    private double meta_julho;
 
-    @Column(name = "agosto")
-    private double agosto;
+    @Column(name = "meta_agosto")
+    private double meta_agosto;
 
-    @Column(name = "setembro")
-    private double setembro;
+    @Column(name = "meta_setembro")
+    private double meta_setembro;
 
-    @Column(name = "outubro")
-    private double outubro;
+    @Column(name = "meta_outubro")
+    private double meta_outubro;
 
-    @Column(name = "novembro")
-    private double novembro;
+    @Column(name = "meta_novembro")
+    private double meta_novembro;
 
-    @Column(name = "dezembro")
-    private double dezembro;
+    @Column(name = "meta_dezembro")
+    private double meta_dezembro;
+
+    @Column(name = "realizado_janeiro")
+    private double realizado_janeiro;
+
+    @Column(name = "realizado_fevereiro")
+    private double realizado_fevereiro;
+
+    @Column(name = "realizado_marco")
+    private double realizado_marco;
+
+    @Column(name = "realizado_abril")
+    private double realizado_abril;
+
+    @Column(name = "realizado_maio")
+    private double realizado_maio;
+
+    @Column(name = "realizado_junho")
+    private double realizado_junho;
+
+    @Column(name = "realizado_julho")
+    private double realizado_julho;
+
+    @Column(name = "realizado_agosto")
+    private double realizado_agosto;
+
+    @Column(name = "realizado_setembro")
+    private double realizado_setembro;
+
+    @Column(name = "realizado_outubro")
+    private double realizado_outubro;
+
+    @Column(name = "realizado_novembro")
+    private double realizado_novembro;
+
+    @Column(name = "realizado_dezembro")
+    private double realizado_dezembro;
 
     public int getId() {
         return id;
@@ -89,99 +125,99 @@ public class Metas implements Serializable {
     }
 
     public double getJaneiro() {
-        return janeiro;
+        return meta_janeiro;
     }
 
     public void setJaneiro(double janeiro) {
-        this.janeiro = janeiro;
+        this.meta_janeiro = janeiro;
     }
 
     public double getFevereiro() {
-        return fevereiro;
+        return meta_fevereiro;
     }
 
     public void setFevereiro(double fevereiro) {
-        this.fevereiro = fevereiro;
+        this.meta_fevereiro = fevereiro;
     }
 
     public double getMarco() {
-        return marco;
+        return meta_marco;
     }
 
     public void setMarco(double marco) {
-        this.marco = marco;
+        this.meta_marco = marco;
     }
 
     public double getAbril() {
-        return abril;
+        return meta_abril;
     }
 
     public void setAbril(double abril) {
-        this.abril = abril;
+        this.meta_abril = abril;
     }
 
     public double getMaio() {
-        return maio;
+        return meta_maio;
     }
 
     public void setMaio(double maio) {
-        this.maio = maio;
+        this.meta_maio = maio;
     }
 
     public double getJunho() {
-        return junho;
+        return meta_junho;
     }
 
     public void setJunho(double junho) {
-        this.junho = junho;
+        this.meta_junho = junho;
     }
 
     public double getJulho() {
-        return julho;
+        return meta_julho;
     }
 
     public void setJulho(double julho) {
-        this.julho = julho;
+        this.meta_julho = julho;
     }
 
     public double getAgosto() {
-        return agosto;
+        return meta_agosto;
     }
 
     public void setAgosto(double agosto) {
-        this.agosto = agosto;
+        this.meta_agosto = agosto;
     }
 
     public double getSetembro() {
-        return setembro;
+        return meta_setembro;
     }
 
     public void setSetembro(double setembro) {
-        this.setembro = setembro;
+        this.meta_setembro = setembro;
     }
 
     public double getOutubro() {
-        return outubro;
+        return meta_outubro;
     }
 
     public void setOutubro(double outubro) {
-        this.outubro = outubro;
+        this.meta_outubro = outubro;
     }
 
     public double getNovembro() {
-        return novembro;
+        return meta_novembro;
     }
 
     public void setNovembro(double novembro) {
-        this.novembro = novembro;
+        this.meta_novembro = novembro;
     }
 
     public double getDezembro() {
-        return dezembro;
+        return meta_dezembro;
     }
 
     public void setDezembro(double dezembro) {
-        this.dezembro = dezembro;
+        this.meta_dezembro = dezembro;
     }
 
 }

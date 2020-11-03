@@ -1,9 +1,5 @@
 package telas;
 
-
-import apoio.Email;
-
-
 public class Tela_PrincipalAdm extends javax.swing.JFrame {
 
     public Tela_PrincipalAdm() {
@@ -21,6 +17,7 @@ public class Tela_PrincipalAdm extends javax.swing.JFrame {
         jMenuBar2 = new javax.swing.JMenuBar();
         jMenu6 = new javax.swing.JMenu();
         jMenu7 = new javax.swing.JMenu();
+        frameGrafico = new javax.swing.JInternalFrame();
         jMenuBar1 = new javax.swing.JMenuBar();
         Cadatro = new javax.swing.JMenu();
         Cadastro_clientes = new javax.swing.JMenuItem();
@@ -58,6 +55,19 @@ public class Tela_PrincipalAdm extends javax.swing.JFrame {
         jMenuBar2.add(jMenu7);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        frameGrafico.setVisible(true);
+
+        javax.swing.GroupLayout frameGraficoLayout = new javax.swing.GroupLayout(frameGrafico.getContentPane());
+        frameGrafico.getContentPane().setLayout(frameGraficoLayout);
+        frameGraficoLayout.setHorizontalGroup(
+            frameGraficoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 596, Short.MAX_VALUE)
+        );
+        frameGraficoLayout.setVerticalGroup(
+            frameGraficoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 303, Short.MAX_VALUE)
+        );
 
         Cadatro.setText("Cadastros");
         Cadatro.setFocusable(false);
@@ -244,11 +254,17 @@ public class Tela_PrincipalAdm extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 896, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(frameGrafico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(385, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 445, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(frameGrafico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(206, Short.MAX_VALUE))
         );
 
         pack();
@@ -373,6 +389,10 @@ public class Tela_PrincipalAdm extends javax.swing.JFrame {
             }
         });
     }
+    
+//    public void getGrafico(){
+//        DefaultCategoryDataset barra = new DefaultCategoryDataset();
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem Cadastro_Cidades;
@@ -392,6 +412,7 @@ public class Tela_PrincipalAdm extends javax.swing.JFrame {
     private javax.swing.JMenuItem btAuditorias;
     private javax.swing.JMenuItem btLogs;
     private javax.swing.JMenuItem btMetas;
+    private javax.swing.JInternalFrame frameGrafico;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
