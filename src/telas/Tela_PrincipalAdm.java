@@ -1,5 +1,7 @@
 package telas;
 
+import org.jfree.data.category.DefaultCategoryDataset;
+
 public class Tela_PrincipalAdm extends javax.swing.JFrame {
 
     public Tela_PrincipalAdm() {
@@ -390,9 +392,9 @@ public class Tela_PrincipalAdm extends javax.swing.JFrame {
         });
     }
     
-//    public void getGrafico(){
-//        DefaultCategoryDataset barra = new DefaultCategoryDataset();
-//    }
+    public void getGrafico(){
+        DefaultCategoryDataset barra = new DefaultCategoryDataset();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem Cadastro_Cidades;
