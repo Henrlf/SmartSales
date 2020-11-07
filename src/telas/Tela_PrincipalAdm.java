@@ -3,7 +3,6 @@ package telas;
 import apoio.GraficodeBarra;
 import entidades.Metas;
 import java.awt.BorderLayout;
-import org.jfree.data.category.DefaultCategoryDataset;
 
 public class Tela_PrincipalAdm extends javax.swing.JFrame {
 
@@ -82,11 +81,11 @@ public class Tela_PrincipalAdm extends javax.swing.JFrame {
         frameGrafico.getContentPane().setLayout(frameGraficoLayout);
         frameGraficoLayout.setHorizontalGroup(
             frameGraficoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 906, Short.MAX_VALUE)
+            .addGap(0, 597, Short.MAX_VALUE)
         );
         frameGraficoLayout.setVerticalGroup(
             frameGraficoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 458, Short.MAX_VALUE)
+            .addGap(0, 295, Short.MAX_VALUE)
         );
 
         Cadatro.setText("Cadastros");
@@ -277,14 +276,14 @@ public class Tela_PrincipalAdm extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(frameGrafico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(75, Short.MAX_VALUE))
+                .addContainerGap(384, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(frameGrafico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addContainerGap(214, Short.MAX_VALUE))
         );
 
         pack();
