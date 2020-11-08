@@ -14,8 +14,9 @@ public class Tela_GerenciamentoMetas extends javax.swing.JFrame {
     private Funcionario funcionario;
     private Metas metas = new Metas();
     private Ano ano;
+    Tela_PrincipalAdm tp;
 
-    public Tela_GerenciamentoMetas(Funcionario fun) {
+    public Tela_GerenciamentoMetas(Funcionario fun, Tela_PrincipalAdm t) {
         initComponents();
         Mascaras.formatarDecimal(campoJan);
         Mascaras.formatarDecimal(campoFev);
@@ -33,6 +34,7 @@ public class Tela_GerenciamentoMetas extends javax.swing.JFrame {
         funcionario = fun;
         campoCargo.setText(funcionario.getCargo());
         campoNome.setText(funcionario.getNome());
+        tp = t;
     }
 
     private Tela_GerenciamentoMetas() {
@@ -413,62 +415,62 @@ public class Tela_GerenciamentoMetas extends javax.swing.JFrame {
                 metas = (Metas) GenericoDAO.getObjectBanco(id, Metas.class);
                 if (metas.getJaneiro() != 0) {
                     campoJan.setText(String.valueOf(metas.getJaneiro()));
-                }else{
+                } else {
                     campoJan.setText("0.00");
                 }
                 if (metas.getFevereiro() != 0) {
                     campoFev.setText(String.valueOf(metas.getFevereiro()));
-                }else{
+                } else {
                     campoFev.setText("0.00");
                 }
                 if (metas.getMarco() != 0) {
                     campoMar.setText(String.valueOf(metas.getMarco()));
-                }else{
+                } else {
                     campoMar.setText("0.00");
                 }
                 if (metas.getAbril() != 0) {
                     campoAbr.setText(String.valueOf(metas.getAbril()));
-                }else{
+                } else {
                     campoAbr.setText("0.00");
                 }
                 if (metas.getMaio() != 0) {
                     campoMai.setText(String.valueOf(metas.getMaio()));
-                }else{
+                } else {
                     campoMai.setText("0.00");
                 }
                 if (metas.getJunho() != 0) {
                     campoJun.setText(String.valueOf(metas.getJunho()));
-                }else{
+                } else {
                     campoJun.setText("0.00");
                 }
                 if (metas.getJulho() != 0) {
                     campoJul.setText(String.valueOf(metas.getJulho()));
-                }else{
+                } else {
                     campoJul.setText("0.00");
                 }
                 if (metas.getAgosto() != 0) {
                     campoAgo.setText(String.valueOf(metas.getAgosto()));
-                }else{
+                } else {
                     campoAgo.setText("0.00");
                 }
                 if (metas.getSetembro() != 0) {
                     campoSet.setText(String.valueOf(metas.getSetembro()));
-                }else{
+                } else {
                     campoSet.setText("0.00");
                 }
                 if (metas.getOutubro() != 0) {
                     campoOut.setText(String.valueOf(metas.getOutubro()));
-                }else{
+                } else {
                     campoOut.setText("0.00");
                 }
                 if (metas.getNovembro() != 0) {
                     campoNov.setText(String.valueOf(metas.getNovembro()));
-                }else{
+                } else {
                     campoNov.setText("0.00");
                 }
                 if (metas.getDezembro() != 0) {
                     campoDez.setText(String.valueOf(metas.getDezembro()));
-                }else{
+                } else {
                     campoDez.setText("0.00");
                 }
             }
@@ -496,6 +498,8 @@ public class Tela_GerenciamentoMetas extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Selecione um ano!");
         }
+
+        tp.atualizaGrafico();
     }//GEN-LAST:event_btSalvarActionPerformed
 
     public static void main(String args[]) {

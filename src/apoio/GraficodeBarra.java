@@ -6,7 +6,6 @@
 package apoio;
 
 import DAO.LogsDAO;
-import entidades.Cliente;
 import entidades.Metas;
 import java.util.ArrayList;
 import java.util.List;
@@ -76,7 +75,7 @@ public class GraficodeBarra {
 
     public JFreeChart createBarChart(CategoryDataset dataSet) {
 
-        JFreeChart graficoBarras = ChartFactory.createBarChart("Metas do ano atual", "Mês", "Metas de Vendas", dataSet, PlotOrientation.VERTICAL, true, false, false);
+        JFreeChart graficoBarras = ChartFactory.createBarChart("Metas do ano atual", "Mês", "Metas de Vendas", dataSet, PlotOrientation.VERTICAL, true, true, false);
 
         return graficoBarras;
     }
@@ -91,6 +90,18 @@ public class GraficodeBarra {
 
         return painelGrafico;
 
+    }
+    
+    
+    public ChartPanel atualizarGrafico(Metas x) {
+
+        CategoryDataset datset = this.createDataSet(x);
+
+        JFreeChart graf = this.createBarChart(datset);
+
+        ChartPanel painelG = new ChartPanel(graf);
+
+        return painelG;
     }
 
 }

@@ -6,24 +6,17 @@ import java.awt.BorderLayout;
 
 public class Tela_PrincipalAdm extends javax.swing.JFrame {
 
+    GraficodeBarra graficoDeBarra = new GraficodeBarra();
+    Metas m = new Metas();
+
     public Tela_PrincipalAdm() {
 
         initComponents();
-
-        this.setExtendedState(MAXIMIZED_BOTH);
-
-        this.frameGrafico.setLayout(new BorderLayout());
-
-        Metas m = new Metas();
-
-        GraficodeBarra graficoDeBarra = new GraficodeBarra();
-
+        this.teste1.setLayout(new BorderLayout());
         m = graficoDeBarra.getMetas(Tela_Login.fun.getId(), 1);
-
-        this.frameGrafico.add(graficoDeBarra.criarGrafico(m));
-
+        this.teste1.add(graficoDeBarra.criarGrafico(m));
         pack();
-
+        this.setExtendedState(MAXIMIZED_BOTH);
     }
 
     @SuppressWarnings("unchecked")
@@ -36,7 +29,7 @@ public class Tela_PrincipalAdm extends javax.swing.JFrame {
         jMenuBar2 = new javax.swing.JMenuBar();
         jMenu6 = new javax.swing.JMenu();
         jMenu7 = new javax.swing.JMenu();
-        frameGrafico = new javax.swing.JInternalFrame();
+        teste1 = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         Cadatro = new javax.swing.JMenu();
         Cadastro_clientes = new javax.swing.JMenuItem();
@@ -75,17 +68,17 @@ public class Tela_PrincipalAdm extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        frameGrafico.setVisible(true);
+        teste1.setBorder(new javax.swing.border.MatteBorder(null));
 
-        javax.swing.GroupLayout frameGraficoLayout = new javax.swing.GroupLayout(frameGrafico.getContentPane());
-        frameGrafico.getContentPane().setLayout(frameGraficoLayout);
-        frameGraficoLayout.setHorizontalGroup(
-            frameGraficoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 597, Short.MAX_VALUE)
+        javax.swing.GroupLayout teste1Layout = new javax.swing.GroupLayout(teste1);
+        teste1.setLayout(teste1Layout);
+        teste1Layout.setHorizontalGroup(
+            teste1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 925, Short.MAX_VALUE)
         );
-        frameGraficoLayout.setVerticalGroup(
-            frameGraficoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 295, Short.MAX_VALUE)
+        teste1Layout.setVerticalGroup(
+            teste1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 472, Short.MAX_VALUE)
         );
 
         Cadatro.setText("Cadastros");
@@ -275,15 +268,15 @@ public class Tela_PrincipalAdm extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(frameGrafico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(384, Short.MAX_VALUE))
+                .addComponent(teste1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(56, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(frameGrafico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(214, Short.MAX_VALUE))
+                .addComponent(teste1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(57, Short.MAX_VALUE))
         );
 
         pack();
@@ -372,7 +365,7 @@ public class Tela_PrincipalAdm extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void btMetasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btMetasActionPerformed
-        Tela_Funcionarios tf = new Tela_Funcionarios();
+        Tela_Funcionarios tf = new Tela_Funcionarios(this);
         tf.setLocationRelativeTo(this);
         tf.setVisible(true);
     }//GEN-LAST:event_btMetasActionPerformed
@@ -409,6 +402,20 @@ public class Tela_PrincipalAdm extends javax.swing.JFrame {
         });
     }
 
+    public void atualizaGrafico() {
+
+        this.teste1.removeAll();
+        m = graficoDeBarra.getMetas(Tela_Login.fun.getId(), 1);
+        this.teste1.setLayout(new BorderLayout());
+        this.teste1.add(graficoDeBarra.atualizarGrafico(m));
+        this.teste1.repaint();
+        System.out.println(m.getJaneiro());
+        
+        
+        pack();
+        this.setExtendedState(MAXIMIZED_BOTH);
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem Cadastro_Cidades;
     private javax.swing.JMenuItem Cadastro_Produtos;
@@ -427,7 +434,6 @@ public class Tela_PrincipalAdm extends javax.swing.JFrame {
     private javax.swing.JMenuItem btAuditorias;
     private javax.swing.JMenuItem btLogs;
     private javax.swing.JMenuItem btMetas;
-    private javax.swing.JInternalFrame frameGrafico;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -442,5 +448,6 @@ public class Tela_PrincipalAdm extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JScrollBar jScrollBar1;
+    private javax.swing.JPanel teste1;
     // End of variables declaration//GEN-END:variables
 }

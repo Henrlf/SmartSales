@@ -5,9 +5,16 @@ import entidades.Funcionario;
 
 public class Tela_Funcionarios extends javax.swing.JFrame {
 
-    public Tela_Funcionarios() {
+    Tela_PrincipalAdm tp;
+
+    public Tela_Funcionarios(Tela_PrincipalAdm t) {
         initComponents();
         GenericoDAO.pesquisa(tabFuncionarios, campoPesquisa.getText(), "Funcionario");
+        tp = t;
+    }
+
+    private Tela_Funcionarios() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @SuppressWarnings("unchecked")
@@ -135,8 +142,8 @@ public class Tela_Funcionarios extends javax.swing.JFrame {
     private void btMetasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btMetasActionPerformed
         String idString = String.valueOf(tabFuncionarios.getValueAt(tabFuncionarios.getSelectedRow(), 0));
         int id = Integer.parseInt(idString);
-        Funcionario funcionario = (Funcionario)GenericoDAO.getObjectBanco(id, Funcionario.class);
-        Tela_GerenciamentoMetas tgm = new Tela_GerenciamentoMetas(funcionario);
+        Funcionario funcionario = (Funcionario) GenericoDAO.getObjectBanco(id, Funcionario.class);
+        Tela_GerenciamentoMetas tgm = new Tela_GerenciamentoMetas(funcionario, tp);
         tgm.setLocationRelativeTo(this);
         tgm.setVisible(true);
     }//GEN-LAST:event_btMetasActionPerformed
