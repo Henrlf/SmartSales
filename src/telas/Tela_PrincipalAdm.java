@@ -12,6 +12,8 @@ public class Tela_PrincipalAdm extends javax.swing.JFrame {
     public Tela_PrincipalAdm() {
 
         initComponents();
+        
+        
         this.teste1.setLayout(new BorderLayout());
         m = graficoDeBarra.getMetas(Tela_Login.fun.getId(), 1);
         this.teste1.add(graficoDeBarra.criarGrafico(m));

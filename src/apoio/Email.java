@@ -106,7 +106,7 @@ public class Email {
 
             Multipart emailContent = new MimeMultipart();
             MimeBodyPart textBodyPart = new MimeBodyPart();
-            textBodyPart.setText("teste anexo");
+            textBodyPart.setText("");
             MimeBodyPart anexo = new MimeBodyPart();
             anexo.attachFile(an);
             emailContent.addBodyPart(textBodyPart);

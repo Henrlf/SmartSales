@@ -75,7 +75,7 @@ public class GraficodeBarra {
 
     public JFreeChart createBarChart(CategoryDataset dataSet) {
 
-        JFreeChart graficoBarras = ChartFactory.createBarChart("Metas do ano atual", "Mês", "Metas de Vendas", dataSet, PlotOrientation.VERTICAL, true, true, false);
+        JFreeChart graficoBarras = ChartFactory.createBarChart3D("Metas do ano atual", "Mês", "Metas de Vendas", dataSet, PlotOrientation.VERTICAL, true, true, false);
 
         return graficoBarras;
     }
