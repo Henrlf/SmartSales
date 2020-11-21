@@ -30,6 +30,15 @@ public class Cidade implements Serializable {
     @Column(name = "fun_id")
     private int fun_id;
 
+    @Column(name = "cep")
+    private String cep;
+
+    @Column(name = "rua")
+    private String rua;
+
+    @Column(name = "bairro")
+    private String bairro;
+
     public int getId() {
         return id;
     }
@@ -68,5 +77,29 @@ public class Cidade implements Serializable {
 
     public void setFun_id(int fun_id) {
         this.fun_id = fun_id;
+    }
+
+    public String getCep() {
+        return cep;
+    }
+
+    public void setCep(String cep) {
+        this.cep = cep;
+    }
+
+    public String getRua() {
+        return rua;
+    }
+
+    public void setRua(String rua) {
+        this.rua = rua;
+    }
+
+    public String getBairro() {
+        return bairro;
+    }
+
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
     }
 }

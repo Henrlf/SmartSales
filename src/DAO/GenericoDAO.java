@@ -162,14 +162,19 @@ public class GenericoDAO {
                 }
             } else if (classe.equals("Cidade")) {
                 tabela.getColumnModel().getColumn(0).setCellRenderer(centralizado);
+                tabela.getColumnModel().getColumn(1).setCellRenderer(centralizado);
                 tabela.getColumnModel().getColumn(2).setCellRenderer(centralizado);
+                tabela.getColumnModel().getColumn(3).setCellRenderer(centralizado);
+                tabela.getColumnModel().getColumn(4).setCellRenderer(centralizado);
+                tabela.getColumnModel().getColumn(5).setCellRenderer(centralizado);
                 tabela.getColumnModel().getColumn(0).setPreferredWidth(40);
                 tabela.getColumnModel().getColumn(2).setPreferredWidth(40);
+                tabela.getColumnModel().getColumn(3).setPreferredWidth(40);
                 org.hibernate.Query query = sessao.createQuery(sql);
                 resultado = query.list();
                 for (int i = 0; i < resultado.size(); i++) {
                     Cidade c = (Cidade) resultado.get(i);
-                    modelo.addRow(new Object[]{c.getId(), c.getNome(), c.getUf()});
+                    modelo.addRow(new Object[]{c.getId(), c.getNome(), c.getUf(), c.getCep(), c.getRua(), c.getBairro()});
                 }
             } else if (classe.equals("Auditoria")) {
                 tabela.getColumnModel().getColumn(1).setCellRenderer(centralizado);
