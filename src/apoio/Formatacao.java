@@ -78,6 +78,19 @@ public class Formatacao {
         }
     }
 
+    public static void formatarCEP(JFormattedTextField campo) {
+        try {
+            MaskFormatter m = new MaskFormatter();
+            m.setPlaceholderCharacter(' ');
+            m.setMask("#####-###");
+            campo.setFormatterFactory(null);
+            campo.setFormatterFactory(new DefaultFormatterFactory(m));
+            campo.setValue(null);
+        } catch (Exception e) {
+            System.err.println(e);
+        }
+    }
+
     public static void formatarCnpj(JFormattedTextField campo) {
         try {
             MaskFormatter m = new MaskFormatter();

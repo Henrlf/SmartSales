@@ -1,6 +1,7 @@
 package telas;
 
 import DAO.GenericoDAO;
+import apoio.Formatacao;
 import br.com.parg.viacep.ViaCEP;
 import br.com.parg.viacep.ViaCEPException;
 import entidades.*;
@@ -16,11 +17,13 @@ public class Tela_CadastroCidade extends javax.swing.JFrame {
         initComponents();
         GenericoDAO.pesquisa(tabelaCidade, campoPesquisa.getText().toUpperCase(), "Cidade");
         btInativar.setEnabled(true);
+        Formatacao.formatarCEP(campoCep);
     }
 
     public Tela_CadastroCidade(int x) {
         initComponents();
         GenericoDAO.pesquisa(tabelaCidade, campoPesquisa.getText().toUpperCase(), "Cidade");
+        Formatacao.formatarCEP(campoCep);
     }
 
     @SuppressWarnings("unchecked")
@@ -28,6 +31,8 @@ public class Tela_CadastroCidade extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel5 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextPane1 = new javax.swing.JTextPane();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -39,7 +44,6 @@ public class Tela_CadastroCidade extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        campoCep = new javax.swing.JTextField();
         campoUF = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         campoNomeCidade = new javax.swing.JTextField();
@@ -48,10 +52,13 @@ public class Tela_CadastroCidade extends javax.swing.JFrame {
         txtRua = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         txtBairro = new javax.swing.JTextField();
+        campoCep = new javax.swing.JFormattedTextField();
         btSalvar = new javax.swing.JButton();
         btSair = new javax.swing.JButton();
 
         jLabel5.setText("jLabel5");
+
+        jScrollPane2.setViewportView(jTextPane1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro de Cidade");
@@ -155,8 +162,6 @@ public class Tela_CadastroCidade extends javax.swing.JFrame {
         jLabel3.setText("*UF:");
         jLabel3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
-        campoCep.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-
         campoUF.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
 
         jLabel4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -219,11 +224,10 @@ public class Tela_CadastroCidade extends javax.swing.JFrame {
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(buscaCep, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(campoCep, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(campoCep, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(campoNomeCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -240,7 +244,7 @@ public class Tela_CadastroCidade extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
                     .addComponent(txtBairro))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
 
         btSalvar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -331,7 +335,7 @@ public class Tela_CadastroCidade extends javax.swing.JFrame {
     }//GEN-LAST:event_btSairActionPerformed
 
     private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
-        if (campoCep.getText().isEmpty() || campoUF.getText().isEmpty()) {
+        if (campoNomeCidade.getText().isEmpty() || campoUF.getText().isEmpty() || campoCep.getText().isEmpty() || txtBairro.getText().isEmpty() || txtRua.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Campo(s) obrigatorios em branco(s)!", "Aviso!", JOptionPane.WARNING_MESSAGE);
         } else {
             cidade = new Cidade();
@@ -369,7 +373,6 @@ public class Tela_CadastroCidade extends javax.swing.JFrame {
         } catch (ViaCEPException ex) {
             JOptionPane.showMessageDialog(null, "CEP errado ou inexistente no sistema");
         }
-
     }//GEN-LAST:event_buscaCepActionPerformed
 
     public static void main(String args[]) {
@@ -407,7 +410,7 @@ public class Tela_CadastroCidade extends javax.swing.JFrame {
     private javax.swing.JButton btSair;
     private javax.swing.JButton btSalvar;
     private javax.swing.JButton buscaCep;
-    private javax.swing.JTextField campoCep;
+    private javax.swing.JFormattedTextField campoCep;
     private javax.swing.JTextField campoNomeCidade;
     private javax.swing.JTextField campoPesquisa;
     private javax.swing.JTextField campoUF;
@@ -422,7 +425,9 @@ public class Tela_CadastroCidade extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTextPane jTextPane1;
     private javax.swing.JTable tabelaCidade;
     private javax.swing.JTextField txtBairro;
     private javax.swing.JTextField txtRua;
